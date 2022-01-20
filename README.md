@@ -1,2 +1,2 @@
 # KHompare
-Compare KHelse data
+Comparing KHelse data

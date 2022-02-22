@@ -1,0 +1,6 @@
+win-drive:
+  - "F:"
+linux-drive:
+  - "/mnt/F"
+kube-root:
+  - "Forskningsprosjekter/PDB 2455 - Helseprofiler og til_/PRODUKSJON/PRODUKTER/KUBER/KOMMUNEHELSA"

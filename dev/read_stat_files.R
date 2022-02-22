@@ -1,8 +1,10 @@
 library(haven)
 library(data.table)
-folder <- "F:/Forskningsprosjekter/PDB 2455 - Helseprofiler og til_/PRODUKSJON/VALIDERING/NESSTAR_KUBER/2021/KH/z_Data/dtakopierPreppet"
+source("dev/settings.R")
+folder <- file.path(sysDrive, "Forskningsprosjekter/PDB 2455 - Helseprofiler og til_/PRODUKSJON/VALIDERING/NESSTAR_KUBER/2021/KH/z_Data/dtakopierPreppet" )
 dt <- read_dta(file.path(folder, "ARBLEDIGE_2020-12-03-16-22.dta"))
 setDT(dt)
+dt
 
 names(dt)
 dt[, .N, by=ekstradims]
@@ -10,6 +12,15 @@ dt[, .N, by=ekstradim_levels]
 dt[, .N, by=edl_txt]
 dt[, .N, by=storkommune]
 dim(dt)
+
+dt[, .N, by=num_geonivaa]
+dt[num_geonivaa == 20]
+
+
+dt[geonivaa == "F"]
+
+
+
 
 library(ggplot2)
 

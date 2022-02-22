@@ -1,0 +1,14 @@
+Package: KHompare
+Title: Compare Cubes Data
+Version: 0.0.0.9000
+Authors@R: 
+    person("Yusman", "Kamaleri", , "ybka@fhi.no", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-5014-3665"))
+Description: Compare data from current cube to previous year.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Imports: 
+    data.table (>= 1.14.2),
+    fs (>= 1.5.2)

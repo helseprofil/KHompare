@@ -16,6 +16,36 @@ DT <- fread(KBfile)
 DT
 
 
+DT[, level := fcase(nchar(GEO) %in% 1:2, "F",
+                    nchar(GEO) %in% 3:4, "k",
+                    nchar(GEO) %in% 5:6, "B")]
+
+DT[GEO == 0 , level := "L"]
+
+stdVars <- c("GEO", "AAR", "KJONN", "ALDER", "TELLER", "RATE", "SMR", "MEIS", "sumNEVNER", "sumTELLER", "SPVFLAGG", "level")
+extVars <- setdiff(names(DT), stdVars)
+extVars
+keyVars <- c("GEO", "AAR", "level", "KJONN", "ALDER", extVars)
+setkeyv(DT, keyVars)
+DT
+
+## INDEX -----------
+SOES <- DT[, .N, by = SOES][[1]]
+KJONN <- DT[, .N, by = KJONN][[1]]
+ALDER <- DT[, .N, by = ALDER][[1]]
+
+## kjonn <- c(0,1,2)
+ind <- CJ(SOES, KJONN, ALDER, sorted = FALSE)
+
+ind
+ind[1]
+dt01 <- DT[ind[2], on = names(ind)]
+dt01[, .N, by=SOES]
+dt01
+
+dt01[, meis2 := shift(MEIS, type = "lag"), by = GEO]
+dt01[, meis_pct := (MEIS-meis2)/meis2*100, by = GEO]
+dt01
 
 
 
@@ -40,3 +70,5 @@ str(DT)
 
 
 DT[GEO == 0 & SOES == 0]
+
+

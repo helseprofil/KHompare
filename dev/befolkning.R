@@ -37,8 +37,11 @@ dt[, .N, by = level]
 dt[level == "k", level := fifelse(TELLER >= 10000, "K", "k") ]
 
 dt[, .N, by = level]
+dt[GEO == 30101]
+dt[, c("RATE", "SMR", "SPVFLAGG", "KJONN", "ALDER") := NULL]
 dt
 saveRDS(dt, "dev/befolkning.rds")
+
 
 ## dt[, .N, by = stor]
 ## dt[, stor := fifelse(TELLER >= 10000, 1, 0)]

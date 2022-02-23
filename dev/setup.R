@@ -15,3 +15,4 @@ usethis::use_package_doc() #Pkg document roxygen style
 ## Add packages ----------
 usethis::use_package("data.table", min_version = TRUE)
 usethis::use_package("fs", min_version = TRUE)
+usethis::use_package("yaml", min_version = TRUE)

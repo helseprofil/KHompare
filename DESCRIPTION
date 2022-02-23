@@ -13,3 +13,6 @@ Imports:
     data.table (>= 1.14.2),
     fs (>= 1.5.2),
     yaml (>= 2.2.2)
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3

@@ -1,7 +1,10 @@
 ## Development loop ----
 roxygen2::roxygenise(clean = TRUE)
 devtools::load_all()
+devtools::test()
+
 devtools::check()
+
 
 ## CREATE PKG -----------
 available::available("KHompare")
@@ -16,3 +19,7 @@ usethis::use_package_doc() #Pkg document roxygen style
 usethis::use_package("data.table", min_version = TRUE)
 usethis::use_package("fs", min_version = TRUE)
 usethis::use_package("yaml", min_version = TRUE)
+
+## Testing ---------------
+usethis::use_testthat()
+usethis::use_test("utils")

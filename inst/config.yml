@@ -1,21 +1,21 @@
-win-drive:
+win.drive:
   - "F:"
-linux-drive:
+linux.drive:
   - "/mnt/F"
 
 # Don't include the drive when specifying kube-root
-kube-root:
+kube.root:
   - "Forskningsprosjekter/PDB 2455 - Helseprofiler og til_/PRODUKSJON/PRODUKTER/KUBER/KOMMUNEHELSA"
 
 # Demographic variables
-demo-vars:
+demo.vars:
   - GEO
   - AAR
   - KJONN
   - ALDER
 
 # Variables from LagKUBE function
-kube-vars:
+kube.vars:
   - TELLER
   - RATE
   - SMR

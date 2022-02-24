@@ -10,9 +10,13 @@ sapply(pkg, require, character.only = TRUE)
 
 KBroot <- file.path(sysDrive, "Forskningsprosjekter/PDB 2455 - Helseprofiler og til_/PRODUKSJON/PRODUKTER/KUBER/KOMMUNEHELSA" )
 KByr <- paste0("KH", as.integer(format(Sys.Date(), "%Y")) - 1, "NESSTAR") #temporarily to have 2021 folder
-KBfile <- file.path(KBroot, KByr, "ALKOHOL_UNGD_2021-01-26-14-48.csv")
-KBfile
-DT <- fread(KBfile)
+dirAll <- fs::dir_ls(file.path(KBroot, KByr))
+
+file01 <- grep("ALKOHOL", dirAll, value = TRUE)
+file02 <- grep("REGNEFERD", dirAll, value = TRUE)
+file02
+
+DT <- fread(file02)
 DT
 
 
@@ -70,5 +74,3 @@ str(DT)
 
 
 DT[GEO == 0 & SOES == 0]
-
-

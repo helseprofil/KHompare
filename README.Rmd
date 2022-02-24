@@ -1,0 +1,21 @@
+---
+output:
+  md_document:
+    variant: gfm
+html_preview: false
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+``` 
+
+<!-- badges: start -->
+  [![R-CMD-check](https://github.com/helseprofil/KHompare/workflows/R-CMD-check/badge.svg)](https://github.com/helseprofil/KHompare/actions)
+<!-- badges: end -->
+
+# KHompare

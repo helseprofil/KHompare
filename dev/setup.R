@@ -25,3 +25,7 @@ usethis::use_package("withr")
 usethis::use_testthat()
 usethis::use_test("utils")
 usethis::use_test("directory")
+
+## CI ----------------
+usethis::use_git_remote("origin", url = "https://github.com/helseprofil/KHompare.git", overwrite = T)
+usethis::use_github_action_check_standard()

@@ -12,8 +12,12 @@ devtools::session_info()
 devtools::create("./dev/pkg/KHompare")
 
 usethis::use_mit_license()
-usethis::use_build_ignore("dev")
 usethis::use_package_doc() #Pkg document roxygen style
+
+## Ignore -------------
+usethis::use_build_ignore("dev")
+usethis::use_build_ignore("README.Rmd")
+
 
 ## Add packages ----------
 usethis::use_package("covr", type = "Suggest")
@@ -21,6 +25,7 @@ usethis::use_package("data.table", min_version = TRUE)
 usethis::use_package("fs", min_version = TRUE)
 usethis::use_package("yaml", min_version = TRUE)
 usethis::use_package("withr")
+usethis::use_package("stats")
 
 ## Testing ---------------
 usethis::use_testthat()

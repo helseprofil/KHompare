@@ -14,10 +14,18 @@ knitr::opts_chunk$set(
 )
 ``` 
 
-<!-- badges: start -->
-[![R-CMD-check](https://github.com/helseprofil/KHompare/workflows/R-CMD-check/badge.svg)](https://github.com/helseprofil/KHompare/actions)
-[![Codecov test coverage](https://codecov.io/gh/helseprofil/KHompare/branch/main/graph/badge.svg)](https://app.codecov.io/gh/helseprofil/KHompare?branch=main)
-<!-- badges: end -->
-
 # KHompare
 
+
+```{r echo=FALSE, results="hide", message=FALSE}
+library("badger")
+```
+
+```{r, echo = FALSE, results='asis'}
+cat(
+  badge_github_actions("helseprofil/KHompare"),
+  badge_codecov("helseprofil/KHompare"),
+  badge_lifecycle("experimental", "blue"),
+  badge_devel("helseprofil/KHompare", "blue")
+)
+```

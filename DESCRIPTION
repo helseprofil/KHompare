@@ -12,6 +12,7 @@ RoxygenNote: 7.1.2
 Imports: 
     data.table (>= 1.14.2),
     fs (>= 1.5.2),
+    stats,
     withr,
     yaml (>= 2.2.2)
 Suggests: 

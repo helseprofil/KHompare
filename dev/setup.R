@@ -29,3 +29,4 @@ usethis::use_test("directory")
 ## CI ----------------
 usethis::use_git_remote("origin", url = "https://github.com/helseprofil/KHompare.git", overwrite = T)
 usethis::use_github_action_check_standard()
+usethis::use_git_remote("origin", url = "git@work:helseprofil/KHompare.git", overwrite = TRUE)

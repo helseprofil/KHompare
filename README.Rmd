@@ -14,9 +14,6 @@ knitr::opts_chunk$set(
 )
 ``` 
 
-# KHompare
-
-
 ```{r echo=FALSE, results="hide", message=FALSE}
 library("badger")
 ```
@@ -29,3 +26,8 @@ cat(
   badge_devel("helseprofil/KHompare", "blue")
 )
 ```
+
+
+# KHompare
+
+Compare KHelse data.

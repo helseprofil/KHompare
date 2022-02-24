@@ -19,7 +19,9 @@ usethis::use_package_doc() #Pkg document roxygen style
 usethis::use_package("data.table", min_version = TRUE)
 usethis::use_package("fs", min_version = TRUE)
 usethis::use_package("yaml", min_version = TRUE)
+usethis::use_package("withr")
 
 ## Testing ---------------
 usethis::use_testthat()
 usethis::use_test("utils")
+usethis::use_test("directory")

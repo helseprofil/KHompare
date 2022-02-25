@@ -31,9 +31,10 @@ read_file <- function(file = NULL, ...){
 #'   - `B` for town (`Bydele`)
 #' @import data.table
 add_geo_level <- function(dt){
-  dt[, level := data.table::fcase(nchar(GEO) %in% 1:2, "F",
-                                  nchar(GEO) %in% 3:4, "k",
-                                  nchar(GEO) %in% 5:6, "B")]
-  dt[GEO == 0 , level := "L"]
+  GEO <- NULL
+  dt[, "level" := data.table::fcase(nchar(GEO) %in% 1:2, "F",
+                                    nchar(GEO) %in% 3:4, "k",
+                                    nchar(GEO) %in% 5:6, "B")]
+  dt[GEO == 0 , "level" := "L"]
   invisible(dt[])
 }

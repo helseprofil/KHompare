@@ -9,12 +9,13 @@ fileBEF <- grep("BEFOLK_GK_\\d{4}", dirFile, value = TRUE)
 yr <- gsub(".*(\\d{4})-(\\d{2})-(\\d{2})-(\\d{2})-(\\d{2}).csv$", "\\1\\2\\3\\4\\5", fileBEF)
 yr
 yrFile <- sort(as.numeric(yr), TRUE)
-## yrFile
+yrFile
 ## dupFile <- any(yrFile[1], yrFile[-1])
 ## dupFile
 
 year <- yrFile[1]
 fileExt <- gsub("^(\\d{4})(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "\\1_\\2-\\3-\\4-\\5", year)
+fileExt
 fileBEF <- paste0("BEFOLK_GK_", fileExt, ".csv")
 fileBEF
 

@@ -30,6 +30,8 @@ read_file <- function(file = NULL, ...){
 #' @param overwrite Overwrite existing `BEF-Kommune-xxxx.rds` file
 #' @export
 read_befolk <- function(name = "BEFOLK_GK", year = getOption("kh.year"), overwrite = FALSE){
+  ALDER <- KJONN <- TELLER <- level <- NULL
+
   fileDir <- get_dir("current")
 
   befolkDT <- file.path(fileDir, paste0("BEF-Kommune-", year, ".rds") )

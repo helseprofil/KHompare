@@ -30,7 +30,6 @@ read_file <- function(file = NULL, ...){
 #' @param overwrite Overwrite existing `BEF-Kommune-xxxx.rds` file
 #' @export
 read_befolk <- function(name = "BEFOLK_GK", year = getOption("kh.year"), overwrite = FALSE){
-  ALDER <- KJONN <- TELLER <- level <- NULL
 
   fileDir <- get_dir("current")
 
@@ -47,20 +46,8 @@ read_befolk <- function(name = "BEFOLK_GK", year = getOption("kh.year"), overwri
 
   bf <- paste0(name, "_\\d{4}") #file must be followed by year ie. 4 digits
   befolkFiles <- grep(bf, allFiles, value = TRUE)
-  pathBEF <- befolk_file(dir = fileDir, files = befolkFiles, name = name)
+  dt <- befolk_file(dir = fileDir, files = befolkFiles, name = name)
 
-  dt <- data.table::fread(pathBEF)
-
-  # Select only total to find bigger and small kommuner
-  dt <- dt[KJONN == 0 & ALDER == "0_120"]
-  dt <- add_geo_level(dt)
-
-  # Big and small kommuner with cutoff 10000
-  # Big kommune with capital K
-  dt[level == "k", level := fifelse(TELLER >= 10000, "K", "k")]
-  varKube <- c(getOption("kh.kube.vars"), "SPVFLAGG")
-  varDel <- intersect(names(dt), varKube)
-  dt[, (varDel) := NULL]
   saveRDS(object = dt, file = befolkDT)
   message("Save file: ", befolkDT)
   invisible()
@@ -88,10 +75,24 @@ add_geo_level <- function(dt){
 # files - All files with the same name but different date
 # name - Filename
 befolk_file <- function(dir = NULL, files = NULL, name = NULL){
+  ALDER <- KJONN <- TELLER <- level <- NULL
+
   # Ensure only the most recent file is selected when there are multiple files
   yrDate <- gsub(".*(\\d{4})-(\\d{2})-(\\d{2})-(\\d{2})-(\\d{2}).csv$", "\\1\\2\\3\\4\\5", files)
   yrFile <- sort(as.numeric(yrDate), TRUE)[1] #keep only the most recent file
   fileExt <- gsub("^(\\d{4})(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "\\1-\\2-\\3-\\4-\\5", yrFile)
   fileBEF <- paste0(name, "_", fileExt, ".csv")
-  file.path(dir, fileBEF)
+  pathBEF <- file.path(dir, fileBEF)
+  dt <- data.table::fread(pathBEF)
+
+  # Select only total to find bigger and small kommuner
+  dt <- dt[KJONN == 0 & ALDER == "0_120"]
+  dt <- add_geo_level(dt)
+
+  # Big and small kommuner with cutoff 10000
+  # Big kommune with capital K
+  dt[level == "k", level := fifelse(TELLER >= 10000, "K", "k")]
+  varKube <- c(getOption("kh.kube.vars"), "SPVFLAGG")
+  varDel <- intersect(names(dt), varKube)
+  dt[, (varDel) := NULL]
 }

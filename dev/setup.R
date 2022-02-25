@@ -1,8 +1,8 @@
 ## Development loop ----
-roxygen2::roxygenise(clean = TRUE)
 devtools::load_all()
 devtools::test()
 
+roxygen2::roxygenise(clean = TRUE)
 devtools::check()
 
 
@@ -12,16 +12,30 @@ devtools::session_info()
 devtools::create("./dev/pkg/KHompare")
 
 usethis::use_mit_license()
-usethis::use_build_ignore("dev")
 usethis::use_package_doc() #Pkg document roxygen style
 
+## Ignore -------------
+usethis::use_build_ignore("dev")
+usethis::use_build_ignore("README.Rmd")
+
+
 ## Add packages ----------
+usethis::use_package("covr", type = "Suggest")
 usethis::use_package("data.table", min_version = TRUE)
 usethis::use_package("fs", min_version = TRUE)
 usethis::use_package("yaml", min_version = TRUE)
 usethis::use_package("withr")
+usethis::use_package("stats")
 
 ## Testing ---------------
 usethis::use_testthat()
 usethis::use_test("utils")
 usethis::use_test("directory")
+
+## CI ----------------
+usethis::use_git_remote("origin", url = "https://github.com/helseprofil/KHompare.git", overwrite = T)
+usethis::use_github_action_check_standard()
+usethis::use_git_remote("origin", url = "git@work:helseprofil/KHompare.git", overwrite = TRUE)
+
+usethis::use_coverage()
+usethis::use_github_action("test-coverage")

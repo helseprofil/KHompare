@@ -6,6 +6,8 @@
 get_dir <- function(dir = c("current", "previous"), os = OS){
   status <- match.arg(dir)
 
+  if (length(dir) == 2) dir = "current"
+
   yr <- switch(dir,
                current = as.integer(getOption("kh.year")),
                previous = as.integer(getOption("kh.year")) - 1)

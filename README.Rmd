@@ -1,0 +1,33 @@
+---
+output:
+  md_document:
+    variant: gfm
+html_preview: false
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+``` 
+
+```{r echo=FALSE, results="hide", message=FALSE}
+library("badger")
+```
+
+```{r, echo = FALSE, results='asis'}
+cat(
+  badge_github_actions("helseprofil/KHompare"),
+  badge_codecov("helseprofil/KHompare"),
+  badge_lifecycle("experimental", "blue"),
+  badge_devel("helseprofil/KHompare", "blue")
+)
+```
+
+
+# KHompare
+
+Compare KHelse data.

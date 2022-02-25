@@ -1,3 +1,12 @@
+#' @title Read Raw File
+#' @description Read raw kube files
+#' @param file Raw `csv` file. Accept `KUBE` name if it's unique
+#' @param ... Additional arguments
+#' @examples
+#' \dontrun{
+#' dt <- read_file("REGNFERD", dir = "current")
+#' }
+#' @export
 
 read_file <- function(file = NULL, ...){
 

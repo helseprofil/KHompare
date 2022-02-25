@@ -4,9 +4,15 @@
 \alias{add_geo_level}
 \title{Add Geo Level}
 \usage{
-add_geo_level(x)
+add_geo_level(dt)
 }
 \description{
-Add geographical levels to the dataset
+Add geographical levels to the dataset. They are:
+\itemize{
+\item \code{L} for country (\code{Land})
+\item \code{F} for county (\code{Fylke})
+\item \code{k} for municipality (\code{Kommune})
+\item \code{B} for town (\code{Bydele})
+}
 }
 \keyword{internal}

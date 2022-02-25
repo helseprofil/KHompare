@@ -14,10 +14,16 @@ read_cube <- function(file = NULL, ...){
   allFiles <- fs::dir_ls(fileDir)
   kubeFile <- grep(file, allFiles, value = TRUE)
 
-  if (length(kubeFile) > 1) stop("Found more than one files. Be specific!")
+  if (length(kubeFile) > 1) {
+    kbFiles <- unname(gsub(fileDir, "", kubeFile))
+    for (i in kbFiles){
+      fname <- sub("^/", "", i)
+      message("Filename: ", fname)
+    }
+    stop("Found more than one files. Be specific!")
+  }
 
   dt <- data.table::fread(kubeFile)
-  dt <- add_geo_level(dt)
 
 }
 

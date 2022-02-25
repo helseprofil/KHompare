@@ -16,6 +16,24 @@ read_file <- function(file = NULL, ...){
 
   if (length(kubeFile) > 1) stop("Found more than one files. Be specific!")
 
-  data.table::fread(kubeFile)
+  dt <- data.table::fread(kubeFile)
+  dt <- add_geo_level(dt)
 
+}
+
+# HELPER -------------------
+#' @keywords internal
+#' @title Add Geo Level
+#' @description Add geographical levels to the dataset. They are:
+#'   - `L` for country (`Land`)
+#'   - `F` for county (`Fylke`)
+#'   - `k` for municipality (`Kommune`)
+#'   - `B` for town (`Bydele`)
+#' @import data.table
+add_geo_level <- function(dt){
+  dt[, level := data.table::fcase(nchar(GEO) %in% 1:2, "F",
+                                  nchar(GEO) %in% 3:4, "k",
+                                  nchar(GEO) %in% 5:6, "B")]
+  dt[GEO == 0 , level := "L"]
+  invisible(dt[])
 }

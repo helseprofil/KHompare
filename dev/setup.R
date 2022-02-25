@@ -1,8 +1,8 @@
 ## Development loop ----
-roxygen2::roxygenise(clean = TRUE)
 devtools::load_all()
 devtools::test()
 
+roxygen2::roxygenise(clean = TRUE)
 devtools::check()
 
 

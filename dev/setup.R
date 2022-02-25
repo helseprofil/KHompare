@@ -31,6 +31,7 @@ usethis::use_package("stats")
 usethis::use_testthat()
 usethis::use_test("utils")
 usethis::use_test("directory")
+usethis::use_test("file")
 
 ## CI ----------------
 usethis::use_git_remote("origin", url = "https://github.com/helseprofil/KHompare.git", overwrite = T)
@@ -39,3 +40,6 @@ usethis::use_git_remote("origin", url = "git@work:helseprofil/KHompare.git", ove
 
 usethis::use_coverage()
 usethis::use_github_action("test-coverage")
+
+## Save ---------------
+saveRDS(b2, file = file.path(system.file(package = "KHompare"), "test-data/geo-levels-out.rds"))

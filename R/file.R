@@ -4,11 +4,11 @@
 #' @param ... Additional arguments
 #' @examples
 #' \dontrun{
-#' dt <- read_file("REGNFERD", dir = "current")
+#' dt <- read_cube("REGNFERD", dir = "current")
 #' }
 #' @export
 
-read_file <- function(file = NULL, ...){
+read_cube <- function(file = NULL, ...){
 
   fileDir <- get_dir(...)
   allFiles <- fs::dir_ls(fileDir)
@@ -20,6 +20,11 @@ read_file <- function(file = NULL, ...){
   dt <- add_geo_level(dt)
 
 }
+
+#' @export
+#' @rdname read_cube
+les_kube <- read_cube
+
 
 #' @title Big and Small Municipalities
 #' @description Create a dataset seperating big and small municipalities. The
@@ -39,19 +44,19 @@ read_befolk <- function(name = "BEFOLK_GK", year = getOption("kh.year"), overwri
   if (isFALSE(overwrite) && isTRUE(fileExist)){
     message("File exists: ", befolkDT)
     message("Use argument `overwrite = TRUE` to create a new file")
-    return()
+      return()
+    }
+
+    allFiles <- fs::dir_ls(fileDir)
+
+    bf <- paste0(name, "_\\d{4}") #file must be followed by year ie. 4 digits
+    befolkFiles <- grep(bf, allFiles, value = TRUE)
+    dt <- befolk_file(dir = fileDir, files = befolkFiles, name = name)
+
+    saveRDS(object = dt, file = befolkDT)
+    message("Save file: ", befolkDT)
+    invisible()
   }
-
-  allFiles <- fs::dir_ls(fileDir)
-
-  bf <- paste0(name, "_\\d{4}") #file must be followed by year ie. 4 digits
-  befolkFiles <- grep(bf, allFiles, value = TRUE)
-  dt <- befolk_file(dir = fileDir, files = befolkFiles, name = name)
-
-  saveRDS(object = dt, file = befolkDT)
-  message("Save file: ", befolkDT)
-  invisible()
-}
 
 # HELPER -------------------
 #' @keywords internal

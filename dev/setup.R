@@ -26,6 +26,7 @@ usethis::use_package("fs", min_version = TRUE)
 usethis::use_package("yaml", min_version = TRUE)
 usethis::use_package("withr")
 usethis::use_package("stats")
+usethis::use_package("listenv", min_version = TRUE)
 
 ## Testing ---------------
 usethis::use_testthat()
@@ -44,3 +45,7 @@ usethis::use_github_action("test-coverage")
 
 ## Save ---------------
 saveRDS(b2, file = file.path(system.file(package = "KHompare"), "test-data/geo-levels-out.rds"))
+
+
+## RUN -----------
+dt <- read_cube("LESEFERD_2022")

@@ -67,14 +67,6 @@ inx
 inx2 <- expand.grid(mget(indVars, envir = env2))
 inx2
 
-do.call(CJ, list(mget(indVars), sorted = FALSE))
-CJ(eval(noquote(indVars)), sorted = FALSE)
-
-CJ(mget(indVars), sorted = FALSE)
-
-substitute("BB")
-
-
 
 ( SOES <- DT[, .N, by = SOES][[1]] )
 ( KJONN <- DT[, .N, by = KJONN][[1]] )

@@ -29,14 +29,56 @@ DT[GEO == 0 , level := "L"]
 stdVars <- c("GEO", "AAR", "KJONN", "ALDER", "TELLER", "RATE", "SMR", "MEIS", "sumNEVNER", "sumTELLER", "SPVFLAGG", "level")
 extVars <- setdiff(names(DT), stdVars)
 extVars
-keyVars <- c("GEO", "AAR", "level", "KJONN", "ALDER", extVars)
+stdVars <- intersect(c("GEO", "AAR", "level", "KJONN", "ALDER"), names(DT))
+stdVars
+keyVars <- c(stdVars, extVars)
 setkeyv(DT, keyVars)
+keyVars
 DT
 
 ## INDEX -----------
-SOES <- DT[, .N, by = SOES][[1]]
-KJONN <- DT[, .N, by = KJONN][[1]]
-ALDER <- DT[, .N, by = ALDER][[1]]
+indVars <- keyVars[!( keyVars %in% c( "GEO", "level" ) )]
+indVars
+indList <- listenv::listenv()
+for (i in indVars){
+  ind <- DT[, .N, by = get(i)][[1]]
+  indList[[i]] <- ind
+}
+
+length(indList)
+names(indList)
+env2 <- new.env()
+## AAR <- indList[["AAR"]]
+assign(names(indList)[1], indList[["AAR"]])
+assign(names(indList)[2], indList[["KJONN"]])
+assign(names(indList)[3], indList[["TRINN"]])
+assign(names(indList)[4], indList[["FERDNIVAA"]])
+
+
+assign(names(indList)[1], indList[["AAR"]], envir = env2)
+assign(names(indList)[2], indList[["KJONN"]], envir = env2)
+assign(names(indList)[3], indList[["TRINN"]], envir = env2)
+assign(names(indList)[4], indList[["FERDNIVAA"]], envir = env2)
+
+indVars
+inx <- CJ(AAR, KJONN, TRINN, FERDNIVAA, sorted = FALSE)
+inx
+
+inx2 <- expand.grid(mget(indVars, envir = env2))
+inx2
+
+do.call(CJ, list(mget(indVars), sorted = FALSE))
+CJ(eval(noquote(indVars)), sorted = FALSE)
+
+CJ(mget(indVars), sorted = FALSE)
+
+substitute("BB")
+
+
+
+( SOES <- DT[, .N, by = SOES][[1]] )
+( KJONN <- DT[, .N, by = KJONN][[1]] )
+( ALDER <- DT[, .N, by = ALDER][[1]] )
 
 ## kjonn <- c(0,1,2)
 ind <- CJ(SOES, KJONN, ALDER, sorted = FALSE)

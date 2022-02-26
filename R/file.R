@@ -26,9 +26,9 @@ read_cube <- function(file = NULL, ...){
   dt <- data.table::fread(kubeFile)
   keyVars <- get_key(dt)
   data.table::setkeyv(dt, keyVars)
-  indVars <- get_grid(dt, vars = keyVars)
-
-  return(dt)
+  dimVars <- get_grid(dt, vars = keyVars)
+  DT <- get_measure(dt, dim = dimVars)
+  DT
 }
 
 #' @export

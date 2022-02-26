@@ -28,7 +28,9 @@ read_cube <- function(file = NULL, ...){
   data.table::setkeyv(dt, keyVars)
   dimVars <- get_grid(dt, vars = keyVars)
   DT <- get_measure(dt, dim = dimVars)
-  DT
+  sortKey <- keyVars[keyVars!="AAR"]
+  data.table::setkeyv(DT, sortKey)
+  DT[]
 }
 
 #' @export

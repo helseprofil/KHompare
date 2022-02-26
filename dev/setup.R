@@ -45,3 +45,7 @@ usethis::use_github_action("test-coverage")
 
 ## Save ---------------
 saveRDS(b2, file = file.path(system.file(package = "KHompare"), "test-data/geo-levels-out.rds"))
+
+
+## RUN -----------
+dt <- read_cube("LESEFERD_2022")

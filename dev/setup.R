@@ -32,6 +32,7 @@ usethis::use_testthat()
 usethis::use_test("utils")
 usethis::use_test("directory")
 usethis::use_test("file")
+usethis::use_test("dimension")
 
 ## CI ----------------
 usethis::use_git_remote("origin", url = "https://github.com/helseprofil/KHompare.git", overwrite = T)

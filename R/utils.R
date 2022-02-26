@@ -1,4 +1,4 @@
-# Driver on different OS
+# Driver on different operating system
 os_drive <- function(os = OS){
   switch(os,
          Linux = getOption("kh.linux.drive"),

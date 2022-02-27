@@ -4,11 +4,11 @@
 #' @param ... Additional arguments
 #' @examples
 #' \dontrun{
-#' dt <- read_cube("REGNFERD", dir = "current")
+#' dt <- check_cube("REGNFERD", dir = "current")
 #' }
 #' @export
 
-read_cube <- function(file = NULL, ...){
+check_cube <- function(file = NULL, ...){
 
   fileDir <- get_dir(...)
   allFiles <- fs::dir_ls(fileDir)
@@ -27,15 +27,15 @@ read_cube <- function(file = NULL, ...){
   keyVars <- get_key(dt)
   data.table::setkeyv(dt, keyVars)
   dimVars <- get_grid(dt, vars = keyVars)
-  DT <- get_measure(dt, dim = dimVars)
+  DT <- diff_change(dt, dim = dimVars)
   sortKey <- keyVars[keyVars!="AAR"]
   data.table::setkeyv(DT, sortKey)
   DT[]
 }
 
 #' @export
-#' @rdname read_cube
-les_kube <- read_cube
+#' @rdname check_cube
+sjekk_kube <- check_cube
 
 
 #' @title Big and Small Municipalities

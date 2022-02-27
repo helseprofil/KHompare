@@ -48,4 +48,4 @@ saveRDS(b2, file = file.path(system.file(package = "KHompare"), "test-data/geo-l
 
 
 ## RUN -----------
-dt <- read_cube("LESEFERD_2022")
+dt <- check_cube("LESEFERD_2022")

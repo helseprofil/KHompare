@@ -2,6 +2,7 @@
 
 export(.env_dim)
 export(check_cube)
+export(diff_change)
 export(get_dir)
 export(get_grid)
 export(get_key)

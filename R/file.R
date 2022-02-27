@@ -27,7 +27,7 @@ check_cube <- function(file = NULL, ...){
   keyVars <- get_key(dt)
   data.table::setkeyv(dt, keyVars)
   dimVars <- get_grid(dt, vars = keyVars)
-  DT <- get_measure(dt, dim = dimVars)
+  DT <- diff_change(dt, dim = dimVars)
   sortKey <- keyVars[keyVars!="AAR"]
   data.table::setkeyv(DT, sortKey)
   DT[]

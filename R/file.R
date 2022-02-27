@@ -4,11 +4,11 @@
 #' @param ... Additional arguments
 #' @examples
 #' \dontrun{
-#' dt <- read_cube("REGNFERD", dir = "current")
+#' dt <- check_cube("REGNFERD", dir = "current")
 #' }
 #' @export
 
-read_cube <- function(file = NULL, ...){
+check_cube <- function(file = NULL, ...){
 
   fileDir <- get_dir(...)
   allFiles <- fs::dir_ls(fileDir)
@@ -34,8 +34,8 @@ read_cube <- function(file = NULL, ...){
 }
 
 #' @export
-#' @rdname read_cube
-les_kube <- read_cube
+#' @rdname check_cube
+sjekk_kube <- check_cube
 
 
 #' @title Big and Small Municipalities

@@ -1,36 +1,39 @@
-#' @title Big and Small Municipalities
-#' @description Create a dataset separating big and small municipalities. The
-#'   cutoff is 10,000 population. Capital letter `K` denotes big municipalities
-#'   while small letter `k` for small municipalities. The created file will be
-#'   called `BEF-Kommune-xxxx` where `xxxx` represent the selected year.
+#' @title Count Municipalities Population
+#' @description Create a dataset separating big and small municipalities based
+#'   on their number of population. The cutoff is 10,000 population. Capital
+#'   letter `K` denotes big municipalities while small letter `k` for small
+#'   municipalities. The created file will be called `BEF-Kommune-xxxx` where
+#'   `xxxx` represent the selected year.
 #' @param name Population filename with standard name starts with `BEFOLK_GK`
+#' @inheritParams git_dir
 #' @param year Year for selection of population. Default is using global options
 #'   `kh.year`
 #' @param overwrite Overwrite existing `BEF-Kommune-xxxx.rds` file
 #' @export
-read_befolk <- function(name = "BEFOLK_GK", year = getOption("kh.year"), overwrite = FALSE){
+count_pop <- function(name = "BEFOLK_GK", dir = "current", year = getOption("kh.year"), overwrite = FALSE){
 
-  fileDir <- get_dir("current")
-
-  befolkDT <- file.path(fileDir, paste0("BEF-Kommune-", year, ".rds") )
+  fileDir <- get_dir(dir)
+  befolkDT <- pop_file_ref()
   fileExist <- fs::file_exists(path = befolkDT)
 
   if (isFALSE(overwrite) && isTRUE(fileExist)){
     message("File exists: ", befolkDT)
     message("Use argument `overwrite = TRUE` to create a new file")
-      return()
-    }
-
-    allFiles <- fs::dir_ls(fileDir)
-
-    bf <- paste0(name, "_\\d{4}") #file must be followed by year ie. 4 digits
-    befolkFiles <- grep(bf, allFiles, value = TRUE)
-    dt <- befolk_file(dir = fileDir, files = befolkFiles, name = name)
-
-    saveRDS(object = dt, file = befolkDT)
-    message("Save file: ", befolkDT)
-    invisible()
+    return()
   }
+
+  allFiles <- fs::dir_ls(fileDir)
+
+  bf <- paste0(name, "_\\d{4}") #file must be followed by year ie. 4 digits
+  befolkFiles <- grep(bf, allFiles, value = TRUE)
+  dt <- pop_file(dir = fileDir, files = befolkFiles, name = name)
+  dt[, c("AAR", "KJONN", "ALDER") := NULL]
+  dt <- dt[!duplicated(GEO)]
+
+  saveRDS(object = dt, file = befolkDT)
+  message("Save file: ", befolkDT)
+  invisible(dt)
+}
 
 # HELPER -------------------
 #' @keywords internal
@@ -50,10 +53,10 @@ add_geo_level <- function(dt){
   invisible(dt[])
 }
 
-# dir - Directory where the file is
+# dir - Directory where the population file is
 # files - All files with the same name but different date
-# name - Filename
-befolk_file <- function(dir = NULL, files = NULL, name = NULL){
+# name - Filename ie. BEFOLK_GK
+pop_file <- function(dir = NULL, files = NULL, name = NULL){
   ALDER <- KJONN <- TELLER <- level <- NULL
 
   # Ensure only the most recent file is selected when there are multiple files
@@ -74,4 +77,10 @@ befolk_file <- function(dir = NULL, files = NULL, name = NULL){
   varKube <- c(getOption("kh.kube.vars"), "SPVFLAGG")
   varDel <- intersect(names(dt), varKube)
   dt[, (varDel) := NULL]
+}
+
+# File for reference to big and small municipalities based on number of population
+pop_file_ref <- function(name = "BEF-Kommune-", dir = "current", year = getOption("kh.year")){
+  fileDir <- get_dir(dir)
+  file.path(fileDir, paste0(name, year, ".rds") )
 }

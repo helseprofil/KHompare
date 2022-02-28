@@ -14,8 +14,8 @@ Imports:
     fs (>= 1.5.2),
     listenv (>= 0.8.0),
     stats,
-    withr,
-    yaml (>= 2.2.2)
+    withr (>= 2.4.3),
+    yaml (>= 2.3.5)
 Suggests: 
     covr,
     testthat (>= 3.0.0)

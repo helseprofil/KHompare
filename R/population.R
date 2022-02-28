@@ -6,14 +6,12 @@
 #'   `xxxx` represent the selected year.
 #' @param name Population filename with standard name starts with `BEFOLK_GK`
 #' @inheritParams get_dir
-#' @param year Year for selection of population. Default is using global options
-#'   `kh.year`
 #' @param overwrite Overwrite existing `BEF-Kommune-xxxx.rds` file
 #' @export
-count_pop <- function(name = "BEFOLK_GK", dir = "current", year = getOption("kh.year"), overwrite = FALSE){
+count_pop <- function(name = "BEFOLK_GK", dir = "current", overwrite = FALSE){
   GEO <- NULL
-  fileDir <- get_dir(dir)
-  befolkDT <- pop_file_ref()
+  fileDir <- get_dir(dir = dir)
+  befolkDT <- pop_file_ref(dir = dir)
   fileExist <- fs::file_exists(path = befolkDT)
 
   if (isFALSE(overwrite) && isTRUE(fileExist)){
@@ -82,5 +80,8 @@ pop_file <- function(dir = NULL, files = NULL, name = NULL){
 # File for reference to big and small municipalities based on number of population
 pop_file_ref <- function(name = "BEF-Kommune-", dir = "current", year = getOption("kh.year")){
   fileDir <- get_dir(dir)
+  if (dir == "previous"){
+    year <- year - 1
+  }
   file.path(fileDir, paste0(name, year, ".rds") )
 }

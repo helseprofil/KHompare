@@ -48,6 +48,9 @@ saveRDS(b2, file = file.path(system.file(package = "KHompare"), "test-data/geo-l
 
 
 ## RUN -----------
+devtools::load_all()
 pop <- count_pop(overwrite = T)
 
 dt <- check_cube("LESEFERD_2022")
+dt <- check_cube("ALKOHOL")
+dt <- check_cube("ALKOHOL", dir = "previous")

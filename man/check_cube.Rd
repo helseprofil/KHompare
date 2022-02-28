@@ -3,7 +3,7 @@
 \name{check_cube}
 \alias{check_cube}
 \alias{sjekk_kube}
-\title{Read Raw File}
+\title{Check Raw File}
 \usage{
 check_cube(file = NULL, ...)
 
@@ -15,7 +15,7 @@ sjekk_kube(file = NULL, ...)
 \item{...}{Additional arguments}
 }
 \description{
-Read raw kube files
+Check raw kube files
 }
 \examples{
 \dontrun{

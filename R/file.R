@@ -1,5 +1,5 @@
-#' @title Read Raw File
-#' @description Read raw kube files
+#' @title Check Raw File
+#' @description Check raw kube files
 #' @param file Raw `csv` file. Accept `KUBE` name if it's unique
 #' @param ... Additional arguments
 #' @examples
@@ -23,11 +23,14 @@ check_cube <- function(file = NULL, ...){
     stop("Found more than one files. Be specific!")
   }
 
+  message("File: `", kubeFile, "`")
   dt <- data.table::fread(kubeFile)
   keyVars <- get_key(dt)
   data.table::setkeyv(dt, keyVars)
   dimVars <- get_grid(dt, vars = keyVars)
   DT <- diff_change(dt, dim = dimVars)
+  DT <- add_pop_size(DT, ...)
+
   sortKey <- keyVars[keyVars!="AAR"]
   data.table::setkeyv(DT, sortKey)
   DT[]
@@ -38,3 +41,18 @@ check_cube <- function(file = NULL, ...){
 sjekk_kube <- check_cube
 
 
+## HELPER -----------------
+add_pop_size <- function(dt, dir = "current"){
+  level <- NULL
+  popFile <- pop_file_ref(dir = dir)
+  fileExist <- fs::file_exists(path = popFile)
+
+  if (isFALSE(fileExist)) {
+    message("Creating population referece file ...")
+    count_pop(dir = dir)
+  }
+
+  dd <- readRDS(popFile)
+  dt[dd, on = "GEO", "level" := level]
+  dt[]
+}

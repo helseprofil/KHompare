@@ -2,10 +2,10 @@
 
 export(.env_dim)
 export(check_cube)
+export(count_pop)
 export(diff_change)
 export(get_dir)
 export(get_grid)
 export(get_key)
-export(read_befolk)
 export(sjekk_kube)
 import(data.table)

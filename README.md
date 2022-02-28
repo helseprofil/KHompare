@@ -20,8 +20,8 @@ remotes::install_github("helseprofil/KHompare")
 # Usage
 
 To check a cube file for *ALKOHOL* with `check_cube()` function. If
-there are more than one file that starts with *ALKOHOL*, a more specific
-name should be add.
+there are more than one files that contain the word *ALKOHOL*, a more
+specific name should be given.
 
 ``` r
 library("KHompare")

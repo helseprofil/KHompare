@@ -51,3 +51,7 @@ the difference in change numerically and percent. They are denoted by
 **\_NUM** and **\_PCT** respectively. The column **\_OUT** indicates the
 measurement variables that are of extreme values ie. outliers. The value
 for outliers are either **1** for *lower* or **2** for *upper* outliers.
+
+# Options
+
+Global options can be found here [helseprofil/config](https://github.com/helseprofil/config/blob/main/config-khompare.yml)

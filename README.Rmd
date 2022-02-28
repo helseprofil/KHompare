@@ -22,7 +22,7 @@ library("badger")
 cat(
   badge_github_actions("helseprofil/KHompare"),
   badge_codecov("helseprofil/KHompare"),
-  badge_lifecycle("experimental", "blue"),
+  badge_lifecycle("experimental", "orange"),
   badge_devel("helseprofil/KHompare", "blue")
 )
 ```
@@ -38,20 +38,22 @@ To install the package run
 
 ```r
 if(!requirenamespace("remotes")) install.packages("remotes")
-remotes::install_github("helseprofil/orgdata")
+remotes::install_github("helseprofil/KHompare")
 ```
 
 # Usage 
 
-To check a cube file for *ALKOHOL*
+To check a cube file for *ALKOHOL* with `check_cube()` function. If there are
+more than one file that starts with *ALKOHOL*, a more specific name should be
+add.
 
 ```r
 library("KHompare")
 dt <- check_cube("ALKOHOL")
 ```
 
-Comparison will be made on the measurements created by `LagKUBE()` function in
-**KHfunction** such as:
+Comparison will be made on the measurement variables created by `LagKUBE()`
+function in **KHfunction** such as:
 
 - MEIS
 - RATE
@@ -59,12 +61,12 @@ Comparison will be made on the measurements created by `LagKUBE()` function in
 - SMR
 - etc ..
 
-New columns of these measurement variables will be created when running the
-function `check_cube()` and they are:
+New columns comparing the change of these measurement variables will be created
+when running the function `check_cube()` and they are:
 
 - *xxx*_NUM
 - *xxx*_PCT
 
 The *xxx* is the name of the measurement variables that are checked for the
-difference in change numerically and percent. They are denoted by *NUM* and
-*PCT* respectively.
+difference in change numerically and percent. They are denoted by **_NUM** and
+**_PCT** respectively.

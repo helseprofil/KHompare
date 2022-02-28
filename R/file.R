@@ -23,17 +23,16 @@ check_cube <- function(file = NULL, ...){
     stop("Found more than one files. Be specific!")
   }
 
-  message("File: `", kubeFile, "`")
+  message("Processing: `", kubeFile, "`")
   dt <- data.table::fread(kubeFile)
   keyVars <- get_key(dt)
   data.table::setkeyv(dt, keyVars)
   dimVars <- get_grid(dt, vars = keyVars)
-  DT <- diff_change(dt, dim = dimVars)
-  DT <- add_pop_size(DT, ...)
-
+  dt <- add_pop_size(dt, ...)
+  dt <- diff_change(dt, dim = dimVars, ...)
   sortKey <- keyVars[keyVars!="AAR"]
-  data.table::setkeyv(DT, sortKey)
-  DT[]
+  data.table::setkeyv(dt, sortKey)
+  dt[]
 }
 
 #' @export
@@ -54,5 +53,6 @@ add_pop_size <- function(dt, dir = "current"){
 
   dd <- readRDS(popFile)
   dt[dd, on = "GEO", "level" := level]
+  data.table::setcolorder(dt, c("GEO", "level"))
   dt[]
 }

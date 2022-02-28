@@ -4,12 +4,14 @@
 \alias{diff_change}
 \title{Get the Difference}
 \usage{
-diff_change(dt, dim)
+diff_change(dt, dim, ...)
 }
 \arguments{
 \item{dt}{Dataset}
 
 \item{dim}{Dimension dataset produced by \code{get_grid()}}
+
+\item{...}{Additional arguments}
 }
 \description{
 Get the difference for change in the cube measure variables ie.

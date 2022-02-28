@@ -24,7 +24,7 @@ usethis::use_package("covr", type = "Suggest")
 usethis::use_package("data.table", min_version = TRUE)
 usethis::use_package("fs", min_version = TRUE)
 usethis::use_package("yaml", min_version = TRUE)
-usethis::use_package("withr")
+usethis::use_package("withr", min_version = TRUE)
 usethis::use_package("stats")
 usethis::use_package("listenv", min_version = TRUE)
 

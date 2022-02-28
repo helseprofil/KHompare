@@ -30,4 +30,41 @@ cat(
 
 # KHompare
 
-Compare KHelse data.
+Compare KHelse data to check for any abnormal changes.
+
+# Installation
+
+To install the package run
+
+```r
+if(!requirenamespace("remotes")) install.packages("remotes")
+remotes::install_github("helseprofil/orgdata")
+```
+
+# Usage 
+
+To check a cube file for *ALKOHOL*
+
+```r
+library("KHompare")
+dt <- check_cube("ALKOHOL")
+```
+
+Comparison will be made on the measurements created by `LagKUBE()` function in
+**KHfunction** such as:
+
+- MEIS
+- RATE
+- TELLER
+- SMR
+- etc ..
+
+New columns of these measurement variables will be created when running the
+function `check_cube()` and they are:
+
+- *xxx*_NUM
+- *xxx*_PCT
+
+The *xxx* is the name of the measurement variables that are checked for the
+difference in change numerically and percent. They are denoted by *NUM* and
+*PCT* respectively.

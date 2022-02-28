@@ -1,5 +1,17 @@
-
+#' @title Find Outlier
+#' @description Find outlier values which indicate change in the measured
+#'   variables is abnormal. This is based on the value in `xxx_NUM` and `_PCT`
+#'   ie. numeric and percent change. New variables with `xxx_NUM_OUT` and
+#'   `xxx_PCT_OUT` with value either:
+#'     - NA not an outlier
+#'     - 1 lower value outlier
+#'     - 2 upper value outlier
+#' @param dt Dataset
+#' @param var Selected measured variables eg. MEIS, RATE etc
+#' @param ... Additional agrument ie. bount = 2 (bound for outlier)
+#' @export
 find_outlier <- function(dt, var, ...){
+  level <- NULL
   dt <- data.table::copy(dt)
   splittVal <- c("L","F","K","k","B")
   DT <- listenv::listenv()
@@ -13,6 +25,7 @@ find_outlier <- function(dt, var, ...){
   invisible(DD)
 }
 
+## HELPER ----------------
 do_outlier <- function(dt, var, ...){
   outVar <- paste0(var, c("_PCT", "_NUM"))
   for (i in outVar){
@@ -25,7 +38,7 @@ do_outlier <- function(dt, var, ...){
 
 mark_outlier <- function(dt, var, bound = 1.5){
   # bound - for outliner to equivalent to 3SD
-  iqr <- IQR(dt[[var]], na.rm = TRUE)
+  iqr <- stats::IQR(dt[[var]], na.rm = TRUE)
   tab <- summary(dt[[var]])
   minVal <- tab[["1st Qu."]] - bound*iqr
   maxVal <- tab[["3rd Qu."]] + bound*iqr

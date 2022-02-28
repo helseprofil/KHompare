@@ -1,3 +1,4 @@
+
 [![R build
 status](https://github.com/helseprofil/KHompare/workflows/R-CMD-check/badge.svg)](https://github.com/helseprofil/KHompare/actions)
 [![](https://codecov.io/gh/helseprofil/KHompare/branch/main/graph/badge.svg)](https://codecov.io/gh/helseprofil/KHompare)
@@ -42,7 +43,11 @@ created when running the function `check_cube()` and they are:
 
 -   *xxx*\_NUM
 -   *xxx*\_PCT
+-   *xxx*\_NUM_OUT
+-   *xxx*\_PCT_OUT
 
 The *xxx* is the name of the measurement variables that are checked for
 the difference in change numerically and percent. They are denoted by
-**\_NUM** and **\_PCT** respectively.
+**\_NUM** and **\_PCT** respectively. The column **\_OUT** indicate the
+measurement variables that are of extreme values ie. outlier. The value
+for outlier is either **1** for *lower* or **2** upper outlier.

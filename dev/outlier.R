@@ -93,14 +93,15 @@ outlier <- function(x, outlier = c("min", "max")){
   val <- summary(x)
 
   if (outlier == "min"){
-    val[["1st Qu."]]*1.5
+    val[["1st Qu."]] - 1.5*iqr
   } else {
-    val[["3rd Qu."]]*1.5
+    val[["3rd Qu."]] + 1.5*iqr
   }
 }
 
-minMEIS <- outlier(DT$MEIS, "min")
-maxMEIS <- outlier(DT$MEIS, "max")
+DT <- copy(dt)
+minMEIS <- outlier(DT$MEIS_PCT, "min")
+maxMEIS <- outlier(DT$MEIS_PCT, "max")
 minMEIS
 maxMEIS
 

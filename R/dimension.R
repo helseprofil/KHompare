@@ -37,8 +37,9 @@ get_key <- function(dt){
 #'   `KHfunctions`.
 #' @param dt Dataset
 #' @param dim Dimension dataset produced by `get_grid()`
+#' @inheritParams check_cube
 #' @export
-diff_change <- function(dt, dim){
+diff_change <- function(dt, dim, ...){
   # dim - dimension dataset from get_grid()
   cubeCols <- intersect(getOption("kh.kube.vars"), names(dt))
   dtCols <- names(data.table::copy(dt))
@@ -52,7 +53,7 @@ diff_change <- function(dt, dim){
   DTenv <- listenv::listenv()
   sumVars <- length(cubeCols)
   for (i in seq_len(sumVars)){
-    DTenv[[i]] <- do_compare(dt, dim = dim, var = cubeCols[i])
+    DTenv[[i]] <- do_compare(dt, dim = dim, var = cubeCols[i], ...)
   }
 
   DTenv[[sumVars + 1]] <- dt
@@ -64,7 +65,7 @@ diff_change <- function(dt, dim){
 }
 
 ## HELPER ------------------
-do_compare <- function(dt, dim, var){
+do_compare <- function(dt, dim, var, ...){
   # dim - dimension dataset from get_grid()
   # var - selected dim variable
   GEO <- khompareNUM <- khomparePCT <- khompareVAR <- NULL
@@ -86,12 +87,14 @@ do_compare <- function(dt, dim, var){
     oldName <- paste0("khompare", c("NUM", "PCT"))
     varName <- paste0(var, c("_NUM", "_PCT"))
     data.table::setnames(dd, oldName, varName)
-    delCols <- setdiff(names(dd), c(idvar, varName))
+    ## level is needed to cehck for outlier by level
+    delCols <- setdiff(names(dd), c(idvar, varName, "level"))
     dd[, (delCols) := NULL]
     data.table::setkeyv(dd, idvar)
     dtEnv[[i]] <- dd
   }
 
   DT <- data.table::rbindlist(as.list(dtEnv))
-  DT
+  DT <- find_outlier(DT, var, ...)
+  DT[, "level" := NULL]
 }

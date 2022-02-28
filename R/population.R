@@ -1,9 +1,11 @@
 #' @title Big and Small Municipalities
-#' @description Create a dataset seperating big and small municipalities. The
-#'   cutoff is 10,000 population. Capital letter `K` denotes big municipalities while small letter
-#'   `k` for small municipalities.
+#' @description Create a dataset separating big and small municipalities. The
+#'   cutoff is 10,000 population. Capital letter `K` denotes big municipalities
+#'   while small letter `k` for small municipalities. The created file will be
+#'   called `BEF-Kommune-xxxx` where `xxxx` represent the selected year.
 #' @param name Population filename with standard name starts with `BEFOLK_GK`
-#' @param year Year for selection of population. Default is using global options `kh.year`
+#' @param year Year for selection of population. Default is using global options
+#'   `kh.year`
 #' @param overwrite Overwrite existing `BEF-Kommune-xxxx.rds` file
 #' @export
 read_befolk <- function(name = "BEFOLK_GK", year = getOption("kh.year"), overwrite = FALSE){

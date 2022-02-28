@@ -4,20 +4,12 @@
 \alias{count_pop}
 \title{Count Municipalities Population}
 \usage{
-count_pop(
-  name = "BEFOLK_GK",
-  dir = "current",
-  year = getOption("kh.year"),
-  overwrite = FALSE
-)
+count_pop(name = "BEFOLK_GK", dir = "current", overwrite = FALSE)
 }
 \arguments{
 \item{name}{Population filename with standard name starts with \code{BEFOLK_GK}}
 
 \item{dir}{Select directory between \code{current} or \code{previous} year}
-
-\item{year}{Year for selection of population. Default is using global options
-\code{kh.year}}
 
 \item{overwrite}{Overwrite existing \code{BEF-Kommune-xxxx.rds} file}
 }

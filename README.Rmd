@@ -68,5 +68,5 @@ when running the function `check_cube()` and they are:
 - *xxx*_PCT
 
 The *xxx* is the name of the measurement variables that are checked for the
-difference in change numerically and percent. They are denoted by **_NUM** and
-**_PCT** respectively.
+difference in change numerically and percent. They are denoted by **\_NUM** and
+**\_PCT** respectively.

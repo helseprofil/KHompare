@@ -1,3 +1,11 @@
+    #> ✖ The 'origin' remote is configured, but we can't determine its default branch.
+    #>   Possible reasons:
+    #>   - The remote repo no longer exists, suggesting the local remote should
+    #>     be deleted.
+    #>   - We are offline or that specific Git server is down.
+    #>   - You don't have the necessary permission or something is wrong with
+    #>     your credentials.
+
 [![R build
 status](https://github.com/helseprofil/KHompare/workflows/R-CMD-check/badge.svg)](https://github.com/helseprofil/KHompare/actions)
 [![](https://codecov.io/gh/helseprofil/KHompare/branch/main/graph/badge.svg)](https://codecov.io/gh/helseprofil/KHompare)
@@ -45,4 +53,4 @@ created when running the function `check_cube()` and they are:
 
 The *xxx* is the name of the measurement variables that are checked for
 the difference in change numerically and percent. They are denoted by
-\*\*\_NUM\*\* and \*\*\_PCT\*\* respectively.
+**\_NUM** and **\_PCT** respectively.

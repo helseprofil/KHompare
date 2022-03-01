@@ -76,7 +76,7 @@ executed:
     as the based for comparison.
 4.  Compare the yearly changes of all existing measurement variables in
     the dataset ie. `kube.var` in the config file. This is indicated
-    with the variables \*\*\_NUM\*\* and \*\*\_PCT\*\*.
+    with the variables **\_NUM** and **\_PCT**.
 5.  Identify if there are extreme changes ie. outliers, indicated by
     value 1 and 2 representing lower and upper outliers. This can be
-    found in columns that end with \*\*\_OUT\*\*.
+    found in columns that end with **\_OUT**.

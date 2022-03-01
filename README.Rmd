@@ -101,5 +101,4 @@ When running `check_cube("ALKOHOL")` function, these processes will be executed:
    **\_NUM** and **\_PCT**.
 5. Identify if there are extreme changes ie. outliers, indicated by value 1 and
    2 representing lower and upper outliers. This can be found in columns that
-   end with **\_OUT**. Outliers are those values lie below or above bound value
-   of &#xb1;1.5(IQR) which is equivalent to &#xb1;3 SD.
+   end with **\_OUT**. 

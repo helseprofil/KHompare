@@ -82,6 +82,4 @@ executed:
     with the variables **\_NUM** and **\_PCT**.
 5.  Identify if there are extreme changes ie. outliers, indicated by
     value 1 and 2 representing lower and upper outliers. This can be
-    found in columns that end with **\_OUT**. Outliers are those values
-    lie below or above bound value of ±1.5(IQR) which is equivalent to
-    ±3 SD.
+    found in columns that end with **\_OUT**.

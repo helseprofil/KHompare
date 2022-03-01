@@ -65,7 +65,9 @@ executed:
 1.  Find the most recent filename that contains the word *ALKOHOL* based
     on the date attached to the filename eg. `ALKOHOL-2022-03-01.csv`,
     in the current [root
-    folder](https://github.com/helseprofil/config/blob/main/config-khompare.yml#L12).
+    folder](https://github.com/helseprofil/config/blob/main/config-khompare.yml#L12)
+    of the selected
+    [year](https://github.com/helseprofil/config/blob/main/config-khompare.yml#L3).
 2.  Find the most recent population file ie. `BEF-Kommune-xxxx.rds`
     (*xxxx* is the year) in the current root folder, if it doesn’t exist
     create this file from the most recent population file ie.

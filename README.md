@@ -14,7 +14,7 @@ Compare KHelse data to check for any abnormal changes.
 To install the package run
 
 ``` r
-if(!requirenamespace("remotes")) install.packages("remotes")
+if(!requireNamespace("remotes")) install.packages("remotes")
 remotes::install_github("helseprofil/KHompare")
 ```
 
@@ -54,4 +54,5 @@ for outliers are either **1** for *lower* or **2** for *upper* outliers.
 
 # Options
 
-Global options can be found here [helseprofil/config](https://github.com/helseprofil/config/blob/main/config-khompare.yml)
+Global options can be found here
+[helseprofil/config](https://github.com/helseprofil/config/blob/main/config-khompare.yml)

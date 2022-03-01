@@ -62,9 +62,9 @@ Global options can be found here
 When running `check_cube("ALKOHOL")` function, these processes will be
 executed:
 
-1.  Find the most recent filename that contains the word *ALKOHOL* based
-    on the date attached to the filename eg. `ALKOHOL-2022-03-01.csv`,
-    in the current [root
+1.  [ ] Find the most recent filename that contains the word *ALKOHOL*
+    based on the date attached to the filename eg.
+    `ALKOHOL-2022-03-01.csv`, in the current [root
     folder](https://github.com/helseprofil/config/blob/main/config-khompare.yml#L12)
     of the selected
     [year](https://github.com/helseprofil/config/blob/main/config-khompare.yml#L3).
@@ -75,11 +75,13 @@ executed:
     file will be used to identify big and small municipalities with
     threshold of 10,000 population.
 3.  Identify all columns that create different dimensions in the dataset
-    as the based for comparison such as *SOES*, *TRINN*, *SVOMMEFERD*
+    as the base for comparison such as *SOES*, *TRINN*, *SVOMMEFERD*
     etc.
 4.  Compare the yearly changes of all existing measurement variables in
     the dataset ie. `kube.var` in the config file. This is indicated
     with the variables **\_NUM** and **\_PCT**.
 5.  Identify if there are extreme changes ie. outliers, indicated by
     value 1 and 2 representing lower and upper outliers. This can be
-    found in columns that end with **\_OUT**.
+    found in columns that end with **\_OUT**. Outliers are those values
+    lie below or above bound value of ±1.5(IQR) which is equivalent to
+    ±3 SD.

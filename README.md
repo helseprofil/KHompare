@@ -75,7 +75,8 @@ executed:
     file will be used to identify big and small municipalities with
     threshold of 10,000 population.
 3.  Identify all columns that create different dimensions in the dataset
-    as the based for comparison.
+    as the based for comparison such as *SOES*, *TRINN*, *SVOMMEFERD*
+    etc.
 4.  Compare the yearly changes of all existing measurement variables in
     the dataset ie. `kube.var` in the config file. This is indicated
     with the variables **\_NUM** and **\_PCT**.

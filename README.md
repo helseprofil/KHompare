@@ -1,7 +1,7 @@
 
 [![R build
 status](https://github.com/helseprofil/KHompare/workflows/R-CMD-check/badge.svg)](https://github.com/helseprofil/KHompare/actions)
-[![](https://codecov.io/gh/helseprofil/KHompare/branch/main/graph/badge.svg)](https://codecov.io/gh/helseprofil/KHompare)
+[![](https://codecov.io/gh/helseprofil/KHompare/branch/main/graph/badge.svg)](https://app.codecov.io/gh/helseprofil/KHompare)
 [![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![](https://img.shields.io/badge/devel%20version-0.0.0.9000-blue.svg)](https://github.com/helseprofil/KHompare)
 
@@ -43,8 +43,8 @@ created when running the function `check_cube()` and they are:
 
 -   *xxx*\_NUM
 -   *xxx*\_PCT
--   *xxx*\_NUM_OUT
--   *xxx*\_PCT_OUT
+-   *xxx*\_NUM\_OUT
+-   *xxx*\_PCT\_OUT
 
 The *xxx* is the name of the measurement variables that are checked for
 the difference in change numerically and percent. They are denoted by
@@ -56,3 +56,27 @@ for outliers are either **1** for *lower* or **2** for *upper* outliers.
 
 Global options can be found here
 [helseprofil/config](https://github.com/helseprofil/config/blob/main/config-khompare.yml)
+
+# What is happening?
+
+When running `check_cube("ALKOHOL")` function, these processes will be
+executed:
+
+1.  Find the most recent filename that contains the word *ALKOHOL* based
+    on the date attached to the filename eg. `ALKOHOL-2022-03-01.csv`,
+    in the current [root
+    folder](https://github.com/helseprofil/config/blob/main/config-khompare.yml#L12).
+2.  Find the most recent population file ie. `BEF-Kommune-xxxx.rds`
+    (*xxxx* is the year) in the current root folder, if it doesn’t exist
+    create this file from the most recent population file ie.
+    `BEFOLK_GK_xxxx-xx-xx.csv`, found in the current root folder. This
+    file will be used to identify big and small municipalities with
+    threshold of 10,000 population.
+3.  Identify all columns that create different dimensions in the dataset
+    as the based for comparison.
+4.  Compare the yearly changes of all existing measurement variables in
+    the dataset ie. `kube.var` in the config file. This is indicated
+    with the variables \*\*\_NUM\*\* and \*\*\_PCT\*\*.
+5.  Identify if there are extreme changes ie. outliers, indicated by
+    value 1 and 2 representing lower and upper outliers. This can be
+    found in columns that end with \*\*\_OUT\*\*.

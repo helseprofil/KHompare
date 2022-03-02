@@ -45,11 +45,14 @@ remotes::install_github("helseprofil/KHompare")
 
 To check a cube file for *ALKOHOL* with `check_cube()` function. If there are
 more than one files that contain the word *ALKOHOL*, a more specific name should
-be given.
+be given. You can also specify which year folder to use ie. `KHxxxxNESTAR`,
+where `xxxx` is the year.
 
 ```r
 library("KHompare")
-dt <- check_cube("ALKOHOL")
+dt <- check_cube("ALKOHOL") #this will use the current year as in options("kh.year")
+# OR
+dt <- check_cube("ALKOHOL", year = 2021)
 ```
 
 Comparison will be made on the measurement variables created by `LagKUBE()`
@@ -89,11 +92,12 @@ When running `check_cube("ALKOHOL")` function, these processes will be executed:
    folder](https://github.com/helseprofil/config/blob/main/config-khompare.yml#L12)
    of the selected
    [year](https://github.com/helseprofil/config/blob/main/config-khompare.yml#L3).
-2. Find the most recent population file ie. `BEF-Kommune-xxxx.rds` (*xxxx* is
-   the year) in the current root folder, if it doesn't exist create this file
-   from the most recent population file ie. `BEFOLK_GK_xxxx-xx-xx.csv`, found in
-   the current root folder. This file will be used to identify big and small
-   municipalities with threshold of 10,000 population.
+2. Find the most recent population reference file ie.
+   `BigSmall-Kommuner-REF-xxxx.rds` (*xxxx* is the year) in the current root
+   folder, if it doesn't exist create this file from the most recent population
+   file ie. `BEFOLK_GK_xxxx-xx-xx.csv`, found in the current root folder. This
+   file will be used to identify big and small municipalities with threshold of
+   10,000 population.
 3. Identify all columns that create different dimensions in the dataset as the
    base for comparison such as *SOES*, *TRINN*, *SVOMMEFERD* etc.
 4. Compare the yearly changes of all existing measurement variables in the

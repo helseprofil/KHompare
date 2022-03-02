@@ -54,3 +54,6 @@ pop <- count_pop(overwrite = T)
 dt <- check_cube("LESEFERD_2022")
 dt <- check_cube("ALKOHOL")
 dt <- check_cube("ALKOHOL", year = 2021)
+
+dt <- sjekk_kube("TEST77")
+dt <- sjekk_kube("LESE")

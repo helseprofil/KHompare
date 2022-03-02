@@ -14,10 +14,14 @@ check_cube <- function(file = NULL, year = NULL, ...){
   allFiles <- fs::dir_ls(fileDir)
   kubeFile <- grep(file, allFiles, value = TRUE)
 
+  if (length(kubeFile) < 1) {
+    message("Folder: ", fileDir)
+    stop("File not found!")
+  }
+
   if (length(kubeFile) > 1) {
-    kbFiles <- unname(gsub(fileDir, "", kubeFile))
-    for (i in kbFiles){
-      fname <- sub("^/", "", i)
+    for (i in kubeFile){
+      fname <- cube_file(fileDir, i)
       message("Filename: ", fname)
     }
     stop("Found more than one files. Be specific!")
@@ -55,4 +59,9 @@ add_pop_size <- function(dt, year = NULL){
   dt[dd, on = "GEO", "level" := level]
   data.table::setcolorder(dt, c("GEO", "level"))
   dt[]
+}
+
+cube_file <- function(dir, file){
+  x <- unname(sub(dir, "", file))
+  sub("^/", "", x)
 }

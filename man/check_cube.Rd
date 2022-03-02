@@ -5,12 +5,16 @@
 \alias{sjekk_kube}
 \title{Check Raw File}
 \usage{
-check_cube(file = NULL, ...)
+check_cube(file = NULL, year = NULL, ...)
 
-sjekk_kube(file = NULL, ...)
+sjekk_kube(file = NULL, year = NULL, ...)
 }
 \arguments{
 \item{file}{Raw \code{csv} file. Accept \code{KUBE} name if it's unique}
+
+\item{year}{Which year of the \code{KHxxxxNESSTAR} folder to select where \code{xxxx}
+is the selected year. Default is NULL to select the current year as in
+options \code{kh.year}.}
 
 \item{...}{Additional arguments}
 }
@@ -19,6 +23,6 @@ Check raw kube files
 }
 \examples{
 \dontrun{
-dt <- check_cube("REGNFERD", dir = "current")
+dt <- check_cube("REGNFERD", year = 2022)
 }
 }

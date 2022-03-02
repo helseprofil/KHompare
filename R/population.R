@@ -2,16 +2,16 @@
 #' @description Create a dataset separating big and small municipalities based
 #'   on their number of population. The cutoff is 10,000 population. Capital
 #'   letter `K` denotes big municipalities while small letter `k` for small
-#'   municipalities. The created file will be called `BEF-Kommune-xxxx` where
-#'   `xxxx` represent the selected year.
+#'   municipalities. The created file will be called
+#'   `BigSmall-Kommuner-REF-xxxx.rds` where `xxxx` represent the selected year.
 #' @param name Population filename with standard name starts with `BEFOLK_GK`
 #' @inheritParams get_dir
-#' @param overwrite Overwrite existing `BEF-Kommune-xxxx.rds` file
+#' @param overwrite Overwrite existing `BigSmall-Kommuner-REF-xxxx.rds` file
 #' @export
-count_pop <- function(name = "BEFOLK_GK", dir = "current", overwrite = FALSE){
+count_pop <- function(name = "BEFOLK_GK", year = NULL, overwrite = FALSE){
   GEO <- NULL
-  fileDir <- get_dir(dir = dir)
-  befolkDT <- pop_file_ref(dir = dir)
+  fileDir <- get_dir(year = year)
+  befolkDT <- pop_file_ref(year = year)
   fileExist <- fs::file_exists(path = befolkDT)
 
   if (isFALSE(overwrite) && isTRUE(fileExist)){
@@ -78,10 +78,9 @@ pop_file <- function(dir = NULL, files = NULL, name = NULL){
 }
 
 # File for reference to big and small municipalities based on number of population
-pop_file_ref <- function(name = "BEF-Kommune-", dir = "current", year = getOption("kh.year")){
-  fileDir <- get_dir(dir)
-  if (dir == "previous"){
-    year <- year - 1
-  }
-  file.path(fileDir, paste0(name, year, ".rds") )
+pop_file_ref <- function(name = "BigSmall-Kommuner-REF-", year = NULL){
+  if (is.null(year)) year = as.integer(getOption("kh.year"))
+  fileDir <- get_dir(year)
+  fileName <- paste0(name, year, ".rds")
+  file.path(fileDir, fileName)
 }

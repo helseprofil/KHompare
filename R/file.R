@@ -1,16 +1,16 @@
 #' @title Check Raw File
 #' @description Check raw kube files
 #' @param file Raw `csv` file. Accept `KUBE` name if it's unique
+#' @inheritParams get_dir
 #' @param ... Additional arguments
 #' @examples
 #' \dontrun{
-#' dt <- check_cube("REGNFERD", dir = "current")
+#' dt <- check_cube("REGNFERD", year = 2022)
 #' }
 #' @export
+check_cube <- function(file = NULL, year = NULL, ...){
 
-check_cube <- function(file = NULL, ...){
-
-  fileDir <- get_dir(...)
+  fileDir <- get_dir(year = year, ...)
   allFiles <- fs::dir_ls(fileDir)
   kubeFile <- grep(file, allFiles, value = TRUE)
 
@@ -28,7 +28,7 @@ check_cube <- function(file = NULL, ...){
   keyVars <- get_key(dt)
   data.table::setkeyv(dt, keyVars)
   dimVars <- get_grid(dt, vars = keyVars)
-  dt <- add_pop_size(dt, ...)
+  dt <- add_pop_size(dt, year = year, ...)
   dt <- diff_change(dt, dim = dimVars, ...)
   sortKey <- keyVars[keyVars!="AAR"]
   data.table::setkeyv(dt, sortKey)
@@ -41,14 +41,14 @@ sjekk_kube <- check_cube
 
 
 ## HELPER -----------------
-add_pop_size <- function(dt, dir = "current"){
+add_pop_size <- function(dt, year = NULL){
   level <- NULL
-  popFile <- pop_file_ref(dir = dir)
+  popFile <- pop_file_ref(year = year)
   fileExist <- fs::file_exists(path = popFile)
 
   if (isFALSE(fileExist)) {
-    message("Creating population referece file ...")
-    count_pop(dir = dir)
+    message("Creating population reference file ...")
+    count_pop(year = year)
   }
 
   dd <- readRDS(popFile)

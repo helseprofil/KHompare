@@ -4,19 +4,21 @@
 \alias{count_pop}
 \title{Count Municipalities Population}
 \usage{
-count_pop(name = "BEFOLK_GK", dir = "current", overwrite = FALSE)
+count_pop(name = "BEFOLK_GK", year = NULL, overwrite = FALSE)
 }
 \arguments{
 \item{name}{Population filename with standard name starts with \code{BEFOLK_GK}}
 
-\item{dir}{Select directory between \code{current} or \code{previous} year}
+\item{year}{Which year of the \code{KHxxxxNESSTAR} folder to select where \code{xxxx}
+is the selected year. Default is NULL to select the current year as in
+options \code{kh.year}.}
 
-\item{overwrite}{Overwrite existing \code{BEF-Kommune-xxxx.rds} file}
+\item{overwrite}{Overwrite existing \code{BigSmall-Kommuner-REF-xxxx.rds} file}
 }
 \description{
 Create a dataset separating big and small municipalities based
 on their number of population. The cutoff is 10,000 population. Capital
 letter \code{K} denotes big municipalities while small letter \code{k} for small
-municipalities. The created file will be called \code{BEF-Kommune-xxxx} where
-\code{xxxx} represent the selected year.
+municipalities. The created file will be called
+\code{BigSmall-Kommuner-REF-xxxx.rds} where \code{xxxx} represent the selected year.
 }

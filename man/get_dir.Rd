@@ -4,12 +4,14 @@
 \alias{get_dir}
 \title{Get Directory}
 \usage{
-get_dir(year = NULL, os = OS)
+get_dir(year = NULL, type = c("KH", "NH"), os = OS)
 }
 \arguments{
 \item{year}{Which year of the \code{KHxxxxNESSTAR} folder to select where \code{xxxx}
 is the selected year. Default is NULL to select the current year as in
 options \code{kh.year}.}
+
+\item{type}{Type of folder of either \code{KH} or \code{NH}. Default is \code{KH}.}
 
 \item{os}{Operating system}
 }

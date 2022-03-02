@@ -1,17 +1,15 @@
 #' @title Get Directory
 #' @description Get the directory where the files will be read from.
-#' @param dir Select directory between `current` or `previous` year
+#' @param year Which year of the `KHxxxxNESSTAR` folder to select where `xxxx`
+#'   is the selected year. Default is NULL to select the current year as in
+#'   options `kh.year`.
 #' @param os Operating system
 #' @export
-get_dir <- function(dir = c("current", "previous"), os = OS){
-  status <- match.arg(dir)
+get_dir <- function(year = NULL, os = OS){
 
-  if (length(dir) == 2) dir = "current"
+  if (is.null(year)) year = as.integer(getOption("kh.year"))
 
-  yr <- switch(dir,
-               current = as.integer(getOption("kh.year")),
-               previous = as.integer(getOption("kh.year")) - 1)
-  fileDir <- paste0("KH", yr, "NESSTAR")
+  fileDir <- paste0("KH", year, "NESSTAR")
   drive <- os_drive(os = os)
   file.path(drive, getOption("kh.kube.root"), fileDir)
 }

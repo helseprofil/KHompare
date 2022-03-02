@@ -4,10 +4,12 @@
 \alias{get_dir}
 \title{Get Directory}
 \usage{
-get_dir(dir = c("current", "previous"), os = OS)
+get_dir(year = NULL, os = OS)
 }
 \arguments{
-\item{dir}{Select directory between \code{current} or \code{previous} year}
+\item{year}{Which year of the \code{KHxxxxNESSTAR} folder to select where \code{xxxx}
+is the selected year. Default is NULL to select the current year as in
+options \code{kh.year}.}
 
 \item{os}{Operating system}
 }

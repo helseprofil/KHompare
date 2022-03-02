@@ -52,7 +52,7 @@ where `xxxx` is the year.
 library("KHompare")
 dt <- check_cube("ALKOHOL") #this will use the current year as in options("kh.year")
 # OR
-dt <- check_cube("ALKOHOL", year = 2021)
+dt <- check_cube("ALKOHOL", year = 2021, type = "NH")
 ```
 
 Comparison will be made on the measurement variables created by `LagKUBE()`

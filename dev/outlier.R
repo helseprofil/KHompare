@@ -109,3 +109,22 @@ str(DT)
 
 
 DT[GEO == 0 & SOES == 0]
+
+
+### TEST data
+DD <- fread(file.path(get_dir(), "TEST_KHompare_2022-02-01.csv"))
+dc <- check_cube("TEST_KHompare")
+dc
+
+library(ggplot2)
+library(ggrepel)
+g <- ggplot(dc, aes(x = level, y = MEIS_PCT)) + geom_boxplot()
+g + geom_text(aes(label = MEIS), na.rm = TRUE, show.legend = F) + coord_flip()
+
+out <- ggplot_build(g)[["data"]][[1]][["outliers"]]
+out
+
+
+
+sg <- ggplot(dc, aes(x = level, y = SMR_PCT)) + geom_boxplot()
+sg + geom_text(aes(label = SMR), na.rm = TRUE, show.legend = F) + coord_flip()

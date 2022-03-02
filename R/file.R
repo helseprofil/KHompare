@@ -8,9 +8,9 @@
 #' dt <- check_cube("REGNFERD", year = 2022)
 #' }
 #' @export
-check_cube <- function(file = NULL, year = NULL, ...){
+check_cube <- function(file = NULL, year = NULL, type = c("KH", "NH"), ...){
 
-  fileDir <- get_dir(year = year, ...)
+  fileDir <- get_dir(year = year, type = type, ...)
   allFiles <- fs::dir_ls(fileDir)
   kubeFile <- grep(file, allFiles, value = TRUE)
 

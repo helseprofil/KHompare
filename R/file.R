@@ -28,9 +28,12 @@ check_cube <- function(name = NULL, year = NULL, type = c("KH", "NH"), ...){
   data.table::setkeyv(dt, keyVars)
   dimVars <- get_grid(dt, vars = keyVars)
   dt <- add_pop_size(dt, year = year, type = type)
+
+  message("Finding outliers ... ")
   dt <- diff_change(dt, dim = dimVars, ...)
   sortKey <- keyVars[keyVars!="AAR"]
   data.table::setkeyv(dt, sortKey)
+  message("Done!")
   dt[]
 }
 

@@ -5,12 +5,12 @@
 \alias{sjekk_kube}
 \title{Check Raw File}
 \usage{
-check_cube(file = NULL, year = NULL, type = c("KH", "NH"), ...)
+check_cube(name = NULL, year = NULL, type = c("KH", "NH"), ...)
 
-sjekk_kube(file = NULL, year = NULL, type = c("KH", "NH"), ...)
+sjekk_kube(name = NULL, year = NULL, type = c("KH", "NH"), ...)
 }
 \arguments{
-\item{file}{Raw \code{csv} file. Accept \code{KUBE} name if it's unique}
+\item{name}{Filename of KUBE raw \code{csv} file.}
 
 \item{year}{Which year of the \code{KHxxxxNESSTAR} folder to select where \code{xxxx}
 is the selected year. Default is NULL to select the current year as in

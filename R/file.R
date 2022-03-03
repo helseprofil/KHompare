@@ -22,13 +22,12 @@ check_cube <- function(name = NULL, year = NULL, type = c("KH", "NH"), ...){
   # select the most recent files
   fileKUBE <- find_filename(dir=fileDir, files=kubeFiles)
 
-
   message("Processing: `", fileKUBE, "`")
   dt <- data.table::fread(fileKUBE)
   keyVars <- get_key(dt)
   data.table::setkeyv(dt, keyVars)
   dimVars <- get_grid(dt, vars = keyVars)
-  dt <- add_pop_size(dt, year = year, ...)
+  dt <- add_pop_size(dt, year = year)
   dt <- diff_change(dt, dim = dimVars, ...)
   sortKey <- keyVars[keyVars!="AAR"]
   data.table::setkeyv(dt, sortKey)
@@ -48,7 +47,7 @@ add_pop_size <- function(dt, year = NULL){
 
   if (isFALSE(fileExist)) {
     message("Creating population reference file ...")
-    count_pop(year = year)
+    create_pop_ref(year = year)
   }
 
   dd <- readRDS(popFile)

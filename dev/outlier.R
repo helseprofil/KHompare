@@ -112,6 +112,8 @@ DT[GEO == 0 & SOES == 0]
 
 
 ### TEST data
+## fwrite(DD, file.path(get_dir(), "TEST_KHompare_2022-01-01.csv"))
+get_dir()
 DD <- fread(file.path(get_dir(), "TEST_KHompare_2022-02-01.csv"))
 dc <- check_cube("TEST_KHompare")
 dc

@@ -1,6 +1,6 @@
 #' @title Check Raw File
 #' @description Check raw kube files
-#' @param file Raw `csv` file. Accept `KUBE` name if it's unique
+#' @param name Filename of KUBE raw `csv` file.
 #' @inheritParams get_dir
 #' @param ... Additional arguments
 #' @examples
@@ -8,27 +8,23 @@
 #' dt <- check_cube("REGNFERD", year = 2022)
 #' }
 #' @export
-check_cube <- function(file = NULL, year = NULL, type = c("KH", "NH"), ...){
+check_cube <- function(name = NULL, year = NULL, type = c("KH", "NH"), ...){
 
   fileDir <- get_dir(year = year, type = type, ...)
   allFiles <- fs::dir_ls(fileDir)
-  kubeFile <- grep(file, allFiles, value = TRUE)
+  kubeFiles <- grep(name, allFiles, value = TRUE)
 
-  if (length(kubeFile) < 1) {
+  if (length(kubeFiles) < 1) {
     message("Folder: ", fileDir)
     stop("File not found!")
   }
 
-  if (length(kubeFile) > 1) {
-    for (i in kubeFile){
-      fname <- cube_file(fileDir, i)
-      message("Filename: ", fname)
-    }
-    stop("Found more than one files. Be specific!")
-  }
+  # select the most recent files
+  fileKUBE <- find_filename(dir=fileDir, files=kubeFiles)
 
-  message("Processing: `", kubeFile, "`")
-  dt <- data.table::fread(kubeFile)
+
+  message("Processing: `", fileKUBE, "`")
+  dt <- data.table::fread(fileKUBE)
   keyVars <- get_key(dt)
   data.table::setkeyv(dt, keyVars)
   dimVars <- get_grid(dt, vars = keyVars)
@@ -61,7 +57,30 @@ add_pop_size <- function(dt, year = NULL){
   dt[]
 }
 
-cube_file <- function(dir, file){
-  x <- unname(sub(dir, "", file))
+## Select the most recent files
+find_filename <- function(dir, files){
+
+  # Keep filenames only
+  files <- cube_filename(dir = dir, file = files)
+
+  filenames <- gsub("_(\\d{4})-(\\d{2})-(\\d{2})-(\\d{2})-(\\d{2})", "", files)
+  filenames <- gsub(".csv$", "", filenames)
+  filenames <- unique(filenames)
+
+  if (length(filenames) > 1){
+    for(i in filenames){ message("Filename: ", i)}
+    stop("Found more than one unique filenames. Be specific!")
+  }
+
+  # Ensure only the most recent file is selected when there are multiple files due to different dates
+  yrDate <- gsub(".*(\\d{4})-(\\d{2})-(\\d{2})-(\\d{2})-(\\d{2}).csv$", "\\1\\2\\3\\4\\5", files)
+  yrFile <- sort(as.numeric(yrDate), TRUE)[1] #keep only the most recent file
+  fileExt <- gsub("^(\\d{4})(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "\\1-\\2-\\3-\\4-\\5", yrFile)
+  fileNM <- paste0(filenames, "_", fileExt, ".csv")
+  file.path(dir, fileNM)
+}
+
+cube_filename <- function(dir, file){
+  x <- unname(gsub(dir, "", file))
   sub("^/", "", x)
 }

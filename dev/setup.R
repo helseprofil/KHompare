@@ -55,6 +55,7 @@ pop <- create_pop_ref(overwrite = T, type = "NH")
 dt <- check_cube("LESEFERD")
 dt <- check_cube("ALKOHOL")
 dt <- check_cube("ALKOHOL", year = 2021)
+dt <- check_cube("INNVAND", year = 2022)
 
 dt <- sjekk_kube("TEST77")
 dt <- sjekk_kube("BigSmall")

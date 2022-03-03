@@ -12,7 +12,8 @@ check_cube <- function(name = NULL, year = NULL, type = c("KH", "NH"), ...){
 
   fileDir <- get_dir(year = year, type = type, ...)
   allFiles <- fs::dir_ls(fileDir)
-  kubeFiles <- grep(name, allFiles, value = TRUE)
+  nameFirst <- paste0("/", name) #make sure it's the first word
+  kubeFiles <- grep(nameFirst, allFiles, value = TRUE)
 
   if (length(kubeFiles) < 1) {
     message("Folder: ", fileDir)

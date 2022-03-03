@@ -27,7 +27,7 @@ check_cube <- function(name = NULL, year = NULL, type = c("KH", "NH"), ...){
   keyVars <- get_key(dt)
   data.table::setkeyv(dt, keyVars)
   dimVars <- get_grid(dt, vars = keyVars)
-  dt <- add_pop_size(dt, year = year)
+  dt <- add_pop_size(dt, year = year, type = type)
   dt <- diff_change(dt, dim = dimVars, ...)
   sortKey <- keyVars[keyVars!="AAR"]
   data.table::setkeyv(dt, sortKey)
@@ -40,7 +40,7 @@ sjekk_kube <- check_cube
 
 
 ## HELPER -----------------
-add_pop_size <- function(dt, year = NULL){
+add_pop_size <- function(dt, year = NULL, type = NULL){
   level <- NULL
   popFile <- pop_file_ref(year = year)
   fileExist <- fs::file_exists(path = popFile)

@@ -74,8 +74,8 @@ executed:
 2.  Find the most recent population reference file ie.
     `BigSmall-Kommuner-REF-xxxx.rds` (*xxxx* is the year) in the current
     root folder, if it doesn’t exist create this file from the most
-    recent population file ie. `BEFOLK_GK_xxxx-xx-xx.csv`, found in the
-    current root folder. This file will be used to identify big and
+    recent population file ie. `BEFOLK_GK` or `BEFOLK_GK_NH`, found in
+    the current root folder. This file will be used to identify big and
     small municipalities with threshold of 10,000 population.
 3.  Identify all columns that create different dimensions in the dataset
     as the base for comparison such as *SOES*, *TRINN*, *SVOMMEFERD*
@@ -97,5 +97,5 @@ it doesn’t exist in the root directory. To replace the existing file
 then use:
 
 ``` r
-create_pop_ref(year = 2022, overwrite = TRUE)
+create_pop_ref(year = 2022, type = "KH", overwrite = TRUE)
 ```

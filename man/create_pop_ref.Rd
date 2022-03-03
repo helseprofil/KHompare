@@ -4,7 +4,12 @@
 \alias{create_pop_ref}
 \title{Create Population Reference}
 \usage{
-create_pop_ref(name = "BEFOLK_GK", year = NULL, overwrite = FALSE)
+create_pop_ref(
+  name = NULL,
+  year = NULL,
+  type = c("KH", "NH"),
+  overwrite = FALSE
+)
 }
 \arguments{
 \item{name}{Population filename with standard name starts with \code{BEFOLK_GK}}
@@ -12,6 +17,8 @@ create_pop_ref(name = "BEFOLK_GK", year = NULL, overwrite = FALSE)
 \item{year}{Which year of the \code{KHxxxxNESSTAR} folder to select where \code{xxxx}
 is the selected year. Default is NULL to select the current year as in
 options \code{kh.year}.}
+
+\item{type}{Type of folder of either \code{KH} or \code{NH}. Default is \code{KH}.}
 
 \item{overwrite}{Overwrite existing \code{BigSmall-Kommuner-REF-xxxx.rds} file}
 }

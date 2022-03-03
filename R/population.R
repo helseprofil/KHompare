@@ -7,13 +7,23 @@
 #' @param name Population filename with standard name starts with `BEFOLK_GK`
 #' @inheritParams get_dir
 #' @param overwrite Overwrite existing `BigSmall-Kommuner-REF-xxxx.rds` file
+#' @inheritParams check_cube
 #' @export
-create_pop_ref <- function(name = "BEFOLK_GK", year = NULL, overwrite = FALSE){
+create_pop_ref <- function(name = NULL,
+                           year = NULL,
+                           type = c("KH", "NH"),
+                           overwrite = FALSE){
   GEO <- NULL
 
+  if (is.null(name)){
+    name <- switch(type,
+                   KH = "BEFOLK_GK",
+                   NH = "BEFOLK_GK_NH")
+  }
+
   if (is.null(year)) year = getOption("kh.year")
-  fileDir <- get_dir(year = year)
-  befolkDT <- pop_file_ref(year = year)
+  fileDir <- get_dir(year = year, type = type)
+  befolkDT <- pop_file_ref(year = year, type = type)
   fileExist <- fs::file_exists(path = befolkDT)
 
   if (isFALSE(overwrite) && isTRUE(fileExist)){
@@ -74,9 +84,9 @@ pop_file <- function(dir = NULL, files = NULL){
 }
 
 # File for reference to big and small municipalities based on number of population
-pop_file_ref <- function(name = "BigSmall-Kommuner-REF-", year = NULL){
+pop_file_ref <- function(name = "BigSmall-Kommuner-REF-", year = NULL, type = NULL){
   if (is.null(year)) year = as.integer(getOption("kh.year"))
-  fileDir <- get_dir(year)
+  fileDir <- get_dir(year, type)
   fileName <- paste0(name, year, ".rds")
   file.path(fileDir, fileName)
 }

@@ -88,3 +88,14 @@ executed:
 5.  Identify if there are extreme changes ie. outliers, indicated by
     value 1 and 2 representing lower and upper outliers. This can be
     found in columns that end with **\_OUT**.
+
+# Population file
+
+This refers to the file `BigSmall-Kommuner-REF-xxxx.rds` for selecting
+big and small municipalities. The file will be created automatically if
+it doesn’t exist in the root directory. To replace the existing file
+then use:
+
+``` r
+create_pop_ref(year = 2022, overwrite = TRUE)
+```

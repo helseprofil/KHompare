@@ -49,7 +49,7 @@ saveRDS(b2, file = file.path(system.file(package = "KHompare"), "test-data/geo-l
 
 ## RUN -----------
 devtools::load_all()
-pop <- create_pop_ref(overwrite = T)
+pop <- create_pop_ref(overwrite = T, type = "NH")
 
 
 dt <- check_cube("LESEFERD")

@@ -68,7 +68,8 @@ find_filename <- function(dir, files){
 
   if (length(filenames) > 1){
     for(i in filenames){ message("Filename: ", i)}
-    stop("Found more than one unique filenames after deleting date suffix. Be specific!")
+    msg <- paste0("Found more than one unique filenames after deleting date suffix. Be specific! eg.`", filenames[1], "_2022`")
+    stop(msg)
   }
 
   # Ensure only the most recent file is selected when there are multiple files due to different dates

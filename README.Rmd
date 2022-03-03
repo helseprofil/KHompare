@@ -118,3 +118,11 @@ in the root directory. To replace the existing file then use:
 ```r
 create_pop_ref(year = 2022, type = "KH", overwrite = TRUE)
 ```
+
+Population file is created either from `BEFOLK_GK` or `BEFOLK_GK_NH` most recent
+file. If another `.csv` file should be used other than these two, you have to
+create population reference file prior running `check_cube()` by:
+
+```r
+create_pop_ref(name = "NewBEFOLK_file.csv", overwrite = TRUE)
+```

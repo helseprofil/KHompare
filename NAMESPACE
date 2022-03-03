@@ -2,7 +2,7 @@
 
 export(.env_dim)
 export(check_cube)
-export(count_pop)
+export(create_pop_ref)
 export(diff_change)
 export(find_outlier)
 export(get_dir)

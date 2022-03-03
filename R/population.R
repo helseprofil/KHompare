@@ -1,4 +1,4 @@
-#' @title Count Municipalities Population
+#' @title Create Population Reference
 #' @description Create a dataset separating big and small municipalities based
 #'   on their number of population. The cutoff is 10,000 population. Capital
 #'   letter `K` denotes big municipalities while small letter `k` for small
@@ -8,8 +8,10 @@
 #' @inheritParams get_dir
 #' @param overwrite Overwrite existing `BigSmall-Kommuner-REF-xxxx.rds` file
 #' @export
-count_pop <- function(name = "BEFOLK_GK", year = NULL, overwrite = FALSE){
+create_pop_ref <- function(name = "BEFOLK_GK", year = NULL, overwrite = FALSE){
   GEO <- NULL
+
+  if (is.null(year)) year = getOption("kh.year")
   fileDir <- get_dir(year = year)
   befolkDT <- pop_file_ref(year = year)
   fileExist <- fs::file_exists(path = befolkDT)
@@ -24,7 +26,7 @@ count_pop <- function(name = "BEFOLK_GK", year = NULL, overwrite = FALSE){
 
   bf <- paste0(name, "_\\d{4}") #file must be followed by year ie. 4 digits
   befolkFiles <- grep(bf, allFiles, value = TRUE)
-  dt <- pop_file(dir = fileDir, files = befolkFiles, name = name)
+  dt <- pop_file(dir = fileDir, files = befolkFiles)
   dt[, c("AAR", "KJONN", "ALDER") := NULL]
   dt <- dt[!duplicated(GEO)]
 
@@ -53,16 +55,10 @@ add_geo_level <- function(dt){
 
 # dir - Directory where the population file is
 # files - All files with the same name but different date
-# name - Filename ie. BEFOLK_GK
-pop_file <- function(dir = NULL, files = NULL, name = NULL){
+pop_file <- function(dir = NULL, files = NULL){
   ALDER <- KJONN <- TELLER <- level <- NULL
 
-  # Ensure only the most recent file is selected when there are multiple files
-  yrDate <- gsub(".*(\\d{4})-(\\d{2})-(\\d{2})-(\\d{2})-(\\d{2}).csv$", "\\1\\2\\3\\4\\5", files)
-  yrFile <- sort(as.numeric(yrDate), TRUE)[1] #keep only the most recent file
-  fileExt <- gsub("^(\\d{4})(\\d{2})(\\d{2})(\\d{2})(\\d{2})", "\\1-\\2-\\3-\\4-\\5", yrFile)
-  fileBEF <- paste0(name, "_", fileExt, ".csv")
-  pathBEF <- file.path(dir, fileBEF)
+  pathBEF <- find_filename(dir = dir, files = files)
   dt <- data.table::fread(pathBEF)
 
   # Select only total to find bigger and small kommuner

@@ -27,7 +27,7 @@ find_outlier <- function(dt, var, ...){
 
 ## HELPER ----------------
 do_outlier <- function(dt, var, ...){
-  outVar <- paste0(var, c("_PCT", "_NUM"))
+  outVar <- paste0(var, c("_NUM", "_PCT"))
   for (i in outVar){
     dt <- mark_outlier(dt, var = i, ...)
   }

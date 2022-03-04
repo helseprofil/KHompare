@@ -30,7 +30,7 @@ cat(
 
 # KHompare
 
-Compare KHelse data to check for any abnormal changes.
+Compare KHelse cube dataset to check for any abnormal changes.
 
 # Installation
 

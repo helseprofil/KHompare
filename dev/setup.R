@@ -66,4 +66,4 @@ dt <- sjekk_kube("BigSmall")
 dt <- sjekk_kube("INNVAND", type = "NH")
 
 view_outliers(dt, "MEIS", nrow = 2:5)
-view_outliers(dt, "RATE")
+view_outliers(dt, "RATE", 10:20, levels = c("F","K"))

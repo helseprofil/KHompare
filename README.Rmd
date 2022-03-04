@@ -59,6 +59,7 @@ To view the outliers eg. for `RATE` measurement value:
 
 ```r
 view_outliers(dt, "RATE")
+view_outliers(dt, var = "RATE", levels = c("F", "K")) #Select only Fylke and big Kommune
 ```
 
 Comparison will be made on the measurement variables created by `LagKUBE()`

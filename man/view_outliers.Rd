@@ -5,16 +5,18 @@
 \alias{vis_uteligger}
 \title{View Outliers}
 \usage{
-view_outliers(dt = NULL, var = NULL, nrow = NULL)
+view_outliers(dt = NULL, var = NULL, nrows = NULL, levels = NULL)
 
-vis_uteligger(dt = NULL, var = NULL, nrow = NULL)
+vis_uteligger(dt = NULL, var = NULL, nrows = NULL, levels = NULL)
 }
 \arguments{
 \item{dt}{Dataset object from \code{check_cube()} function}
 
 \item{var}{Measure variables eg. RATE, MEIS etc}
 
-\item{nrow}{Number of rows to show}
+\item{nrows}{Number of rows or select rows to show eg. \code{nrows = 10} or \code{nrows = 5:15}}
+
+\item{levels}{Level of geographical granularity. Accepted values are L, F, K, k and B}
 }
 \description{
 View outliers for selected variables

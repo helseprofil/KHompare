@@ -58,8 +58,10 @@ check_file("LESEFERD")
 dt <- check_cube("LESEFERD")
 dt <- check_cube("ALKOHOL")
 dt <- check_cube("ALKOHOL", year = 2021)
-dt <- check_cube("INNVAND", year = 2022)
+dt <- check_cube("INNVAND_2")
 
 dt <- sjekk_kube("TEST77")
 dt <- sjekk_kube("BigSmall")
 dt <- sjekk_kube("INNVAND", type = "NH")
+
+dt

@@ -3,11 +3,14 @@
 \name{view_outliers}
 \alias{view_outliers}
 \alias{vis_uteligger}
+\alias{vo}
 \title{View Outliers}
 \usage{
 view_outliers(dt = NULL, var = NULL, nrows = NULL, levels = NULL)
 
 vis_uteligger(dt = NULL, var = NULL, nrows = NULL, levels = NULL)
+
+vo(dt = NULL, var = NULL, nrows = NULL, levels = NULL)
 }
 \arguments{
 \item{dt}{Dataset object from \code{check_cube()} function}

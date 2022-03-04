@@ -39,6 +39,9 @@ view_outliers(dt, "RATE")
 view_outliers(dt, var = "RATE", levels = c("F", "K")) #Select only Fylke and big Kommune
 ```
 
+You can use shortcut functions `cc()` or `vo()` for `check_cube()` and
+`view_outliers()` respectively.
+
 Comparison will be made on the measurement variables created by
 `LagKUBE()` function in **KHfunction** such as:
 

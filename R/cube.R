@@ -54,6 +54,10 @@ check_cube <- function(name = NULL, year = NULL, type = c("KH", "NH"), ...){
 #' @rdname check_cube
 sjekk_kube <- check_cube
 
+#' @export
+#' @rdname check_cube
+cc <- check_cube
+
 ## HELPER -----------------
 add_pop_size <- function(dt, year = NULL, type = NULL){
   level <- NULL

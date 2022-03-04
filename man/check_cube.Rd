@@ -3,11 +3,14 @@
 \name{check_cube}
 \alias{check_cube}
 \alias{sjekk_kube}
+\alias{cc}
 \title{Check Raw File}
 \usage{
 check_cube(name = NULL, year = NULL, type = c("KH", "NH"), ...)
 
 sjekk_kube(name = NULL, year = NULL, type = c("KH", "NH"), ...)
+
+cc(name = NULL, year = NULL, type = c("KH", "NH"), ...)
 }
 \arguments{
 \item{name}{Filename of KUBE raw \code{csv} file.}

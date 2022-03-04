@@ -1,3 +1,15 @@
+#' @title Check File
+#' @description
+#' `r lifecycle::badge("deprecated")`
+#'
+#' `check_file()` was renamed to `check_cube()` to be more explicit
+#' @keywords internal
+#' @export
+check_file <- function(name = NULL, year = NULL, type = c("KH", "NH"), ...){
+  lifecycle::deprecate_warn("0.0.1", "check_file()", "check_cube()")
+  check_cube(name, year, type, ...)
+}
+
 #' @title Check Raw File
 #' @description Check raw kube files
 #' @param name Filename of KUBE raw `csv` file.
@@ -41,7 +53,6 @@ check_cube <- function(name = NULL, year = NULL, type = c("KH", "NH"), ...){
 #' @export
 #' @rdname check_cube
 sjekk_kube <- check_cube
-
 
 ## HELPER -----------------
 add_pop_size <- function(dt, year = NULL, type = NULL){

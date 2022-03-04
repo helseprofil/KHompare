@@ -27,6 +27,8 @@ usethis::use_package("yaml", min_version = TRUE)
 usethis::use_package("withr", min_version = TRUE)
 usethis::use_package("stats")
 usethis::use_package("listenv", min_version = TRUE)
+usethis::use_package("lifecycle", min_version = TRUE)
+
 
 ## Testing ---------------
 usethis::use_testthat()
@@ -51,6 +53,7 @@ saveRDS(b2, file = file.path(system.file(package = "KHompare"), "test-data/geo-l
 devtools::load_all()
 pop <- create_pop_ref(overwrite = T, type = "NH")
 
+check_file("LESEFERD")
 
 dt <- check_cube("LESEFERD")
 dt <- check_cube("ALKOHOL")

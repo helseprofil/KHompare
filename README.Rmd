@@ -55,6 +55,12 @@ dt <- check_cube("ALKOHOL") #this will use the current year as in options("kh.ye
 dt <- check_cube("ALKOHOL", year = 2021, type = "NH")
 ```
 
+To view the outliers eg. for `RATE` measurement value:
+
+```r
+view_outliers(dt, "RATE")
+```
+
 Comparison will be made on the measurement variables created by `LagKUBE()`
 function in **KHfunction** such as:
 

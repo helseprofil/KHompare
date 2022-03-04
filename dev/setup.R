@@ -36,6 +36,7 @@ usethis::use_test("utils")
 usethis::use_test("directory")
 usethis::use_test("file")
 usethis::use_test("dimension")
+usethis::use_test("view")
 
 ## CI ----------------
 usethis::use_git_remote("origin", url = "https://github.com/helseprofil/KHompare.git", overwrite = T)
@@ -64,4 +65,5 @@ dt <- sjekk_kube("TEST77")
 dt <- sjekk_kube("BigSmall")
 dt <- sjekk_kube("INNVAND", type = "NH")
 
-dt
+view_outliers(dt, "MEIS", nrow = 2:5)
+view_outliers(dt, "RATE")

@@ -52,6 +52,10 @@ view_outliers <- function(dt = NULL,
 #' @rdname view_outliers
 vis_uteligger <- view_outliers
 
+#' @export
+#' @rdname view_outliers
+vo <- view_outliers
+
 ## Helper ------------
 row_num <- function(x){
   if (length(x) == 1){

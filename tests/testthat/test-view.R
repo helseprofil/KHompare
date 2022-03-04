@@ -12,4 +12,5 @@ test_that("View outliers", {
   expect_equal(view_outliers(dt, "MEIS"), dtout)
   expect_equal(view_outliers(dt, "MEIS", 2), dd)
   expect_error(view_outliers(dt, "NOTHING"))
+  expect_error(view_outliers(dt, "MEIS", levels = "T"))
 })

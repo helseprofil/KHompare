@@ -15,10 +15,10 @@ To install the package run:
 
 ``` r
 source("https://raw.githubusercontent.com/helseprofil/misc/main/utils.R")
-kh_install(KHompare)
+kh_install(khompare)
 ```
 
-or
+or general way with:
 
 ``` r
 if(!requireNamespace("remotes")) install.packages("remotes")

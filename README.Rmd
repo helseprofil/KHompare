@@ -34,7 +34,14 @@ Compare KHelse cube dataset to check for any abnormal changes.
 
 # Installation
 
-To install the package run
+To install the package run:
+
+```r
+source("https://raw.githubusercontent.com/helseprofil/misc/main/utils.R")
+kh_install(KHompare)
+```
+
+or 
 
 ```r
 if(!requireNamespace("remotes")) install.packages("remotes")

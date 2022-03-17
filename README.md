@@ -1,7 +1,7 @@
 
 [![R build
 status](https://github.com/helseprofil/KHompare/workflows/R-CMD-check/badge.svg)](https://github.com/helseprofil/KHompare/actions)
-[![](https://codecov.io/gh/helseprofil/KHompare/branch/main/graph/badge.svg)](https://app.codecov.io/gh/helseprofil/KHompare)
+[![](https://codecov.io/gh/helseprofil/KHompare/branch/main/graph/badge.svg)](https://codecov.io/gh/helseprofil/KHompare)
 [![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![](https://img.shields.io/badge/devel%20version-0.0.1-blue.svg)](https://github.com/helseprofil/KHompare)
 
@@ -11,7 +11,14 @@ Compare KHelse cube dataset to check for any abnormal changes.
 
 # Installation
 
-To install the package run
+To install the package run:
+
+``` r
+source("https://raw.githubusercontent.com/helseprofil/misc/main/utils.R")
+kh_install(KHompare)
+```
+
+or
 
 ``` r
 if(!requireNamespace("remotes")) install.packages("remotes")
@@ -30,6 +37,9 @@ library("KHompare")
 dt <- check_cube("ALKOHOL") #this will use the current year as in options("kh.year")
 # OR
 dt <- check_cube("ALKOHOL", year = 2021, type = "NH")
+
+# to see the data
+dt
 ```
 
 To view the outliers eg. for `RATE` measurement value:
@@ -56,8 +66,8 @@ created when running the function `check_cube()` and they are:
 
 -   *xxx*\_NUM
 -   *xxx*\_PCT
--   *xxx*\_NUM\_OUT
--   *xxx*\_PCT\_OUT
+-   *xxx*\_NUM_OUT
+-   *xxx*\_PCT_OUT
 
 The *xxx* is the name of the measurement variables that are checked for
 the difference in change numerically and percent. They are denoted by

@@ -53,6 +53,9 @@ library("KHompare")
 dt <- check_cube("ALKOHOL") #this will use the current year as in options("kh.year")
 # OR
 dt <- check_cube("ALKOHOL", year = 2021, type = "NH")
+
+# to see the data
+dt
 ```
 
 To view the outliers eg. for `RATE` measurement value:

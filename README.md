@@ -18,7 +18,7 @@ source("https://raw.githubusercontent.com/helseprofil/misc/main/utils.R")
 kh_install(khompare)
 ```
 
-or general way with:
+or the general way with:
 
 ``` r
 if(!requireNamespace("remotes")) install.packages("remotes")

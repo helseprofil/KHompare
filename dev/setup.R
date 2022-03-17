@@ -54,9 +54,9 @@ saveRDS(b2, file = file.path(system.file(package = "KHompare"), "test-data/geo-l
 devtools::load_all()
 pop <- create_pop_ref(overwrite = T, type = "NH")
 
-check_file("LESEFERD")
+check_file("ALKOHOL")
 
-dt <- check_cube("LESEFERD")
+dt <- check_cube("LESEFERD_2022")
 dt <- check_cube("ALKOHOL")
 dt <- check_cube("ALKOHOL", year = 2021)
 dt <- check_cube("INNVAND_2")

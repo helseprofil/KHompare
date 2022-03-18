@@ -36,13 +36,12 @@ diff_change <- function(dt, dim, ...){
 #' @description Find the change over time. It could be change from previous year
 #'   or a specific time period.
 #' @inheritParams diff_change
-#' @param var Selected dimension ie. \code{dim}, variable
+#' @param var Selected dimension ie. \code{dim}, variable from \code{get_grid()}
+#'   function
 #' @param ... Other extended arguments
 #' @export
 
 find_change <- function(dt, dim, var, ...){
-  # dim - dimension dataset from get_grid()
-  # var - selected dim variable
   GEO <- khompareNUM <- khomparePCT <- khompareVAR <- NULL
 
   dt <- data.table::copy(dt)

@@ -55,8 +55,13 @@ find_change <- function(dt, dim, var, ...){
     dd[, khompareVAR := shift(x = get(var), type = "lag"), by = GEO]
     # Get change on numeric value
     dd[, khompareNUM := get(var) - khompareVAR, by = GEO]
+
     # Get percentage change
-    dd[, khomparePCT := ((get(var)- khompareVAR)/khompareVAR)*100, by = GEO]
+    # Add 0.001 to ensure numerator will never be zero and
+    # elustrate that change is extra big ie. outlier!
+    dd[, khomp_DUMMY := data.table::fifelse(khompareVAR == 0, 0.001, khompareVAR)]
+    dd[, khomparePCT := ((get(var)- khomp_DUMMY)/khomp_DUMMY)*100, by = GEO]
+    dd[, khomp_DUMMY := NULL]
 
     oldName <- paste0("khompare", c("NUM", "PCT"))
     varName <- paste0(var, c("_NUM", "_PCT"))

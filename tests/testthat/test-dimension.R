@@ -20,7 +20,7 @@ test_that("Compare cube measure", {
 
   diffout <- readRDS(system.file("test-data", "diff-change-out.rds", package = "KHompare"))
 
-  expect_equal(do_compare(dt = dt, dim = dim, var = "MEIS"), dtout)
+  expect_equal(find_change(dt = dt, dim = dim, var = "MEIS"), dtout)
 
   dt[, khompareID := NULL]
   expect_equal(diff_change(dt = dt, dim = dim), diffout)

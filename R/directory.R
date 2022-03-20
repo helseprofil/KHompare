@@ -21,3 +21,22 @@ get_dir <- function(year = NULL, type = c("KH", "NH"), os = OS){
   drive <- os_drive(os = os)
   file.path(drive, getOption("kh.kube.root"), fileDir)
 }
+
+#' @title Get Reference Directory
+#' @description Get the directory where reference files will be kept. These
+#'   files include population reference files and database files.
+#' @param year Which year to refer to. Default is option \code{kh.year}
+#' @inheritParams get_dir
+#' @export
+get_dir_ref <- function(year = NULL, os = OS){
+  # type - Type of files
+  drive <- os_drive(os = os)
+  if (is.null(year)) year = as.integer(getOption("kh.year"))
+
+  khDir <- file.path(drive, getOption("kh.khompare.root"), year)
+  if(!fs::dir_exists(khDir)){
+    fs::dir_create(khDir)
+  }
+
+  invisible(khDir)
+}

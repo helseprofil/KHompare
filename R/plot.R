@@ -28,9 +28,10 @@ plot_cube <- function(data, geo, var){
     ggplot2::geom_point(ggplot2::aes( color = factor(KJONN) )) +
     ggplot2::geom_point(data = data[get(varOut) %in% 1:2], color = "#8b0000", size = 2.5) +
     ggplot2::facet_wrap(varDim, labeller = ggplot2::label_both, nrow = 2) +
-    ggplot2::labs(title = title) +
+    ggplot2::labs(title = title, subtitle = "Mørkerødt prikker er outliers") +
     ggplot2::scale_color_discrete("KJONN") +
-    ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90))
+    ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
+                   legend.position = "bottom")
 
 }
 

@@ -13,6 +13,7 @@ devtools::create("./dev/pkg/KHompare")
 
 usethis::use_mit_license()
 usethis::use_package_doc() #Pkg document roxygen style
+usethis::use_logo("./dev/logo.png")
 
 ## Ignore -------------
 usethis::use_build_ignore("dev")

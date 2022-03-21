@@ -26,12 +26,15 @@ view_outliers <- function(dt = NULL,
     stop("Levels `arg` accepts only ", paste(levelVals, collapse = ", "))
   }
 
-  if (isFALSE(any(var %in% names(dt)))){
-    stop("Columname not found!")
-  }
-
   vvars <- grep("_NUM", names(dt), value = TRUE)
   pvars <- grep("_PCT", names(dt), value = TRUE)
+
+  if (isFALSE(any(var %in% names(dt)))){
+    msrVars <- pvars[-grep("_OUT", pvars)]
+    msrVars <- gsub("_PCT", " ", msrVars)
+    message("Available columnames: ", msrVars)
+    stop("Columname not found!")
+  }
 
   cols <- setdiff(names(dt), c(vvars, pvars))
 

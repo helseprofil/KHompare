@@ -74,7 +74,13 @@ view_outliers(dt, "RATE", levels = "T")
 utvars <- names(dt)[1:7]
 dd <- dt[GEO == 0, ..utvars]
 dd
+str(dd)
 
 library(ggplot2)
 plot(dd$AAR, dd$TELLER)
-ggplot(dd, aes("AAR", "TELLER", group = KJONN)) + geom_line()
+ggplot(dd, aes(AAR, TELLER)) + geom_point(aes(color = KJONN))
+
+ggplot(dd, aes(AAR, TELLER , group = as.factor(TRINN))) +
+  geom_line(aes(color=as.factor(TRINN))) +
+  geom_point() +
+  facet_wrap(vars(KJONN), nrow = 3)

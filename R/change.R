@@ -34,7 +34,7 @@ diff_change <- function(dt, dim, ...){
 
 #' @title Find Change Over Time
 #' @description Find the change over time. It could be change from previous year
-#'   or a specific time period.
+#'   or from a specific time period.
 #' @inheritParams diff_change
 #' @param var Selected dimension ie. \code{dim}, variable from \code{get_grid()}
 #'   function

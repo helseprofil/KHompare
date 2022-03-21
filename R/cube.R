@@ -38,6 +38,8 @@ check_cube <- function(name = NULL, year = NULL, type = c("KH", "NH"), ...){
   message("Processing: `", fileKUBE, "`")
   dt <- data.table::fread(fileKUBE)
   keyVars <- get_key(dt)
+  .env_key[["keys"]] <- keyVars
+
   data.table::setkeyv(dt, keyVars)
   dimVars <- get_grid(dt, vars = keyVars)
   dt <- add_pop_size(dt, year = year, type = type)

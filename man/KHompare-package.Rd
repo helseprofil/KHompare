@@ -6,6 +6,8 @@
 \alias{KHompare-package}
 \title{KHompare: Compare Cubes Data}
 \description{
+\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+
 Compare data from current cube to previous year.
 }
 \author{

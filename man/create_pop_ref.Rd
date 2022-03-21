@@ -25,7 +25,16 @@ options \code{kh.year}.}
 \description{
 Create a dataset separating big and small municipalities based
 on their number of population. The cutoff is 10,000 population. Capital
-letter \code{K} denotes big municipalities while small letter \code{k} for small
+letter \code{K} denotes big municipalities while \code{km} for small
 municipalities. The created file will be called
 \code{BigSmall-Kommuner-REF-xxxx.rds} where \code{xxxx} represent the selected year.
+
+The categories for geographical levels are:
+\itemize{
+\item \code{L} for country (\code{Land})
+\item \code{F} for counties (\code{Fylker})
+\item \code{K} for bigger municipalities (\code{Kommuner})
+\item \code{km} for smaller municipalities (\code{Kommuner})
+\item \code{B} for towns (\code{Bydeler})
+}
 }

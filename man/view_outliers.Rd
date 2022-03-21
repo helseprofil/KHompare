@@ -19,7 +19,7 @@ vo(dt = NULL, var = NULL, nrows = NULL, levels = NULL)
 
 \item{nrows}{Number of rows or select rows to show eg. \code{nrows = 10} or \code{nrows = 5:15}}
 
-\item{levels}{Level of geographical granularity. Accepted values are L, F, K, k and B}
+\item{levels}{Level of geographical granularity as in \code{getOption("kh.geo.levels")}}
 }
 \description{
 View outliers for selected variables

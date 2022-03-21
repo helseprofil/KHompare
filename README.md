@@ -1,9 +1,8 @@
-
 [![R build
 status](https://github.com/helseprofil/KHompare/workflows/R-CMD-check/badge.svg)](https://github.com/helseprofil/KHompare/actions)
 [![](https://codecov.io/gh/helseprofil/KHompare/branch/main/graph/badge.svg)](https://codecov.io/gh/helseprofil/KHompare)
 [![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![](https://img.shields.io/badge/devel%20version-0.1.1-blue.svg)](https://github.com/helseprofil/KHompare)
+[![](https://img.shields.io/badge/devel%20version-0.2.1-blue.svg)](https://github.com/helseprofil/KHompare)
 
 # KHompare <img src="man/figures/logo.png" align="right" height="139" />
 
@@ -55,19 +54,19 @@ You can use shortcut functions `cc()` or `vo()` for `check_cube()` and
 Comparison will be made on the measurement variables created by
 `LagKUBE()` function in **KHfunction** such as:
 
-  - MEIS
-  - RATE
-  - TELLER
-  - SMR
-  - etc ..
+-   MEIS
+-   RATE
+-   TELLER
+-   SMR
+-   etc ..
 
 New columns comparing the change of these measurement variables will be
 created when running the function `check_cube()` and they are:
 
-  - *xxx*\_NUM
-  - *xxx*\_PCT
-  - *xxx*\_NUM\_OUT
-  - *xxx*\_PCT\_OUT
+-   *xxx*\_NUM
+-   *xxx*\_PCT
+-   *xxx*\_NUM_OUT
+-   *xxx*\_PCT_OUT
 
 The *xxx* is the name of the measurement variables that are checked for
 the difference in change numerically and percent. They are denoted by

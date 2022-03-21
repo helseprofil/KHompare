@@ -3,7 +3,7 @@
 #' @param dt Dataset object from `check_cube()` function
 #' @param var Measure variables eg. RATE, MEIS etc
 #' @param nrows Number of rows or select rows to show eg. `nrows = 10` or `nrows = 5:15`
-#' @param levels Level of geographical granularity. Accepted values are L, F, K, k and B
+#' @param levels Level of geographical granularity as in `getOption("kh.geo.levels")`
 #' @examples
 #' \dontrun{
 #'  dt <- check_cube("ALKOHOL")
@@ -17,7 +17,7 @@ view_outliers <- function(dt = NULL,
 
   level <- NULL
 
-  levelVals <- c("L", "F", "K", "k", "B")
+  levelVals <- getOption("kh.geo.levels")
   if (is.null(levels)) {
     levels <- levelVals
   }
@@ -32,12 +32,12 @@ view_outliers <- function(dt = NULL,
   if (isFALSE(any(var %in% names(dt)))){
     msrVars <- pvars[-grep("_OUT", pvars)]
     msrVars <- gsub("_PCT", " ", msrVars)
-    message("Available columnames: ", msrVars)
-    stop("Columname not found!")
+    stop("Columname not found! Available columnames: ", msrVars)
   }
 
   cols <- setdiff(names(dt), c(vvars, pvars))
 
+  # outliers columns
   svars <- paste0(var, c("_NUM_OUT", "_PCT_OUT"))
   scols <- c(cols, svars)
 

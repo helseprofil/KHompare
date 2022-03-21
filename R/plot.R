@@ -21,11 +21,15 @@ plot_cube <- function(data, geo, var){
 
   varDim <- get_key_plot(data, plot = TRUE)
 
+  title <- paste0("GEO: ", geo)
+
   ggplot2::ggplot(data, ggplot2::aes(x = AAR, y = .data[[var]], group = factor(KJONN))) +
-    ggplot2::geom_line() +
-    ggplot2::geom_point() +
-    ggplot2::geom_point(data = data[get(varOut) %in% 1:2], color = "red", size = 2.5) +
+    ggplot2::geom_line(ggplot2::aes( color = factor(KJONN) )) +
+    ggplot2::geom_point(ggplot2::aes( color = factor(KJONN) )) +
+    ggplot2::geom_point(data = data[get(varOut) %in% 1:2], color = "#8b0000", size = 2.5) +
     ggplot2::facet_wrap(varDim, labeller = ggplot2::label_both, nrow = 2) +
+    ggplot2::labs(title = title) +
+    ggplot2::scale_color_discrete("KJONN") +
     ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90))
 
 }

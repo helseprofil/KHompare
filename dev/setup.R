@@ -77,6 +77,8 @@ dd <- dt[GEO == 0, ..utvars]
 dd
 str(dd)
 
+pc(dt, 3, "MEIS")
+
 library(ggplot2)
 plot(dd$AAR, dd$TELLER)
 ggplot(dd, aes(AAR, TELLER)) + geom_point(aes(color = KJONN))

@@ -69,3 +69,11 @@ dt <- sjekk_kube("INNVAND", type = "NH")
 view_outliers(dt, "MEIS", nrow = 2:5)
 view_outliers(dt, "RATE", 10:20, levels = c("F","K"))
 view_outliers(dt, "RATE", levels = "T")
+
+utvars <- names(dt)[1:7]
+dd <- dt[GEO == 0, ..utvars]
+dd
+
+library(ggplot2)
+plot(dd$AAR, dd$TELLER)
+ggplot(dd, aes("AAR", "TELLER", group = KJONN)) + geom_line()

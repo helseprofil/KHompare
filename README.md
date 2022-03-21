@@ -1,3 +1,4 @@
+
 [![R build
 status](https://github.com/helseprofil/KHompare/workflows/R-CMD-check/badge.svg)](https://github.com/helseprofil/KHompare/actions)
 [![](https://codecov.io/gh/helseprofil/KHompare/branch/main/graph/badge.svg)](https://codecov.io/gh/helseprofil/KHompare)
@@ -73,6 +74,17 @@ the difference in change numerically and percent. They are denoted by
 **\_NUM** and **\_PCT** respectively. The column **\_OUT** indicates the
 measurement variables that are of extreme values ie. outliers. The value
 for outliers are either **1** for *lower* or **2** for *upper* outliers.
+
+# Plot
+
+To plot with trend for a specific geographical code:
+
+``` r
+plot_cube(dt, geo = 3, var = "TELLER")
+
+#or
+pc(dt, 3, "TELLER")
+```
 
 # Options
 

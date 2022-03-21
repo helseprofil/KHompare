@@ -97,6 +97,19 @@ difference in change numerically and percent. They are denoted by **\_NUM** and
 that are of extreme values ie. outliers. The value for outliers are either **1**
 for *lower* or **2** for *upper* outliers.
 
+# Plot 
+
+To plot with trend for a specific geographical code:
+
+```r
+plot_cube(dt, geo = 3, var = "TELLER")
+
+#or
+pc(dt, 3, "TELLER")
+
+```
+
+
 # Options
 
 Global options can be found here [helseprofil/config](https://github.com/helseprofil/config/blob/main/config-khompare.yml)

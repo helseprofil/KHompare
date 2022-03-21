@@ -11,7 +11,8 @@ Add geographical levels to the dataset. They are:
 \itemize{
 \item \code{L} for country (\code{Land})
 \item \code{F} for county (\code{Fylke})
-\item \code{k} for municipality (\code{Kommune})
+\item \code{K} for bigger municipality (\code{Kommune}) ie. population > 10,000
+\item \code{km} for smaller municipality (\code{Kommune}) ie. population < 10,000
 \item \code{B} for town (\code{Bydele})
 }
 }

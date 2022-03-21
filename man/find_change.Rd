@@ -18,5 +18,5 @@ function}
 }
 \description{
 Find the change over time. It could be change from previous year
-or a specific time period.
+or from a specific time period.
 }

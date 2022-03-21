@@ -4,10 +4,12 @@
 \alias{get_key}
 \title{Get Key Variables}
 \usage{
-get_key(dt)
+get_key(dt, plot = FALSE)
 }
 \arguments{
 \item{dt}{Dataset}
+
+\item{plot}{Logical value to select key variables for plot or not}
 }
 \description{
 Get key variables to sort the dataset.

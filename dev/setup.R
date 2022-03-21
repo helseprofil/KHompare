@@ -29,7 +29,7 @@ usethis::use_package("withr", min_version = TRUE)
 usethis::use_package("stats")
 usethis::use_package("listenv", min_version = TRUE)
 usethis::use_package("lifecycle", min_version = TRUE)
-
+usethis::use_package("ggplot2", type = "Suggest", min_version = TRUE)
 
 ## Testing ---------------
 usethis::use_testthat()
@@ -81,7 +81,9 @@ library(ggplot2)
 plot(dd$AAR, dd$TELLER)
 ggplot(dd, aes(AAR, TELLER)) + geom_point(aes(color = KJONN))
 
-ggplot(dd, aes(AAR, TELLER , group = as.factor(TRINN))) +
-  geom_line(aes(color=as.factor(TRINN))) +
-  geom_point() +
-  facet_wrap(vars(KJONN), nrow = 3)
+dt <- check_cube("MOBBING_0")
+ggplot(dd[GEO == 0], aes(AAR, TELLER, group = factor(KJONN))) +
+  geom_line(aes(color = factor(KJONN))) +
+  geom_point(aes(color = factor(KJONN))) +
+  facet_wrap(vars(TRINN), nrow = 3)
+

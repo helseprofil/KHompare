@@ -80,7 +80,7 @@ demo_grp <- function(data){
 
 var_dim <- function(data, vars){
   # vars - dimensions variables
-  if(any(names(data) == "KJONN")){
+  if(isTRUE( any(names(data) == "KJONN") )){
     c(vars, "KJONN")
   } else {
     vars

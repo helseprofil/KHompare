@@ -47,6 +47,16 @@ if(!requireNamespace("remotes")) install.packages("remotes")
 remotes::install_github("helseprofil/KHompare")
 ```
 
+# Main functions
+
+Three main functions for this package are:
+
+- `check_cube()` or `cc()` to find outliers
+- `view_outliers()` or `vo()` to view outliers
+- `plot_cube()` or `pc()` to plot outliers with time-series for geo code 
+
+Use `help()` or `?` to read description of these function eg. `help(check_cube)`.
+
 # Usage 
 
 To check a cube file for *ALKOHOL* with `check_cube()` function. If there are

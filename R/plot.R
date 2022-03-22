@@ -26,6 +26,7 @@ plot_cube <- function(data, geo, var){
   }
 
   # for y-axis
+  varTitle <- var
   var <- paste0(var, "_PCT")
   # Outliers will be darkred points
   varOut <- paste0(var, "_OUT")
@@ -33,36 +34,26 @@ plot_cube <- function(data, geo, var){
   varDim <- get_key_plot(data, plot = TRUE)
   varDemo <- demo_dim(data)
 
-  title <- paste0("GEO: ", geo)
+  title <- paste0("GEO: ", geo, " for ", varTitle)
 
   if (varDemo == "KJONN"){
-
-    khplot <- ggplot2::ggplot(data, ggplot2::aes(x = AAR, y = .data[[var]], group = factor(KJONN))) +
-      ggplot2::geom_line(ggplot2::aes( color = factor(KJONN) )) +
-      ggplot2::geom_point(ggplot2::aes( color = factor(KJONN) )) +
-      ggplot2::geom_point(data = data[get(varOut) %in% 1:2], color = "#8b0000", size = 2.5) +
-      ggplot2::facet_wrap(varDim, labeller = ggplot2::label_both, nrow = 2) +
-      ggplot2::labs(title = title, subtitle = "M\u00F8rker\u00F8dt prikker er outliers") +
-      ggplot2::scale_color_discrete("KJONN") +
-      ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
-                     legend.position = "bottom")
-
+    grp <- "KJONN"
   } else {
-
+    grp <- "ALDER"
     varDim <- c(varDim, "KJONN")
-
-    khplot <- ggplot2::ggplot(data, ggplot2::aes(x = AAR, y = .data[[var]], group = factor(ALDER))) +
-      ggplot2::geom_line(ggplot2::aes( color = factor(ALDER) )) +
-      ggplot2::geom_point(ggplot2::aes( color = factor(ALDER) )) +
-      ggplot2::geom_point(data = data[get(varOut) %in% 1:2], color = "#8b0000", size = 2.5) +
-      ggplot2::facet_wrap(varDim, labeller = ggplot2::label_both, nrow = 2) +
-      ggplot2::labs(title = title, subtitle = "M\u00F8rker\u00F8dt prikker er outliers") +
-      ggplot2::scale_color_discrete("ALDER") +
-      ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
-                     legend.position = "bottom")
-
   }
 
+  khplot <- ggplot2::ggplot(data, ggplot2::aes(x = AAR, y = .data[[var]], group = factor(.data[[grp]]))) +
+    ggplot2::geom_line(ggplot2::aes( color = factor(.data[[grp]]) )) +
+    ggplot2::geom_point(ggplot2::aes( color = factor(.data[[grp]]) )) +
+    ggplot2::geom_point(data = data[get(varOut) %in% 1:2], color = "#8b0000", size = 2.5) +
+    ggplot2::facet_wrap(varDim, labeller = ggplot2::label_both, nrow = 2) +
+    ggplot2::labs(title = title, subtitle = "M\u00F8rker\u00F8dt prikker er outliers") +
+    ggplot2::scale_color_discrete(grp) +
+    ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
+                   legend.position = "bottom")
+
+  x11()
   khplot
 
 }

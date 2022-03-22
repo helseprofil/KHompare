@@ -32,15 +32,15 @@ plot_cube <- function(data, geo, var){
   varOut <- paste0(var, "_OUT")
 
   varDim <- get_key_plot(data, plot = TRUE)
-  varDemo <- demo_dim(data)
+  varGrp <- demo_grp(data)
 
   title <- paste0("GEO: ", geo, " for ", varTitle)
 
-  if (varDemo == "KJONN"){
+  if (varGrp == "KJONN"){
     grp <- "KJONN"
   } else {
     grp <- "ALDER"
-    varDim <- c(varDim, "KJONN")
+    varDim <- var_dim(data, varDim)
   }
 
   khplot <- ggplot2::ggplot(data, ggplot2::aes(x = AAR, y = .data[[var]], group = factor(.data[[grp]]))) +
@@ -65,18 +65,33 @@ pc <- plot_cube
 
 
 ## HELPER -------------
-demo_dim <- function(data){
-
+demo_grp <- function(data){
   var <- get_key_plot(data, plot = TRUE)
-
   demoVar <- intersect(names(data), c("KJONN", "ALDER"))
 
-  age <- any(names(data) == "ALDER")
+  if (length(demoVar) > 1){
+    age <- any(names(data) == "ALDER")
+    grp <- is_grp(age)
+  } else {
+    grp <- demoVar
+  }
+  grp
+}
 
-  if (age){
+var_dim <- function(data, vars){
+  # vars - dimensions variables
+  if(any(names(data) == "KJONN")){
+    c(vars, "KJONN")
+  } else {
+    vars
+  }
+}
+
+is_grp <- function(x){
+  # x - logical
+  if (x){
     "ALDER"
   } else {
     "KJONN"
   }
-
 }

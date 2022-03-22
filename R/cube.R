@@ -89,7 +89,7 @@ find_filename <- function(dir, files){
 
   if (length(filenames) > 1){
     for(i in filenames){ message("Filename: ", i)}
-    msg <- paste0("Found more than one unique filenames after deleting date suffix. Be specific! eg.`", filenames[1], "_2022`")
+    msg <- paste0("Filename is not unique after deleting date suffix. Be specific! eg.`", filenames[1],"_", getOption("kh.year"), "`")
     stop(msg)
   }
 

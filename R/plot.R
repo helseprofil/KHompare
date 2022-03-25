@@ -58,7 +58,7 @@ plot_cube <- function(data, geo, var, value = c("pct", "num")){
     ggplot2::facet_wrap(varDim, labeller = ggplot2::label_both, nrow = 2) +
     ggplot2::labs(title = title, subtitle = "M\u00F8rker\u00F8dt prikker er outliers") +
     ggplot2::scale_color_discrete(grp) +
-    ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90),
+    ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.3),
                    legend.position = "bottom")
 
   x11()

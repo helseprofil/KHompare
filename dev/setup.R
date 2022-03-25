@@ -77,7 +77,8 @@ dd <- dt[GEO == 0, ..utvars]
 dd
 str(dd)
 
-pc(dt, 3, "MEIS")
+devtools::load_all()
+pc(dt, 3, "MEIS", value = "num")
 
 library(ggplot2)
 plot(dd$AAR, dd$TELLER)

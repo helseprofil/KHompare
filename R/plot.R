@@ -4,16 +4,20 @@
 #' @param data Cube dataset from `check_cube()` function
 #' @param geo Geographical code
 #' @param var Cube measure variable
+#' @param value Percentage or numeric change. Select either `pct` or `num`
 #' @examples
 #' \dontrun{
 #' plot_cube(dt, geo = 3, var = "TELLER")
 #' }
 #' @export
 
-plot_cube <- function(data, geo, var){
+plot_cube <- function(data, geo, var, value = c("pct", "num")){
 
   GEO <- AAR <- .data <- NULL
   KJONN <- label_both <- NULL
+
+  value <- match.arg(value)
+  if (length(value) > 2) value = "pct"
 
   data <- data[GEO == geo]
   vvars <- grep("_NUM", names(data), value = TRUE)
@@ -26,15 +30,19 @@ plot_cube <- function(data, geo, var){
   }
 
   # for y-axis
-  varTitle <- var
-  var <- paste0(var, "_PCT")
+  yvar <- switch(value,
+                 pct = ": Prosent endring \u00E5rvis",
+                 num = ": Numerisk endring \u00E5rvis")
+  varTitle <- paste0(var, yvar)
+
+  var <- paste0(var, "_", toupper( value ))
   # Outliers will be darkred points
   varOut <- paste0(var, "_OUT")
 
   varDim <- get_key_plot(data, plot = TRUE)
   varGrp <- demo_grp(data)
 
-  title <- paste0("GEO: ", geo, " for ", varTitle)
+  title <- paste0("GEO = ", geo, " for ", varTitle)
 
   if (varGrp == "KJONN"){
     grp <- "KJONN"

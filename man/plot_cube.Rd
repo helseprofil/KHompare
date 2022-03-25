@@ -5,9 +5,9 @@
 \alias{pc}
 \title{Plot Data}
 \usage{
-plot_cube(data, geo, var)
+plot_cube(data, geo, var, value = c("pct", "num"))
 
-pc(data, geo, var)
+pc(data, geo, var, value = c("pct", "num"))
 }
 \arguments{
 \item{data}{Cube dataset from \code{check_cube()} function}
@@ -15,6 +15,8 @@ pc(data, geo, var)
 \item{geo}{Geographical code}
 
 \item{var}{Cube measure variable}
+
+\item{value}{Percentage or numeric change. Select either \code{pct} or \code{num}}
 }
 \description{
 Plot cube dataset for selected geo code and cube measurement

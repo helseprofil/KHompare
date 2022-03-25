@@ -61,7 +61,7 @@ plot_cube <- function(data, geo, var, value = c("pct", "num")){
     ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.3),
                    legend.position = "bottom")
 
-  x11()
+  grDevices::x11()
   khplot
 
 }

@@ -9,8 +9,8 @@ test_that("View outliers", {
   dd <- dtout[1:2]
 
   expect_equal(row_num(4), 1:4)
-  expect_equal(view_outliers(dt, "MEIS"), dtout)
-  expect_equal(view_outliers(dt, "MEIS", 2), dd)
-  expect_error(view_outliers(dt, "NOTHING"))
-  expect_error(view_outliers(dt, "MEIS", levels = "T"))
+  expect_equal(view_outliers(dt, "MEIS", browser = FALSE), dtout)
+  expect_equal(view_outliers(dt, "MEIS", 2, browser = FALSE), dd)
+  expect_error(view_outliers(dt, "NOTHING", browser = FALSE))
+  expect_error(view_outliers(dt, "MEIS", levels = "T", browser = FALSE))
 })

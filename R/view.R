@@ -4,6 +4,7 @@
 #' @param var Measure variables eg. RATE, MEIS etc
 #' @param nrows Number of rows or select rows to show eg. `nrows = 10` or `nrows = 5:15`
 #' @param levels Level of geographical granularity as in `getOption("kh.geo.levels")`
+#' @param browser Logical value. Show table in browser or not
 #' @examples
 #' \dontrun{
 #'  dt <- check_cube("ALKOHOL")
@@ -13,7 +14,8 @@
 view_outliers <- function(dt = NULL,
                           var = NULL,
                           nrows = NULL,
-                          levels = NULL){
+                          levels = NULL,
+                          browser = TRUE){
 
   level <- NULL
 
@@ -41,14 +43,19 @@ view_outliers <- function(dt = NULL,
   svars <- paste0(var, c("_NUM_OUT", "_PCT_OUT"))
   scols <- c(cols, svars)
 
-  DT <- dt[!is.na(get(svars[1])) | !is.na(get(svars[2])), mget(scols)][level %chin% levels]
+  dd <- dt[!is.na(get(svars[1])) | !is.na(get(svars[2])), mget(scols)][level %chin% levels]
 
   if (!is.null(nrows)){
     nrows <- row_num(nrows)
-    DT <- DT[nrows]
+    dd <- dd[nrows]
   }
 
-  DT[]
+  if (browser){
+    use_browser(dd)
+  } else {
+    dd[]
+  }
+
 }
 
 #' @export
@@ -66,4 +73,12 @@ row_num <- function(x){
   }
 
   return(x)
+}
+
+
+use_browser <- function(dd){
+
+  DT::datatable(dd, options = list(
+    pageLength = 50),
+    filter = "top")
 }

@@ -31,16 +31,21 @@ view_outliers <- function(dt = NULL,
   vvars <- grep("_NUM", names(dt), value = TRUE)
   pvars <- grep("_PCT", names(dt), value = TRUE)
 
+  var <- trimws(var)
   if (isFALSE(any(var %in% names(dt)))){
     msrVars <- pvars[-grep("_OUT", pvars)]
     msrVars <- gsub("_PCT", " ", msrVars)
     stop("Columname not found! Available columnames: ", msrVars)
   }
 
-  cols <- setdiff(names(dt), c(vvars, pvars))
+  allCols <- setdiff(names(dt), c(vvars, pvars))
+  stdCols <- intersect(c(getOption("kh.demo.vars"), "level"), allCols)
+
+  selCols <- paste0(var, c("_PCT", "_NUM"))
+  cols <- c(stdCols, var, selCols)
 
   # outliers columns
-  svars <- paste0(var, c("_NUM_OUT", "_PCT_OUT"))
+  svars <- paste0(var, c("_PCT_OUT","_NUM_OUT"))
   scols <- c(cols, svars)
 
   dd <- dt[!is.na(get(svars[1])) | !is.na(get(svars[2])), mget(scols)][level %chin% levels]
@@ -51,7 +56,7 @@ view_outliers <- function(dt = NULL,
   }
 
   if (browser){
-    use_browser(dd)
+    use_browser(dd, grp = selCols)
   } else {
     dd[]
   }
@@ -76,9 +81,9 @@ row_num <- function(x){
 }
 
 
-use_browser <- function(dd){
+use_browser <- function(dd, grp){
 
   DT::datatable(dd, options = list(
-    pageLength = 50),
+    pageLength = 25),
     filter = "top")
 }

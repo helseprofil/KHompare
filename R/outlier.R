@@ -1,6 +1,6 @@
 #' @title Find Outlier
 #' @description Find outlier values which indicate change in the measured
-#'   variables is abnormal. This is based on the value in `xxx_NUM` and `_PCT`
+#'   variables is abnormal. This is based on the value in `xxx_NUM` and `xxx_PCT`
 #'   ie. numeric and percent change. New variables with `xxx_NUM_OUT` and
 #'   `xxx_PCT_OUT` with value either:
 #'     - NA not an outlier
@@ -13,7 +13,7 @@
 find_outlier <- function(dt, var, ...){
   level <- NULL
   dt <- data.table::copy(dt)
-  splittVal <- c("L","F","K","k","B")
+  splittVal <- getOption("kh.geo.levels")
   DT <- listenv::listenv()
 
   for (i in seq_len(length(splittVal))){

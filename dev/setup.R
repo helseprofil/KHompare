@@ -3,6 +3,7 @@ devtools::load_all()
 devtools::test()
 
 roxygen2::roxygenise(clean = TRUE)
+devtools::document()
 devtools::check()
 
 

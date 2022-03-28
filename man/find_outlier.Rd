@@ -15,7 +15,7 @@ find_outlier(dt, var, ...)
 }
 \description{
 Find outlier values which indicate change in the measured
-variables is abnormal. This is based on the value in \code{xxx_NUM} and \verb{_PCT}
+variables is abnormal. This is based on the value in \code{xxx_NUM} and \code{xxx_PCT}
 ie. numeric and percent change. New variables with \code{xxx_NUM_OUT} and
 \code{xxx_PCT_OUT} with value either:
 - NA not an outlier

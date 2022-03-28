@@ -61,6 +61,8 @@ find_change <- function(dt, dim, var, ...){
     # elustrate that change is extra big ie. outlier!
     dd[, khomp_DUMMY := data.table::fifelse(khompareVAR == 0, 0.001, khompareVAR)]
     dd[, khomparePCT := ((get(var)- khomp_DUMMY)/khomp_DUMMY)*100, by = GEO]
+
+    dd[!is.na(khomparePCT), khomparePCT := round(khomparePCT, digits = 3)]
     dd[, khomp_DUMMY := NULL]
 
     oldName <- paste0("khompare", c("NUM", "PCT"))

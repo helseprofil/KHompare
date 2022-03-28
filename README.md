@@ -34,8 +34,8 @@ Three main functions for this package are:
 -   `plot_cube()` or `pc()` to plot outliers with time-series for geo
     code
 
-Use `help()` or `?` to read description of these function eg.
-`help(check_cube)`.
+Use `help()` or `?` to read description of these functions eg.
+`help(check_cube)` or read guide in [Usage](#usage) below.
 
 # Usage
 

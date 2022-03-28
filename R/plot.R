@@ -31,8 +31,8 @@ plot_cube <- function(data, geo, var, value = c("pct", "num")){
 
   # for y-axis
   yvar <- switch(value,
-                 pct = ": Prosent endring \u00E5rvis",
-                 num = ": Numerisk endring \u00E5rvis")
+                 pct = ": Prosent endring \u00E5rlig",
+                 num = ": Numerisk endring \u00E5rlig")
   varTitle <- paste0(var, yvar)
 
   var <- paste0(var, "_", toupper( value ))

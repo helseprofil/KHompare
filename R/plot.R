@@ -11,7 +11,7 @@
 #' }
 #' @export
 
-plot_cube <- function(data, geo, var, value = c("pct", "num")){
+plot_cube <- function(data, geo, var, value = c("pct", "num", "raw")){
 
   GEO <- AAR <- .data <- NULL
   KJONN <- label_both <- NULL
@@ -32,12 +32,15 @@ plot_cube <- function(data, geo, var, value = c("pct", "num")){
   # for y-axis
   yvar <- switch(value,
                  pct = ": Prosent endring \u00E5rlig",
-                 num = ": Numerisk endring \u00E5rlig")
+                 num = ": Numerisk endring \u00E5rlig",
+                 raw = ": Raw data")
   varTitle <- paste0(var, yvar)
 
-  var <- paste0(var, "_", toupper( value ))
-  # Outliers will be darkred points
-  varOut <- paste0(var, "_OUT")
+  if (value != "raw"){
+    var <- paste0(var, "_", toupper( value ))
+    # Outliers will be darkred points
+    varOut <- paste0(var, "_OUT")
+  }
 
   varDim <- get_key_plot(data, plot = TRUE)
   varGrp <- demo_grp(data)
@@ -53,16 +56,20 @@ plot_cube <- function(data, geo, var, value = c("pct", "num")){
 
   khplot <- ggplot2::ggplot(data, ggplot2::aes(x = AAR, y = .data[[var]], group = factor(.data[[grp]]))) +
     ggplot2::geom_line(ggplot2::aes( color = factor(.data[[grp]]) )) +
-    ggplot2::geom_point(ggplot2::aes( color = factor(.data[[grp]]) )) +
-    ggplot2::geom_point(data = data[get(varOut) %in% 1:2], color = "#8b0000", size = 2.5) +
+    ggplot2::geom_point(ggplot2::aes( color = factor(.data[[grp]]) ))
+
+  if (value != "raw"){
+    khplot <- khplot +
+      ggplot2::geom_point(data = data[get(varOut) %in% 1:2], color = "#8b0000", size = 2.5)
+  }
+
+  grDevices::x11()
+  khplot +
     ggplot2::facet_wrap(varDim, labeller = ggplot2::label_both, nrow = 2) +
     ggplot2::labs(title = title, subtitle = "M\u00F8rker\u00F8dt prikker er outliers") +
     ggplot2::scale_color_discrete(grp) +
     ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.3),
                    legend.position = "bottom")
-
-  grDevices::x11()
-  khplot
 
 }
 

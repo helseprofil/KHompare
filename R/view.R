@@ -3,7 +3,7 @@
 #' @param dt Dataset object from `check_cube()` function
 #' @param var Measure variables eg. RATE, MEIS etc
 #' @param nrows Number of rows or select rows to show eg. `nrows = 10` or `nrows = 5:15`
-#' @param levels Level of geographical granularity as in `getOption("kh.geo.levels")`
+#' @param geo.levels Level of geographical granularity as in `getOption("kh.geo.levels")`
 #' @param browser Logical value. Show table in browser or not
 #' @examples
 #' \dontrun{
@@ -14,18 +14,18 @@
 view_outliers <- function(dt = NULL,
                           var = NULL,
                           nrows = NULL,
-                          levels = NULL,
+                          geo.levels = NULL,
                           browser = TRUE){
 
   level <- NULL
 
   levelVals <- getOption("kh.geo.levels")
-  if (is.null(levels)) {
-    levels <- levelVals
+  if (is.null(geo.levels)) {
+    geo.levels <- levelVals
   }
 
-  if (isFALSE(any(levels %in% levelVals))){
-    stop("Levels `arg` accepts only ", paste(levelVals, collapse = ", "))
+  if (isFALSE(any(geo.levels %in% levelVals))){
+    stop("geo.Levels `arg` accepts only ", paste(levelVals, collapse = ", "))
   }
 
   vvars <- grep("_NUM", names(dt), value = TRUE)
@@ -48,7 +48,7 @@ view_outliers <- function(dt = NULL,
   svars <- paste0(var, c("_PCT_OUT","_NUM_OUT"))
   scols <- c(cols, svars)
 
-  dd <- dt[!is.na(get(svars[1])) | !is.na(get(svars[2])), mget(scols)][level %chin% levels]
+  dd <- dt[!is.na(get(svars[1])) | !is.na(get(svars[2])), mget(scols)][level %chin% geo.levels]
 
   if (!is.null(nrows)){
     nrows <- row_num(nrows)

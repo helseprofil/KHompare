@@ -12,5 +12,5 @@ test_that("View outliers", {
   expect_equal(view_outliers(dt, "MEIS", browser = FALSE), dtout)
   expect_equal(view_outliers(dt, "MEIS", 2, browser = FALSE), dd)
   expect_error(view_outliers(dt, "NOTHING", browser = FALSE))
-  expect_error(view_outliers(dt, "MEIS", levels = "T", browser = FALSE))
+  expect_error(view_outliers(dt, "MEIS", geo.levels = "T", browser = FALSE))
 })

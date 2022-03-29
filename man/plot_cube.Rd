@@ -5,9 +5,9 @@
 \alias{pc}
 \title{Plot Data}
 \usage{
-plot_cube(data, geo, var, value = c("pct", "num"))
+plot_cube(data, geo, var, value = c("pct", "num", "raw"))
 
-pc(data, geo, var, value = c("pct", "num"))
+pc(data, geo, var, value = c("pct", "num", "raw"))
 }
 \arguments{
 \item{data}{Cube dataset from \code{check_cube()} function}

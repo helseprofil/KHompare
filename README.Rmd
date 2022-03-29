@@ -79,7 +79,7 @@ To view the outliers eg. for `RATE` measurement value:
 
 ```r
 view_outliers(dt, "RATE")
-view_outliers(dt, var = "RATE", levels = c("F", "K")) #Select only Fylke and big Kommune
+view_outliers(dt, var = "RATE", geo.levels = c("F", "K")) #Select only Fylke and big Kommune
 ```
 
 You can use shortcut functions `cc()` or `vo()` for `check_cube()` and

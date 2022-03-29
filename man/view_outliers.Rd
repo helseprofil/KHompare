@@ -10,7 +10,7 @@ view_outliers(
   dt = NULL,
   var = NULL,
   nrows = NULL,
-  levels = NULL,
+  geo.levels = NULL,
   browser = TRUE
 )
 
@@ -18,11 +18,11 @@ vis_uteligger(
   dt = NULL,
   var = NULL,
   nrows = NULL,
-  levels = NULL,
+  geo.levels = NULL,
   browser = TRUE
 )
 
-vo(dt = NULL, var = NULL, nrows = NULL, levels = NULL, browser = TRUE)
+vo(dt = NULL, var = NULL, nrows = NULL, geo.levels = NULL, browser = TRUE)
 }
 \arguments{
 \item{dt}{Dataset object from \code{check_cube()} function}
@@ -31,7 +31,7 @@ vo(dt = NULL, var = NULL, nrows = NULL, levels = NULL, browser = TRUE)
 
 \item{nrows}{Number of rows or select rows to show eg. \code{nrows = 10} or \code{nrows = 5:15}}
 
-\item{levels}{Level of geographical granularity as in \code{getOption("kh.geo.levels")}}
+\item{geo.levels}{Level of geographical granularity as in \code{getOption("kh.geo.levels")}}
 
 \item{browser}{Logical value. Show table in browser or not}
 }

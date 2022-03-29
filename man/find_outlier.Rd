@@ -11,14 +11,13 @@ find_outlier(dt, var, ...)
 
 \item{var}{Selected measured variables eg. MEIS, RATE etc}
 
-\item{...}{Additional agrument ie. bount = 2 (bound for outlier)}
+\item{...}{Additional agruments ie. coef = 1.5 (bound for outlier). Can accept
+all arguments for \code{boxplot.stats()}}
 }
 \description{
 Find outlier values which indicate change in the measured
-variables is abnormal. This is based on the value in \code{xxx_NUM} and \code{xxx_PCT}
-ie. numeric and percent change. New variables with \code{xxx_NUM_OUT} and
-\code{xxx_PCT_OUT} with value either:
-- NA not an outlier
-- 1 lower value outlier
-- 2 upper value outlier
+variables is abnormal. This is based on the value in \code{xxx_NUM} and
+\code{xxx_PCT} ie. numeric and percent change. New variables with \code{xxx_NUM_OUT}
+and \code{xxx_PCT_OUT} with value either: - NA not an outlier - 1 lower value
+outlier - 2 upper value outlier
 }

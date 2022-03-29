@@ -1,14 +1,13 @@
 #' @title Find Outlier
 #' @description Find outlier values which indicate change in the measured
-#'   variables is abnormal. This is based on the value in `xxx_NUM` and `xxx_PCT`
-#'   ie. numeric and percent change. New variables with `xxx_NUM_OUT` and
-#'   `xxx_PCT_OUT` with value either:
-#'     - NA not an outlier
-#'     - 1 lower value outlier
-#'     - 2 upper value outlier
+#'   variables is abnormal. This is based on the value in `xxx_NUM` and
+#'   `xxx_PCT` ie. numeric and percent change. New variables with `xxx_NUM_OUT`
+#'   and `xxx_PCT_OUT` with value either: - NA not an outlier - 1 lower value
+#'   outlier - 2 upper value outlier
 #' @param dt Dataset
 #' @param var Selected measured variables eg. MEIS, RATE etc
-#' @param ... Additional agrument ie. bount = 2 (bound for outlier)
+#' @param ... Additional agruments ie. coef = 1.5 (bound for outlier). Can accept
+#'   all arguments for `boxplot.stats()`
 #' @export
 find_outlier <- function(dt, var, ...){
   level <- NULL
@@ -36,14 +35,14 @@ do_outlier <- function(dt, var, ...){
 }
 
 
-mark_outlier <- function(dt, var, bound = 1.5){
-  # bound - for outliner to equivalent to 3SD
-  iqr <- stats::IQR(dt[[var]], na.rm = TRUE)
-  tab <- summary(dt[[var]])
-  minVal <- tab[["1st Qu."]] - bound*iqr
-  maxVal <- tab[["3rd Qu."]] + bound*iqr
+mark_outlier <- function(dt, var, ...){
 
   outVar <- paste0(var, "_OUT")
+
+  outbox <- grDevices::boxplot.stats(dt[[var]], ...)
+  minVal <- outbox$stats[1]
+  maxVal <- outbox$stats[5]
+
   dt[!is.na(get(var)), (outVar) := data.table::fcase(get(var) < minVal, 1L,  #lower
                                                      get(var) > maxVal, 2L)] #upper
   invisible(dt)

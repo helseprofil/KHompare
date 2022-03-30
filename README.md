@@ -3,7 +3,7 @@
 status](https://github.com/helseprofil/KHompare/workflows/R-CMD-check/badge.svg)](https://github.com/helseprofil/KHompare/actions)
 [![](https://codecov.io/gh/helseprofil/KHompare/branch/main/graph/badge.svg)](https://app.codecov.io/gh/helseprofil/KHompare)
 [![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![](https://img.shields.io/badge/devel%20version-0.3.0-blue.svg)](https://github.com/helseprofil/KHompare)
+[![](https://img.shields.io/badge/devel%20version-0.3.1-blue.svg)](https://github.com/helseprofil/KHompare)
 
 # KHompare <img src="man/figures/logo.png" align="right" height="139" />
 

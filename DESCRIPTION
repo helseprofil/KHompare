@@ -20,6 +20,7 @@ Imports:
     stats,
     withr (>= 2.4.3),
     yaml (>= 2.3.5)
+Remotes: helseprofil/orgdata
 Suggests: 
     covr,
     orgdata,

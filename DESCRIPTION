@@ -21,5 +21,6 @@ Imports:
     yaml (>= 2.3.5)
 Suggests: 
     covr,
+    orgdata,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3

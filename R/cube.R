@@ -14,14 +14,20 @@ check_file <- function(name = NULL, year = NULL, type = c("KH", "NH"), ...){
 #' @description Check raw kube files
 #' @param name Filename of KUBE raw `csv` file.
 #' @inheritParams get_dir
+#' @param km Logical value. To include or exclude small municipalities. Default
+#'   is to exclude them ie. `km = FALSE`
 #' @param ... Additional arguments
 #' @examples
 #' \dontrun{
 #' dt <- check_cube("REGNFERD", year = 2022)
 #' }
 #' @export
-check_cube <- function(name = NULL, year = NULL, type = c("KH", "NH"), ...){
+check_cube <- function(name = NULL,
+                       year = NULL,
+                       type = c("KH", "NH"),
+                       km = FALSE, ...){
 
+  level <- NULL
   fileDir <- get_dir(year = year, type = type, ...)
   allFiles <- fs::dir_ls(fileDir)
   nameFirst <- paste0("/", name) #make sure it's the first word
@@ -37,12 +43,18 @@ check_cube <- function(name = NULL, year = NULL, type = c("KH", "NH"), ...){
 
   message("Processing: `", fileKUBE, "`")
   dt <- data.table::fread(fileKUBE)
+
   keyVars <- get_key(dt)
   .env_key[["keys"]] <- keyVars
 
   data.table::setkeyv(dt, keyVars)
   dimVars <- get_grid(dt, vars = keyVars)
   dt <- add_pop_size(dt, year = year, type = type)
+
+  # Default is to exclude smal municiplities
+  if (!km){
+    dt <- dt[level != "km"]
+  }
 
   message("Star finding outliers ... ")
   dt <- diff_change(dt, dim = dimVars, ...)

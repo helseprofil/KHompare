@@ -36,6 +36,7 @@ do_outlier <- function(dt, var, ...){
 
 
 mark_outlier <- function(dt, var, ...){
+  dimensionID <- minVal <- maxVal <- NULL
 
   outVar <- paste0(var, "_OUT")
 

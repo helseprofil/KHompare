@@ -32,6 +32,7 @@ usethis::use_package("stats")
 usethis::use_package("listenv", min_version = TRUE)
 usethis::use_package("lifecycle", min_version = TRUE)
 usethis::use_package("ggplot2", type = "Suggest", min_version = TRUE)
+usethis::use_package("orgdata", type = "Suggest")
 
 ## Testing ---------------
 usethis::use_testthat()

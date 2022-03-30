@@ -42,7 +42,8 @@ diff_change <- function(dt, dim, ...){
 #' @export
 
 find_change <- function(dt, dim, var, ...){
-  GEO <- khompareNUM <- khomparePCT <- khompareVAR <- khomp_DUMMY <- NULL
+  GEO <- khompareNUM <- khomparePCT <- NULL
+  dimensionID <- khompareVAR <- khomp_DUMMY <- NULL
 
   dt <- data.table::copy(dt)
   idvar = "khompareID" #ID to merge the data back

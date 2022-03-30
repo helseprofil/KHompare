@@ -39,7 +39,8 @@ view_outliers <- function(dt = NULL,
   }
 
   allCols <- setdiff(names(dt), c(vvars, pvars))
-  stdCols <- intersect(c(getOption("kh.demo.vars"), "level"), allCols)
+  dimCols <- setdiff(names(.env_dim), getOption("kh.demo.vars"))
+  stdCols <- intersect(c(getOption("kh.demo.vars"), "level", dimCols), allCols)
 
   selCols <- paste0(var, c("_PCT", "_NUM"))
   cols <- c(stdCols, var, selCols)

@@ -83,7 +83,11 @@ row_num <- function(x){
 
 use_browser <- function(dd, grp){
 
-  DT::datatable(dd, options = list(
+  x <- DT::datatable(dd, options = list(
     pageLength = 25),
     filter = "top")
+
+  htmlFile <- tempfile(fileext = ".html")
+  htmlwidgets::saveWidget(x, htmlFile, selfcontained = TRUE)
+  utils::browseURL((htmlFile))
 }

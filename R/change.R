@@ -1,6 +1,6 @@
 #' @title Get the Difference
 #' @description Get the difference for change in the cube measure variables ie.
-#'   the varibles that are created when running the function `LagKUBE()` from
+#'   the variables that are created when running the function `LagKUBE()` from
 #'   `KHfunctions`.
 #' @param dt Dataset
 #' @param dim Dimension dataset produced by `get_grid()`
@@ -18,14 +18,18 @@ diff_change <- function(dt, dim, ...){
   dt[, (idvar) := 1:.N]
   data.table::setkeyv(dt, idvar)
 
+  outVars <- c("dimensionID", "minVal", "maxVal")
+
   DTenv <- listenv::listenv()
   sumVars <- length(cubeCols)
   for (i in seq_len(sumVars)){
-    DTenv[[i]] <- find_change(dt, dim = dim, var = cubeCols[i], ...)
+    dd <- find_change(dt, dim = dim, var = cubeCols[i], ...)
+    dd[, (outVars) := NULL]
+    DTenv[[i]] <- data.table::copy(dd)
   }
 
   DTenv[[sumVars + 1]] <- dt
-  DT <- Reduce(function(...) merge(..., all = TRUE), as.list(DTenv))
+  DT <- Reduce(function(...) merge(..., all = TRUE, by = "khompareID"), as.list(DTenv))
   DT[, (idvar) := NULL]
   meaCols <- setdiff(names(DT), dtCols)
   data.table::setcolorder(DT, c(dtCols, meaCols))

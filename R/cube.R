@@ -58,8 +58,6 @@ check_cube <- function(name = NULL,
 
   message("Star finding outliers ... ")
   dt <- diff_change(dt, dim = dimVars, ...)
-  outVars <- c("dimensionID", "minVal", "maxVal")
-  dt[, (outVars) := NULL]
   sortKey <- keyVars[keyVars!="AAR"]
   data.table::setkeyv(dt, sortKey)
 

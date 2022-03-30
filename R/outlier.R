@@ -40,10 +40,6 @@ mark_outlier <- function(dt, var, ...){
 
   outVar <- paste0(var, "_OUT")
 
-  outbox <- grDevices::boxplot.stats(dt[[var]], ...)
-  minVal2 <- outbox$stats[1]
-  maxVal2 <- outbox$stats[5]
-
   dimDT <- dt[,
               list(minVal = grDevices::boxplot.stats(get(var))$stats[1],
                    maxVal = grDevices::boxplot.stats(get(var))$stats[5]),

@@ -75,6 +75,12 @@ dt <- check_cube("ALKOHOL", year = 2021, type = "NH")
 dt
 ```
 
+By default `check_cube()` excludes all small municipalities. To include them then use argument `km = TRUE`.
+
+```r
+dt <- check_cube("ALKOHOL", km = TRUE)
+```
+
 To view the outliers eg. for `RATE` measurement value:
 
 ```r

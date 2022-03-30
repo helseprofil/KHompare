@@ -15,6 +15,6 @@ diff_change(dt, dim, ...)
 }
 \description{
 Get the difference for change in the cube measure variables ie.
-the varibles that are created when running the function \code{LagKUBE()} from
+the variables that are created when running the function \code{LagKUBE()} from
 \code{KHfunctions}.
 }

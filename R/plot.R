@@ -54,7 +54,8 @@ plot_cube <- function(data, geo, var, value = c("pct", "num", "raw")){
     varDim <- var_dim(data, varDim)
   }
 
-  khplot <- ggplot2::ggplot(data, ggplot2::aes(x = AAR, y = .data[[var]], group = factor(.data[[grp]]))) +
+  khplot <- ggplot2::ggplot(data,
+                            ggplot2::aes(x = AAR, y = .data[[var]], group = factor(.data[[grp]]))) +
     ggplot2::geom_line(ggplot2::aes( color = factor(.data[[grp]]) )) +
     ggplot2::geom_point(ggplot2::aes( color = factor(.data[[grp]]) ))
 

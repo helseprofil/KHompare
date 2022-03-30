@@ -44,11 +44,22 @@ check_cube <- function(name = NULL, year = NULL, type = c("KH", "NH"), ...){
   dimVars <- get_grid(dt, vars = keyVars)
   dt <- add_pop_size(dt, year = year, type = type)
 
-  message("Finding outliers ... ")
+  message("Star finding outliers ... ")
   dt <- diff_change(dt, dim = dimVars, ...)
+  outVars <- c("dimensionID", "minVal", "maxVal")
+  dt[, (outVars) := NULL]
   sortKey <- keyVars[keyVars!="AAR"]
   data.table::setkeyv(dt, sortKey)
-  message("Done!")
+
+  cat("\n")
+  if (requireNamespace("orgdata")){
+    orgdata:::is_color_txt(x = "",
+                           msg = "Done!",
+                           type = "note", emoji = TRUE)
+  } else {
+    message("Done!")
+  }
+
   dt[]
 }
 

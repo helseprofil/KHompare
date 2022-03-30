@@ -51,6 +51,7 @@ find_change <- function(dt, dim, var, ...){
 
   dtEnv <- listenv::listenv()
   for (i in seq_len(ind)){
+    cat(".")
     dd <- dt[dim[i], on = indVars]
     dd[, khompareVAR := shift(x = get(var), type = "lag"), by = GEO]
     # Get change on numeric value
@@ -71,6 +72,10 @@ find_change <- function(dt, dim, var, ...){
     ## level is needed to cehck for outlier by level
     delCols <- setdiff(names(dd), c(idvar, varName, "level"))
     dd[, (delCols) := NULL]
+
+    # Add dimension ID for grouping on dimensions
+    dd[, dimensionID := i]
+
     data.table::setkeyv(dd, idvar)
     dtEnv[[i]] <- dd
   }

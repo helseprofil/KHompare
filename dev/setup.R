@@ -28,10 +28,12 @@ usethis::use_package("fs", min_version = TRUE)
 usethis::use_package("yaml", min_version = TRUE)
 usethis::use_package("withr", min_version = TRUE)
 usethis::use_package("DT", min_version = TRUE)
+usethis::use_package("htmlwidgets", min_version = TRUE)
 usethis::use_package("stats")
 usethis::use_package("listenv", min_version = TRUE)
 usethis::use_package("lifecycle", min_version = TRUE)
 usethis::use_package("ggplot2", type = "Suggest", min_version = TRUE)
+usethis::use_package("orgdata", type = "Suggest")
 
 ## Testing ---------------
 usethis::use_testthat()

@@ -15,5 +15,5 @@ opt.khompare <- opt_rename(opts)
 }
 
 .onAttach <- function(libname, pkgname){
-  packageStartupMessage("KHompare version 0.2.2")
+  packageStartupMessage("KHompare version 0.3.0")
 }

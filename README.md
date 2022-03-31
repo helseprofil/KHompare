@@ -15,7 +15,10 @@ To install the package run:
 
 ``` r
 source("https://raw.githubusercontent.com/helseprofil/misc/main/utils.R")
-kh_install(khompare)
+kh_install(KHompare)
+
+# load package
+library(KHompare)
 ```
 
 or the general method with:

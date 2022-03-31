@@ -38,18 +38,24 @@ view_outliers <- function(dt = NULL,
     stop("Columname not found! Available columnames: ", msrVars)
   }
 
+  # standard columns
   allCols <- setdiff(names(dt), c(vvars, pvars))
-  dimCols <- setdiff(names(.env_dim), getOption("kh.demo.vars"))
-  stdCols <- intersect(c(getOption("kh.demo.vars"), "level", dimCols), allCols)
+  dimCols <- get_key_plot(dt, plot = TRUE)
+  demoCols <- intersect(c(getOption("kh.demo.vars"), "level", dimCols), allCols)
+  stdCols <- c(demoCols, var)
 
+  # cube and outliers columns
   selCols <- paste0(var, c("_PCT", "_NUM"))
-  cols <- c(stdCols, var, selCols)
+  outCols <- paste0(var, c("_PCT_OUT","_NUM_OUT"))
+  cubeCols <- c(grep("PCT", c(selCols, outCols), value = T),
+                grep("NUM", c(selCols, outCols), value = T))
 
-  # outliers columns
-  svars <- paste0(var, c("_PCT_OUT","_NUM_OUT"))
-  scols <- c(cols, svars)
+  # reorder table columns
+  geoCols <- c("GEO", "level")
+  normCols <- setdiff(stdCols, geoCols)
+  scols <- c(geoCols, normCols, cubeCols)
 
-  dd <- dt[!is.na(get(svars[1])) | !is.na(get(svars[2])), mget(scols)][level %chin% geo.levels]
+  dd <- dt[!is.na(get(outCols[1])) | !is.na(get(outCols[2])), mget(scols)][level %chin% geo.levels]
 
   if (!is.null(nrows)){
     nrows <- row_num(nrows)

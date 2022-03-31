@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-Compare data from current cube to previous year.
+Compare and identify abnormal yearly changes for KHelse cube data.
 }
 \author{
 \strong{Maintainer}: Yusman Kamaleri \email{ybka@fhi.no} (\href{https://orcid.org/0000-0001-5014-3665}{ORCID})

@@ -4,11 +4,13 @@ Version: 0.3.1
 Authors@R: 
     person("Yusman", "Kamaleri", , "ybka@fhi.no", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-5014-3665"))
-Description: Compare data from current cube to previous year.
+Description: Compare and identify abnormal yearly changes for KHelse cube data.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
+Depends:
+    R (>= 4.1.0)
 Imports: 
     data.table (>= 1.14.2),
     DT (>= 0.21),

@@ -82,7 +82,7 @@ pc <- plot_cube
 
 ## HELPER -------------
 demo_grp <- function(data){
-  var <- get_key_plot(data, plot = TRUE)
+  ## var <- get_key_plot(data, plot = TRUE)
   demoVar <- intersect(names(data), c("KJONN", "ALDER"))
 
   if (length(demoVar) > 1){

@@ -1,7 +1,7 @@
 
 [![R build
 status](https://github.com/helseprofil/KHompare/workflows/R-CMD-check/badge.svg)](https://github.com/helseprofil/KHompare/actions)
-[![](https://codecov.io/gh/helseprofil/KHompare/branch/main/graph/badge.svg)](https://app.codecov.io/gh/helseprofil/KHompare)
+[![](https://codecov.io/gh/helseprofil/KHompare/branch/main/graph/badge.svg)](https://codecov.io/gh/helseprofil/KHompare)
 [![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![](https://img.shields.io/badge/devel%20version-0.3.2-blue.svg)](https://github.com/helseprofil/KHompare)
 
@@ -11,7 +11,8 @@ Compare KHelse cube dataset to check for any abnormal changes.
 
 # Installation
 
-To install the package run:
+It’s advisable to **restart** your R session before installing the
+package:
 
 ``` r
 source("https://raw.githubusercontent.com/helseprofil/misc/main/utils.R")

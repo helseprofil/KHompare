@@ -33,7 +33,7 @@ Compare KHelse cube dataset to check for any abnormal changes.
 
 # Installation
 
-To install the package run:
+It's advisable to **restart** your R session before installing the package:
 
 ```r
 source("https://raw.githubusercontent.com/helseprofil/misc/main/utils.R")

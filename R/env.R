@@ -9,3 +9,9 @@
 #' @export .env_key
 
 .env_key <- new.env()
+
+#' @title Env for Misc Variables
+#' @description When there are a need for it
+#' @export .env_misc
+
+.env_misc <- new.env()

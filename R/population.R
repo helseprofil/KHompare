@@ -43,17 +43,24 @@ create_pop_ref <- function(name = NULL,
 
   bf <- paste0(name, "_\\d{4}") #file must be followed by year ie. 4 digits
   befolkFiles <- grep(bf, allFiles, value = TRUE)
-  dt <- pop_file(dir = fileDir, files = befolkFiles)
-  dt[, c("AAR", "KJONN", "ALDER") := NULL]
-  dt <- dt[!duplicated(GEO)]
 
-  saveRDS(object = dt, file = befolkDT)
-  message("Save file: ", befolkDT)
+  if (length(befolkFiles) != 0) {
+    dt <- pop_file(dir = fileDir, files = befolkFiles)
+    dt[, c("AAR", "KJONN", "ALDER") := NULL]
+    dt <- dt[!duplicated(GEO)]
+
+    saveRDS(object = dt, file = befolkDT)
+    message("Save file: ", befolkDT)
+  } else {
+    message("Population reference file ", year, " not found!")
+    dt <- 0
+  }
+
   invisible(dt)
 }
 
 # HELPER -------------------
-# Catogise municipalities with big and small municipalities
+# Categorise municipalities with big and small municipalities
 # dir - Directory where the population file is
 # files - All files with the same name but different date
 pop_file <- function(dir = NULL, files = NULL){

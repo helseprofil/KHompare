@@ -36,6 +36,7 @@ Compare KHelse cube dataset to check for any abnormal changes.
 It's advisable to **restart** your R session before installing the package:
 
 ```r
+.rs.restartR() #restart RStudio
 source("https://raw.githubusercontent.com/helseprofil/misc/main/utils.R")
 kh_install(KHompare)
 

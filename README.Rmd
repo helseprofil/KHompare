@@ -63,16 +63,16 @@ Use `help()` or `?` to read description of these functions eg.
 
 # Usage{#usage}
 
-To check a cube file for *ALKOHOL* with `check_cube()` function. If there are
-more than one files that contain the word *ALKOHOL*, a more specific name should
+To check a cube file for *TRIVSEL_3* with `check_cube()` function. If there are
+more than one files that contain the word *TRIVSEL_3*, a more specific name should
 be given. You can also specify which year folder to use ie. `KHxxxxNESTAR`,
 where `xxxx` is the year.
 
 ```r
 library("KHompare")
-dt <- check_cube("ALKOHOL") #this will use the current year as in options("kh.year")
+dt <- check_cube("TRIVSEL_3") #this will use the current year as in options("kh.year")
 # OR
-dt <- check_cube("ALKOHOL", year = 2021, type = "NH")
+dt <- check_cube("TRIVSEL_3", year = 2021, type = "NH")
 
 # to see the data
 dt
@@ -81,7 +81,7 @@ dt
 By default `check_cube()` excludes all small municipalities. To include them then use argument `km = TRUE`.
 
 ```r
-dt <- check_cube("ALKOHOL", km = TRUE)
+dt <- check_cube("TRIVSEL_3", km = TRUE)
 ```
 
 To view the outliers eg. for `RATE` measurement value:
@@ -136,10 +136,10 @@ Global options can be found here [helseprofil/config](https://github.com/helsepr
 
 # What is happening?
 
-When running `check_cube("ALKOHOL")` function, these processes will be executed:
+When running `check_cube("TRIVSEL_3")` function, these processes will be executed:
 
-1. Find the most recent filename that contains the word *ALKOHOL* based on the
-   date (YYYY-MM-DD) attached to the filename eg. `ALKOHOL_2022-03-01.csv`, in
+1. Find the most recent filename that contains the word *TRIVSEL_3* based on the
+   date (YYYY-MM-DD) attached to the filename eg. `TRIVSEL_3_2022-03-01.csv`, in
    the current [root
    folder](https://github.com/helseprofil/config/blob/main/config-khompare.yml#L12)
    of the selected

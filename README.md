@@ -1,7 +1,7 @@
 
 [![R build
 status](https://github.com/helseprofil/KHompare/workflows/R-CMD-check/badge.svg)](https://github.com/helseprofil/KHompare/actions)
-[![](https://codecov.io/gh/helseprofil/KHompare/branch/main/graph/badge.svg)](https://codecov.io/gh/helseprofil/KHompare)
+[![](https://codecov.io/gh/helseprofil/KHompare/branch/main/graph/badge.svg)](https://app.codecov.io/gh/helseprofil/KHompare)
 [![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![](https://img.shields.io/badge/devel%20version-0.3.2-blue.svg)](https://github.com/helseprofil/KHompare)
 
@@ -43,16 +43,16 @@ Use `help()` or `?` to read description of these functions eg.
 
 # Usage
 
-To check a cube file for *ALKOHOL* with `check_cube()` function. If
-there are more than one files that contain the word *ALKOHOL*, a more
+To check a cube file for *TRIVSEL_3* with `check_cube()` function. If
+there are more than one files that contain the word *TRIVSEL_3*, a more
 specific name should be given. You can also specify which year folder to
 use ie. `KHxxxxNESTAR`, where `xxxx` is the year.
 
 ``` r
 library("KHompare")
-dt <- check_cube("ALKOHOL") #this will use the current year as in options("kh.year")
+dt <- check_cube("TRIVSEL_3") #this will use the current year as in options("kh.year")
 # OR
-dt <- check_cube("ALKOHOL", year = 2021, type = "NH")
+dt <- check_cube("TRIVSEL_3", year = 2021, type = "NH")
 
 # to see the data
 dt
@@ -62,7 +62,7 @@ By default `check_cube()` excludes all small municipalities. To include
 them then use argument `km = TRUE`.
 
 ``` r
-dt <- check_cube("ALKOHOL", km = TRUE)
+dt <- check_cube("TRIVSEL_3", km = TRUE)
 ```
 
 To view the outliers eg. for `RATE` measurement value:
@@ -116,12 +116,12 @@ Global options can be found here
 
 # What is happening?
 
-When running `check_cube("ALKOHOL")` function, these processes will be
+When running `check_cube("TRIVSEL_3")` function, these processes will be
 executed:
 
-1.  Find the most recent filename that contains the word *ALKOHOL* based
-    on the date (YYYY-MM-DD) attached to the filename eg.
-    `ALKOHOL_2022-03-01.csv`, in the current [root
+1.  Find the most recent filename that contains the word *TRIVSEL_3*
+    based on the date (YYYY-MM-DD) attached to the filename eg.
+    `TRIVSEL_3_2022-03-01.csv`, in the current [root
     folder](https://github.com/helseprofil/config/blob/main/config-khompare.yml#L12)
     of the selected
     [year](https://github.com/helseprofil/config/blob/main/config-khompare.yml#L3).

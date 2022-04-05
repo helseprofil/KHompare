@@ -1,6 +1,6 @@
 Package: KHompare
 Title: Compare Cubes Data
-Version: 0.3.3
+Version: 0.3.4
 Authors@R: 
     person("Yusman", "Kamaleri", , "ybka@fhi.no", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-5014-3665"))
@@ -19,6 +19,7 @@ Imports:
     htmlwidgets (>= 1.5.4),
     lifecycle (>= 1.0.1),
     listenv (>= 0.8.0),
+    plotly (>= 4.10.0),
     sparkline (>= 2.0),
     stats,
     withr (>= 2.4.3),

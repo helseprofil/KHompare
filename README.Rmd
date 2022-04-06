@@ -55,9 +55,9 @@ remotes::install_github("helseprofil/KHompare")
 
 Three main functions for this package are:
 
-- `check_cube()` or `cc()` to find outliers
+- `check_outliers()` or `co()` to find outliers
 - `view_outliers()` or `vo()` to view outliers
-- `plot_cube()` or `pc()` to plot outliers with time-series for geo code 
+- `plot_outliers()` or `po()` to plot outliers with time-series for geo code 
 
 Use `help()` or `?` to read description of these functions eg.
 `help(check_cube)` or read guide in [Usage](#usage) below.

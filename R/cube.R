@@ -1,17 +1,5 @@
-#' @title Check File
-#' @description
-#' `r lifecycle::badge("deprecated")`
-#'
-#' `check_file()` was renamed to `check_cube()` to be more explicit
-#' @keywords internal
-#' @export
-check_file <- function(name = NULL, year = NULL, type = c("KH", "NH"), ...){
-  lifecycle::deprecate_warn("0.0.1", "check_file()", "check_cube()")
-  check_cube(name, year, type, ...)
-}
-
-#' @title Check Raw File
-#' @description Check raw kube files
+#' @title Check Outliers Raw File
+#' @description Check outliers in raw kube files
 #' @param name Filename of KUBE raw `csv` file.
 #' @inheritParams get_dir
 #' @param km Logical value. To include or exclude small municipalities. Default
@@ -19,13 +7,13 @@ check_file <- function(name = NULL, year = NULL, type = c("KH", "NH"), ...){
 #' @param ... Additional arguments
 #' @examples
 #' \dontrun{
-#' dt <- check_cube("REGNFERD", year = 2022)
+#' dt <- check_outliers("TRIVSEL", year = 2022)
 #' }
 #' @export
-check_cube <- function(name = NULL,
-                       year = NULL,
-                       type = c("KH", "NH"),
-                       km = FALSE, ...){
+check_outliers <- function(name = NULL,
+                           year = NULL,
+                           type = c("KH", "NH"),
+                           km = FALSE, ...){
 
   level <- NULL
   fileDir <- get_dir(year = year, type = type, ...)
@@ -74,12 +62,55 @@ check_cube <- function(name = NULL,
 }
 
 #' @export
+#' @rdname check_outliers
+sjekk_outlier <- check_outliers
+
+#' @export
+#' @rdname check_outliers
+co <- check_outliers
+
+#' @title Check Outliers Raw File
+#' @description
+#' `r lifecycle::badge("deprecated")`
+#'
+#' Make funcion name standardize
+#' @examples
+#' \dontrun{
+#' check_cube("TRIVSEL")
+#' # ->
+#' check_outliers("TRIVSEL")
+#' }
+#' @keywords internal
+#' @export
+check_cube <- function(name = NULL,
+                       year = NULL,
+                       type = c("KH", "NH"),
+                       km = FALSE, ...){
+  lifecycle::deprecate_warn("0.3.6", "check_cube()", "check_outliers()")
+
+  check_outliers(name, year, type, km, ...)
+}
+
+#' @export
 #' @rdname check_cube
 sjekk_kube <- check_cube
 
 #' @export
 #' @rdname check_cube
 cc <- check_cube
+
+
+#' @title Check File
+#' @description
+#' `r lifecycle::badge("deprecated")`
+#'
+#' `check_file()` was renamed to `check_cube()` to be more explicit
+#' @keywords internal
+#' @export
+check_file <- function(name = NULL, year = NULL, type = c("KH", "NH"), ...){
+  lifecycle::deprecate_warn("0.0.1", "check_file()", "check_outliers()")
+}
+
 
 ## HELPER -----------------
 add_pop_size <- function(dt, year = NULL, type = NULL){

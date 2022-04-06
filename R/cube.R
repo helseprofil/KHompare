@@ -87,6 +87,7 @@ add_pop_size <- function(dt, year = NULL, type = NULL){
   popFile <- pop_file_ref(year = year)
   fileExist <- fs::file_exists(path = popFile)
 
+  # Delete empty file if exist
   if (fileExist){
     pp <- readRDS(popFile)
     if (nrow(pp) == 0) fs::file_delete(popFile)
@@ -97,7 +98,6 @@ add_pop_size <- function(dt, year = NULL, type = NULL){
   }
 
   fileExist <- fs::file_exists(path = popFile)
-
   if (isFALSE(fileExist)) {
     message("Use population file for ", year - 1, " to find small and big municipalities")
     popFile <- pop_file_ref(year = year - 1)

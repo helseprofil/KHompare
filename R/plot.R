@@ -8,11 +8,11 @@
 #' @param interactive Logical value. Interactive plot or static
 #' @examples
 #' \dontrun{
-#' plot_cube(dt, geo = 3, var = "TELLER")
+#' plot_outliers(dt, geo = 3, var = "TELLER")
 #' }
 #' @export
 
-plot_cube <- function(data, geo, var, value = c("pct", "num", "raw"), interactive = TRUE){
+plot_outliers <- function(data, geo, var, value = c("pct", "num", "raw"), interactive = TRUE){
 
   GEO <- AAR <- .data <- NULL
   KJONN <- label_both <- NULL
@@ -85,9 +85,33 @@ plot_cube <- function(data, geo, var, value = c("pct", "num", "raw"), interactiv
 
 
 #' @export
+#' @rdname plot_outliers
+po <- plot_outliers
+
+#' @title Plot Data
+#' @description
+#' `r lifecycle::badge("deprecated")`
+#'
+#' Make funcion name standardize
+#' @examples
+#' \dontrun{
+#' plot_cube(dt, geo = 3, var = "TELLER")
+#' # ->
+#' plot_outliers(dt, geo = 3, var = "TELLER")
+#' }
+#' @keywords internal
+#' @export
+
+plot_cube <- function(data, geo, var, value = c("pct", "num", "raw"), interactive = TRUE){
+
+  lifecycle::deprecate_warn("0.3.6", "plot_cube()", "plot_outliers()")
+
+  plot_outliers(data, geo, var, value, interactive)
+}
+
+#' @export
 #' @rdname plot_cube
 pc <- plot_cube
-
 
 ## HELPER -------------
 demo_grp <- function(data){

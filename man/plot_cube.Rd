@@ -9,23 +9,16 @@ plot_cube(data, geo, var, value = c("pct", "num", "raw"), interactive = TRUE)
 
 pc(data, geo, var, value = c("pct", "num", "raw"), interactive = TRUE)
 }
-\arguments{
-\item{data}{Cube dataset from \code{check_cube()} function}
-
-\item{geo}{Geographical code}
-
-\item{var}{Cube measure variable}
-
-\item{value}{Percentage or numeric change. Select either \code{pct} or \code{num}}
-
-\item{interactive}{Logical value. Interactive plot or static}
-}
 \description{
-Plot cube dataset for selected geo code and cube measurement
-variable
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+Make funcion name standardize
 }
 \examples{
 \dontrun{
 plot_cube(dt, geo = 3, var = "TELLER")
+# ->
+plot_outliers(dt, geo = 3, var = "TELLER")
 }
 }
+\keyword{internal}

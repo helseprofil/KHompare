@@ -4,7 +4,7 @@
 \alias{check_cube}
 \alias{sjekk_kube}
 \alias{cc}
-\title{Check Raw File}
+\title{Check Outliers Raw File}
 \usage{
 check_cube(name = NULL, year = NULL, type = c("KH", "NH"), km = FALSE, ...)
 
@@ -12,25 +12,16 @@ sjekk_kube(name = NULL, year = NULL, type = c("KH", "NH"), km = FALSE, ...)
 
 cc(name = NULL, year = NULL, type = c("KH", "NH"), km = FALSE, ...)
 }
-\arguments{
-\item{name}{Filename of KUBE raw \code{csv} file.}
-
-\item{year}{Which year of the \code{KHxxxxNESSTAR} folder to select where \code{xxxx}
-is the selected year. Default is NULL to select the current year as in
-options \code{kh.year}.}
-
-\item{type}{Type of folder of either \code{KH} or \code{NH}. Default is \code{KH}.}
-
-\item{km}{Logical value. To include or exclude small municipalities. Default
-is to exclude them ie. \code{km = FALSE}}
-
-\item{...}{Additional arguments}
-}
 \description{
-Check raw kube files
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+Make funcion name standardize
 }
 \examples{
 \dontrun{
-dt <- check_cube("REGNFERD", year = 2022)
+check_cube("TRIVSEL")
+# ->
+check_outliers("TRIVSEL")
 }
 }
+\keyword{internal}

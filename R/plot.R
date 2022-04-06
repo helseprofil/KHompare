@@ -70,7 +70,8 @@ plot_outliers <- function(data, geo, var, value = c("pct", "num", "raw"), intera
     ggplot2::labs(title = title, subtitle = "M\u00F8rker\u00F8dt prikker er outliers") +
     ggplot2::scale_color_discrete(grp) +
     ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.3),
-                   legend.position = "bottom")
+                   legend.position = "bottom") +
+    ggplot2::scale_color_viridis(discrete = TRUE)
 
   if (interactive){
     x <- plotly::ggplotly(khplot)

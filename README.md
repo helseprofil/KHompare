@@ -40,30 +40,30 @@ Three main functions for this package are:
     geo code
 
 Use `help()` or `?` to read description of these functions eg.
-`help(check_cube)` or read guide in [Usage](#usage) below.
+`help(check_outliers)` or read guide in [Usage](#usage) below.
 
 # Usage
 
-To check a cube file for *TRIVSEL_3* with `check_cube()` function. If
-there are more than one files that contain the word *TRIVSEL_3*, a more
-specific name should be given. You can also specify which year folder to
-use ie. `KHxxxxNESTAR`, where `xxxx` is the year.
+To check a cube file for *TRIVSEL_3* with `check_outliers()` function.
+If there are more than one files that contain the word *TRIVSEL_3*, a
+more specific name should be given. You can also specify which year
+folder to use ie. `KHxxxxNESTAR`, where `xxxx` is the year.
 
 ``` r
 library("KHompare")
-dt <- check_cube("TRIVSEL_3") #this will use the current year as in options("kh.year")
+dt <- check_outliers("TRIVSEL_3") #this will use the current year as in options("kh.year")
 # OR
-dt <- check_cube("TRIVSEL_3", year = 2021, type = "NH")
+dt <- check_outliers("TRIVSEL_3", year = 2021, type = "NH")
 
 # to see the data
 dt
 ```
 
-By default `check_cube()` excludes all small municipalities. To include
-them then use argument `km = TRUE`.
+By default `check_outliers()` excludes all small municipalities. To
+include them then use argument `km = TRUE`.
 
 ``` r
-dt <- check_cube("TRIVSEL_3", km = TRUE)
+dt <- check_outliers("TRIVSEL_3", km = TRUE)
 ```
 
 To view the outliers eg. for `RATE` measurement value:
@@ -73,8 +73,8 @@ view_outliers(dt, "RATE")
 view_outliers(dt, var = "RATE", geo.levels = c("F", "K")) #Select only Fylke and big Kommune
 ```
 
-You can use shortcut functions `cc()` or `vo()` for `check_cube()` and
-`view_outliers()` respectively.
+You can use shortcut functions `cc()` or `vo()` for `check_outliers()`
+and `view_outliers()` respectively.
 
 Comparison will be made on the measurement variables created by
 `LagKUBE()` function in **KHfunction** such as:
@@ -86,7 +86,7 @@ Comparison will be made on the measurement variables created by
 -   etc ..
 
 New columns comparing the change of these measurement variables will be
-created when running the function `check_cube()` and they are:
+created when running the function `check_outliers()` and they are:
 
 -   *xxx*\_NUM
 -   *xxx*\_PCT
@@ -104,10 +104,10 @@ for outliers are either **1** for *lower* or **2** for *upper* outliers.
 To plot with trend for a specific geographical code:
 
 ``` r
-plot_cube(dt, geo = 3, var = "TELLER")
+plot_outliers(dt, geo = 3, var = "TELLER")
 
 #or
-pc(dt, 3, "TELLER")
+po(dt, 3, "TELLER")
 ```
 
 # Options
@@ -117,8 +117,8 @@ Global options can be found here
 
 # What is happening?
 
-When running `check_cube("TRIVSEL_3")` function, these processes will be
-executed:
+When running `check_outliers("TRIVSEL_3")` function, these processes
+will be executed:
 
 1.  Find the most recent filename that contains the word *TRIVSEL_3*
     based on the date (YYYY-MM-DD) attached to the filename eg.
@@ -158,7 +158,7 @@ create_pop_ref(year = 2022, type = "KH", overwrite = TRUE)
 Population file is created either from `BEFOLK_GK` or `BEFOLK_GK_NH`
 most recent file. If another `.csv` file should be used other than these
 two, you have to create population reference file prior running
-`check_cube()` by:
+`check_outliers()` by:
 
 ``` r
 create_pop_ref(name = "NewBEFOLK_file.csv", overwrite = TRUE)

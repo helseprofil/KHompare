@@ -35,7 +35,7 @@ view_outliers <- function(dt = NULL,
   if (isFALSE(any(var %in% names(dt)))){
     msrVars <- pvars[-grep("_OUT", pvars)]
     msrVars <- gsub("_PCT", " ", msrVars)
-    stop("Columname not found! Available columnames: ", msrVars)
+    stop("Columname not found! Valid columnames: ", msrVars)
   }
 
   # standard columns

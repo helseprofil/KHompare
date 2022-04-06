@@ -72,10 +72,13 @@ plot_cube <- function(data, geo, var, value = c("pct", "num", "raw"), interactiv
     ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.3),
                    legend.position = "bottom")
 
-  grDevices::x11()
   if (interactive){
-    plotly::ggplotly(khplot)
+    x <- plotly::ggplotly(khplot)
+    htmlFile <- tempfile(fileext = ".html")
+    htmlwidgets::saveWidget(x, htmlFile, selfcontained = TRUE)
+    utils::browseURL((htmlFile))
   } else {
+    grDevices::x11()
     khplot
   }
 }

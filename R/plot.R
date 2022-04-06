@@ -27,7 +27,7 @@ plot_outliers <- function(data, geo, var, value = c("pct", "num", "raw"), intera
   if (isFALSE(any(var %in% names(data)))){
     msrVars <- pvars[-grep("_OUT", pvars)]
     msrVars <- gsub("_PCT", " ", msrVars)
-    stop("Columname not found! Available columnames: ", msrVars)
+    stop("Columname not found! Valid columnames: ", msrVars)
   }
 
   # for y-axis

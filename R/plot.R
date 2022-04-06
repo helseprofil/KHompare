@@ -5,13 +5,14 @@
 #' @param geo Geographical code
 #' @param var Cube measure variable
 #' @param value Percentage or numeric change. Select either `pct` or `num`
+#' @param interactive Logical value. Interactive plot or static
 #' @examples
 #' \dontrun{
 #' plot_cube(dt, geo = 3, var = "TELLER")
 #' }
 #' @export
 
-plot_cube <- function(data, geo, var, value = c("pct", "num", "raw")){
+plot_cube <- function(data, geo, var, value = c("pct", "num", "raw"), interactive = TRUE){
 
   GEO <- AAR <- .data <- NULL
   KJONN <- label_both <- NULL
@@ -64,7 +65,6 @@ plot_cube <- function(data, geo, var, value = c("pct", "num", "raw")){
       ggplot2::geom_point(data = data[get(varOut) %in% 1:2], color = "#8b0000", size = 2.5)
   }
 
-  grDevices::x11()
   khplot <- khplot +
     ggplot2::facet_wrap(varDim, labeller = ggplot2::label_both, nrow = 2) +
     ggplot2::labs(title = title, subtitle = "M\u00F8rker\u00F8dt prikker er outliers") +
@@ -72,7 +72,12 @@ plot_cube <- function(data, geo, var, value = c("pct", "num", "raw")){
     ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.3),
                    legend.position = "bottom")
 
-  plotly::ggplotly(khplot)
+  grDevices::x11()
+  if (interactive){
+    plotly::ggplotly(khplot)
+  } else {
+    khplot
+  }
 }
 
 

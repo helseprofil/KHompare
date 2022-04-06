@@ -87,6 +87,11 @@ add_pop_size <- function(dt, year = NULL, type = NULL){
   popFile <- pop_file_ref(year = year)
   fileExist <- fs::file_exists(path = popFile)
 
+  if (fileExist){
+    pp <- readRDS(popFile)
+    if (nrow(pp) == 0) fs::file_delete(popFile)
+  }
+
   if (isFALSE(fileExist)) {
     create_pop_ref(year = year)
   }

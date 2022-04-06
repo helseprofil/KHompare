@@ -1,8 +1,9 @@
+
 [![R build
 status](https://github.com/helseprofil/KHompare/workflows/R-CMD-check/badge.svg)](https://github.com/helseprofil/KHompare/actions)
 [![](https://codecov.io/gh/helseprofil/KHompare/branch/main/graph/badge.svg)](https://codecov.io/gh/helseprofil/KHompare)
 [![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![](https://img.shields.io/badge/devel%20version-0.3.5-blue.svg)](https://github.com/helseprofil/KHompare)
+[![](https://img.shields.io/badge/devel%20version-0.3.6-blue.svg)](https://github.com/helseprofil/KHompare)
 
 # KHompare <img src="man/figures/logo.png" align="right" height="139" />
 
@@ -33,10 +34,10 @@ remotes::install_github("helseprofil/KHompare")
 
 Three main functions for this package are:
 
--   `check_cube()` or `cc()` to find outliers
+-   `check_outliers()` or `co()` to find outliers
 -   `view_outliers()` or `vo()` to view outliers
--   `plot_cube()` or `pc()` to plot outliers with time-series for geo
-    code
+-   `plot_outliers()` or `po()` to plot outliers with time-series for
+    geo code
 
 Use `help()` or `?` to read description of these functions eg.
 `help(check_cube)` or read guide in [Usage](#usage) below.

@@ -4,7 +4,7 @@
 #'   `KHfunctions`.
 #' @param dt Dataset
 #' @param dim Dimension dataset produced by `get_grid()`
-#' @inheritParams check_cube
+#' @inheritParams check_outliers
 #' @export
 
 diff_change <- function(dt, dim, ...){

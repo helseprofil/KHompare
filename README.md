@@ -1,11 +1,10 @@
-
-[![R build
+ [![R build
 status](https://github.com/helseprofil/KHompare/workflows/R-CMD-check/badge.svg)](https://github.com/helseprofil/KHompare/actions)
-[![](https://codecov.io/gh/helseprofil/KHompare/branch/main/graph/badge.svg)](https://codecov.io/gh/helseprofil/KHompare)
+[![](https://app.codecov.io/gh/helseprofil/KHompare/branch/main/graph/badge.svg)](https://app.codecov.io/gh/helseprofil/KHompare)
 [![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![](https://img.shields.io/badge/devel%20version-0.3.6-blue.svg)](https://github.com/helseprofil/KHompare)
 
-# KHompare <img src="man/figures/logo.png" align="right" height="139" />
+# KHompare <img src="man/figures/logo.png" align="right" width="110" height="138" />
 
 Compare KHelse cube dataset to check for any abnormal changes.
 

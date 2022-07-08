@@ -50,7 +50,7 @@ check_outliers <- function(name = NULL,
   data.table::setkeyv(dt, sortKey)
 
   cat("\n")
-  if (requireNamespace("orgdata")){
+  if (requireNamespace("orgdata", quietly = TRUE)){
     orgdata:::is_color_txt(x = "",
                            msg = "Done!",
                            type = "note", emoji = TRUE)

@@ -30,12 +30,6 @@ plot_outliers <- function(data, geo, var, value = c("pct", "num", "raw"), intera
     stop("Columname not found! Valid columnames: ", msrVars)
   }
 
-  # for y-axis
-  yvar <- switch(value,
-                 pct = ": Prosent endring \u00E5rlig",
-                 num = ": Numerisk endring \u00E5rlig",
-                 raw = ": Raw data")
-  varTitle <- paste0(var, yvar)
 
   if (value != "raw"){
     var <- paste0(var, "_", toupper( value ))
@@ -46,14 +40,21 @@ plot_outliers <- function(data, geo, var, value = c("pct", "num", "raw"), intera
   varDim <- get_key_plot(data, plot = TRUE)
   varGrp <- demo_grp(data)
 
-  title <- paste0("GEO = ", geo, " for ", varTitle)
-
   if (varGrp == "KJONN"){
     grp <- "KJONN"
   } else {
     grp <- "ALDER"
     varDim <- var_dim(data, varDim)
   }
+
+  # for y-axis
+  yvar <- switch(value,
+                 pct = ": Prosent endring \u00E5rlig",
+                 num = ": Numerisk endring \u00E5rlig",
+                 raw = ": Raw data")
+  varTitle <- paste0(var, yvar)
+
+  title <- paste0("GEO = ", geo, " for ", varTitle)
 
   khplot <- ggplot2::ggplot(data,
                             ggplot2::aes(x = AAR, y = .data[[var]], group = factor(.data[[grp]]))) +

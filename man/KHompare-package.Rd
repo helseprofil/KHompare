@@ -6,7 +6,7 @@
 \alias{KHompare-package}
 \title{KHompare: Compare Cubes Data}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
 Compare and identify abnormal yearly changes for KHelse cube data.
 }

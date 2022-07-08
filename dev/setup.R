@@ -6,6 +6,12 @@ roxygen2::roxygenise(clean = TRUE)
 devtools::document()
 devtools::check()
 
+devtools::install("../KHompare")
+
+## Documentation ------
+pkgdown::build_site()
+pkgdown::build_news(preview = TRUE)
+
 
 ## CREATE PKG -----------
 available::available("KHompare")

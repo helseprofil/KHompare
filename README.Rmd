@@ -27,7 +27,7 @@ cat(
 )
 ```
 
-# KHompare <img src="man/figures/logo.png" align="right" height="139" />
+# KHompare <img src="man/figures/logo.png" align="right" width="110" height="138" />
 
 Compare KHelse cube dataset to check for any abnormal changes.
 

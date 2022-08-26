@@ -1,10 +1,14 @@
- [![R build
-status](https://github.com/helseprofil/KHompare/workflows/R-CMD-check/badge.svg)](https://github.com/helseprofil/KHompare/actions)
-[![](https://app.codecov.io/gh/helseprofil/KHompare/branch/main/graph/badge.svg)](https://app.codecov.io/gh/helseprofil/KHompare)
-[![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![](https://img.shields.io/badge/devel%20version-0.3.6-blue.svg)](https://github.com/helseprofil/KHompare)
-
 # KHompare <img src="man/figures/logo.png" align="right" width="110" height="138" />
+
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/helseprofil/KHompare/workflows/R-CMD-check/badge.svg)](https://github.com/helseprofil/KHompare/actions)
+[![Codecov test
+coverage](https://img.shields.io/codecov/c/github/helseprofil/KHompare?logo=codecov)](https://app.codecov.io/gh/helseprofil/KHompare?branch=main)
+[![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![GitHub R package version
+(branch)](https://img.shields.io/github/r-package/v/helseprofil/KHompare/dev)](https://github.com/helseprofil/KHompare)
+<!-- badges: end -->
 
 Compare KHelse cube dataset to check for any abnormal changes.
 
@@ -33,10 +37,10 @@ remotes::install_github("helseprofil/KHompare")
 
 Three main functions for this package are:
 
--   `check_outliers()` or `co()` to find outliers
--   `view_outliers()` or `vo()` to view outliers
--   `plot_outliers()` or `po()` to plot outliers with time-series for
-    geo code
+- `check_outliers()` or `co()` to find outliers
+- `view_outliers()` or `vo()` to view outliers
+- `plot_outliers()` or `po()` to plot outliers with time-series for geo
+  code
 
 Use `help()` or `?` to read description of these functions eg.
 `help(check_outliers)` or read guide in [Usage](#usage) below.
@@ -78,19 +82,19 @@ and `view_outliers()` respectively.
 Comparison will be made on the measurement variables created by
 `LagKUBE()` function in **KHfunction** such as:
 
--   MEIS
--   RATE
--   TELLER
--   SMR
--   etc ..
+- MEIS
+- RATE
+- TELLER
+- SMR
+- etc ..
 
 New columns comparing the change of these measurement variables will be
 created when running the function `check_outliers()` and they are:
 
--   *xxx*\_NUM
--   *xxx*\_PCT
--   *xxx*\_NUM_OUT
--   *xxx*\_PCT_OUT
+- *xxx*\_NUM
+- *xxx*\_PCT
+- *xxx*\_NUM_OUT
+- *xxx*\_PCT_OUT
 
 The *xxx* is the name of the measurement variables that are checked for
 the difference in change numerically and percent. They are denoted by

@@ -63,10 +63,11 @@
       </header><div class="row">
   <div class="contents col-md-9">
 
-
 <div class="section level1">
 <div class="page-header"><h1 id="khompare-">KHompare <img src="reference/figures/logo.png" align="right" width="110" height="138"><a class="anchor" aria-label="anchor" href="#khompare-"></a>
 </h1></div>
+<!-- badges: start -->
+
 <p>Compare KHelse cube dataset to check for any abnormal changes.</p>
 </div>
 <div class="section level1">
@@ -74,16 +75,16 @@
 </h1>
 <p>It’s advisable to <strong>restart</strong> your R session before installing the package:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">.rs.restartR</span><span class="op">(</span><span class="op">)</span> <span class="co">#restart RStudio</span>
-<span class="kw"><a href="https://rdrr.io/r/base/source.html" class="external-link">source</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/helseprofil/misc/main/utils.R"</span><span class="op">)</span>
-<span class="fu">kh_install</span><span class="op">(</span><span class="va">KHompare</span><span class="op">)</span>
-
-<span class="co"># load package</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">KHompare</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">.rs.restartR</span><span class="op">(</span><span class="op">)</span> <span class="co">#restart RStudio</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/source.html" class="external-link">source</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/helseprofil/misc/main/utils.R"</span><span class="op">)</span></span>
+<span><span class="fu">kh_install</span><span class="op">(</span><span class="va">KHompare</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># load package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">KHompare</span><span class="op">)</span></span></code></pre></div>
 <p>or the general method with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/remotes/man/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"helseprofil/KHompare"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"helseprofil/KHompare"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level1">
 <h1 id="main-functions">Main functions<a class="anchor" aria-label="anchor" href="#main-functions"></a>
@@ -97,27 +98,27 @@
 <li>
 <code><a href="reference/plot_outliers.html">plot_outliers()</a></code> or <code><a href="reference/plot_outliers.html">po()</a></code> to plot outliers with time-series for geo code</li>
 </ul>
-<p>Use <code>help()</code> or <code>?</code> to read description of these functions eg. <code><a href="reference/check_outliers.html">help(check_outliers)</a></code> or read guide in <a href="#usage">Usage</a> below.</p>
+<p>Use <code><a href="https://rdrr.io/r/utils/help.html" class="external-link">help()</a></code> or <code>?</code> to read description of these functions eg. <code><a href="reference/check_outliers.html">help(check_outliers)</a></code> or read guide in <a href="#usage">Usage</a> below.</p>
 </div>
 <div class="section level1">
 <h1 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h1>
 <p>To check a cube file for <em>TRIVSEL_3</em> with <code><a href="reference/check_outliers.html">check_outliers()</a></code> function. If there are more than one files that contain the word <em>TRIVSEL_3</em>, a more specific name should be given. You can also specify which year folder to use ie. <code>KHxxxxNESTAR</code>, where <code>xxxx</code> is the year.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st">"KHompare"</span><span class="op">)</span>
-<span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/check_outliers.html">check_outliers</a></span><span class="op">(</span><span class="st">"TRIVSEL_3"</span><span class="op">)</span> <span class="co">#this will use the current year as in options("kh.year")</span>
-<span class="co"># OR</span>
-<span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/check_outliers.html">check_outliers</a></span><span class="op">(</span><span class="st">"TRIVSEL_3"</span>, year <span class="op">=</span> <span class="fl">2021</span>, type <span class="op">=</span> <span class="st">"NH"</span><span class="op">)</span>
-
-<span class="co"># to see the data</span>
-<span class="va">dt</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st">"KHompare"</span><span class="op">)</span></span>
+<span><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/check_outliers.html">check_outliers</a></span><span class="op">(</span><span class="st">"TRIVSEL_3"</span><span class="op">)</span> <span class="co">#this will use the current year as in options("kh.year")</span></span>
+<span><span class="co"># OR</span></span>
+<span><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/check_outliers.html">check_outliers</a></span><span class="op">(</span><span class="st">"TRIVSEL_3"</span>, year <span class="op">=</span> <span class="fl">2021</span>, type <span class="op">=</span> <span class="st">"NH"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># to see the data</span></span>
+<span><span class="va">dt</span></span></code></pre></div>
 <p>By default <code><a href="reference/check_outliers.html">check_outliers()</a></code> excludes all small municipalities. To include them then use argument <code>km = TRUE</code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/check_outliers.html">check_outliers</a></span><span class="op">(</span><span class="st">"TRIVSEL_3"</span>, km <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">dt</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/check_outliers.html">check_outliers</a></span><span class="op">(</span><span class="st">"TRIVSEL_3"</span>, km <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>To view the outliers eg. for <code>RATE</code> measurement value:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/view_outliers.html">view_outliers</a></span><span class="op">(</span><span class="va">dt</span>, <span class="st">"RATE"</span><span class="op">)</span>
-<span class="fu"><a href="reference/view_outliers.html">view_outliers</a></span><span class="op">(</span><span class="va">dt</span>, var <span class="op">=</span> <span class="st">"RATE"</span>, geo.levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"F"</span>, <span class="st">"K"</span><span class="op">)</span><span class="op">)</span> <span class="co">#Select only Fylke and big Kommune</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/view_outliers.html">view_outliers</a></span><span class="op">(</span><span class="va">dt</span>, <span class="st">"RATE"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/view_outliers.html">view_outliers</a></span><span class="op">(</span><span class="va">dt</span>, var <span class="op">=</span> <span class="st">"RATE"</span>, geo.levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"F"</span>, <span class="st">"K"</span><span class="op">)</span><span class="op">)</span> <span class="co">#Select only Fylke and big Kommune</span></span></code></pre></div>
 <p>You can use shortcut functions <code><a href="reference/check_cube.html">cc()</a></code> or <code><a href="reference/view_outliers.html">vo()</a></code> for <code><a href="reference/check_outliers.html">check_outliers()</a></code> and <code><a href="reference/view_outliers.html">view_outliers()</a></code> respectively.</p>
 <p>Comparison will be made on the measurement variables created by <code>LagKUBE()</code> function in <strong>KHfunction</strong> such as:</p>
 <ul>
@@ -145,10 +146,10 @@
 </h1>
 <p>To plot with trend for a specific geographical code:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/plot_outliers.html">plot_outliers</a></span><span class="op">(</span><span class="va">dt</span>, geo <span class="op">=</span> <span class="fl">3</span>, var <span class="op">=</span> <span class="st">"TELLER"</span><span class="op">)</span>
-
-<span class="co">#or</span>
-<span class="fu"><a href="reference/plot_outliers.html">po</a></span><span class="op">(</span><span class="va">dt</span>, <span class="fl">3</span>, <span class="st">"TELLER"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/plot_outliers.html">plot_outliers</a></span><span class="op">(</span><span class="va">dt</span>, geo <span class="op">=</span> <span class="fl">3</span>, var <span class="op">=</span> <span class="st">"TELLER"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#or</span></span>
+<span><span class="fu"><a href="reference/plot_outliers.html">po</a></span><span class="op">(</span><span class="va">dt</span>, <span class="fl">3</span>, <span class="st">"TELLER"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level1">
 <h1 id="options">Options<a class="anchor" aria-label="anchor" href="#options"></a>
@@ -172,10 +173,10 @@
 </h1>
 <p>This refers to the file <code>BigSmall-Kommuner-REF-xxxx.rds</code> for selecting big and small municipalities. The file will be created automatically if it doesn’t exist in the root directory. To replace the existing file then use:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/create_pop_ref.html">create_pop_ref</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2022</span>, type <span class="op">=</span> <span class="st">"KH"</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/create_pop_ref.html">create_pop_ref</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2022</span>, type <span class="op">=</span> <span class="st">"KH"</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>Population file is created either from <code>BEFOLK_GK</code> or <code>BEFOLK_GK_NH</code> most recent file. If another <code>.csv</code> file should be used other than these two, you have to create population reference file prior running <code><a href="reference/check_outliers.html">check_outliers()</a></code> by:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/create_pop_ref.html">create_pop_ref</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"NewBEFOLK_file.csv"</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/create_pop_ref.html">create_pop_ref</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"NewBEFOLK_file.csv"</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 
   </div>
@@ -207,10 +208,10 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/helseprofil/KHompare/actions" class="external-link"><img src="https://github.com/helseprofil/KHompare/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://app.codecov.io/gh/helseprofil/KHompare" class="external-link"><img src="https://app.codecov.io/gh/helseprofil/KHompare/branch/main/graph/badge.svg"></a></li>
+<li><a href="https://github.com/helseprofil/KHompare/actions" class="external-link"><img src="https://github.com/helseprofil/KHompare/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://app.codecov.io/gh/helseprofil/KHompare?branch=main" class="external-link"><img src="https://img.shields.io/codecov/c/github/helseprofil/KHompare?logo=codecov" alt="Codecov test coverage"></a></li>
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg"></a></li>
-<li><a href="https://github.com/helseprofil/KHompare" class="external-link"><img src="https://img.shields.io/badge/devel%20version-0.3.6-blue.svg"></a></li>
+<li><a href="https://github.com/helseprofil/KHompare" class="external-link"><img src="https://img.shields.io/github/r-package/v/helseprofil/KHompare/dev" alt="GitHub R package version (branch)"></a></li>
 </ul>
 </div>
 
@@ -225,7 +226,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
